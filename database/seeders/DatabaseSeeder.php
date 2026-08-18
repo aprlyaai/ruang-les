@@ -24,7 +24,6 @@ class DatabaseSeeder extends Seeder
             FaqSeeder::class,
             GallerySeeder::class,
             ClassScheduleSeeder::class,
-            TestingDataSeeder::class,
         ]);
     }
 }

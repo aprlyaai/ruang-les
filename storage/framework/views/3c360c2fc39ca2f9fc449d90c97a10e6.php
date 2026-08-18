@@ -55,4 +55,4 @@ unset($__defined_vars, $__key, $__value); ?>
     <?php echo e($slot); ?>
 
 </span>
-<?php /**PATH C:\laragon\www\ruang-les-v2\resources\views/components/antarmuka/lencana.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\ruang-les\resources\views/components/antarmuka/lencana.blade.php ENDPATH**/ ?>

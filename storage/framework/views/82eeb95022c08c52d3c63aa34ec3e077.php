@@ -204,4 +204,4 @@
 <?php $component = $__componentOriginalcca8b3434b2f26effed6a432780d8e12; ?>
 <?php unset($__componentOriginalcca8b3434b2f26effed6a432780d8e12); ?>
 <?php endif; ?>
-<?php /**PATH C:\laragon\www\ruang-les-v2\resources\views/publik/beranda.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\ruang-les\resources\views/publik/beranda.blade.php ENDPATH**/ ?>

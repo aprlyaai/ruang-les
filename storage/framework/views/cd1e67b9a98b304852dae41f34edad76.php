@@ -94,4 +94,4 @@ unset($__defined_vars, $__key, $__value); ?>
         </div>
     </div>
 </section>
-<?php /**PATH C:\laragon\www\ruang-les-v2\resources\views/components/publik/keunggulan.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\ruang-les\resources\views/components/publik/keunggulan.blade.php ENDPATH**/ ?>

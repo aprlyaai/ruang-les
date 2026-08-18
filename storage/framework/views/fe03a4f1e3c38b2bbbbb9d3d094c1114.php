@@ -102,4 +102,4 @@
     </div>
 </header>
 
-<?php /**PATH C:\laragon\www\ruang-les-v2\resources\views/components/tajuk-situs.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\ruang-les\resources\views/components/tajuk-situs.blade.php ENDPATH**/ ?>

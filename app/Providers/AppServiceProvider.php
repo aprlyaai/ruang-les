@@ -22,10 +22,14 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        // Menyediakan variabel $settings secara global di seluruh views (diambil dari Cache)
-        View::share('settings', \Illuminate\Support\Facades\Cache::remember('public.settings', 3600, function () {
-            return Pengaturan::pluck('value', 'key');
-        }));
+        try {
+            // Menyediakan variabel $settings secara global di seluruh views (diambil dari Cache)
+            View::share('settings', \Illuminate\Support\Facades\Cache::remember('public.settings', 3600, function () {
+                return Pengaturan::pluck('value', 'key');
+            }));
+        } catch (\Exception $e) {
+            // Abaikan error saat database/tabel belum di-migrate (berguna untuk perintah artisan)
+        }
 
         // Mendaftarkan Observers untuk Cache Invalidation
         Pengaturan::observe(\App\Observers\SettingObserver::class);

@@ -103,4 +103,4 @@
         </div>
     </div>
 </footer>
-<?php /**PATH C:\laragon\www\ruang-les-v2\resources\views/components/kaki-halaman.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\ruang-les\resources\views/components/kaki-halaman.blade.php ENDPATH**/ ?>

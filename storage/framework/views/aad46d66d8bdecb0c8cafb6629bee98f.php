@@ -96,4 +96,4 @@
     <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>
 </html>
-<?php /**PATH C:\laragon\www\ruang-les-v2\resources\views/components/tata-letak-publik.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\ruang-les\resources\views/components/tata-letak-publik.blade.php ENDPATH**/ ?>
