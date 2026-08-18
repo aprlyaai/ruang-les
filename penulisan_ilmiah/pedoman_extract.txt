@@ -1,0 +1,519 @@
+Petunjuk Tulisan Ilmiah Program Studi Manajemen Informatika 
+1 
+PETUNJUK TULISAN ILMIAH 
+DIREKTORAT PROGRAM DIPLOMA TEKNOLOGI INFORMASI 
+PROGRAM STUDI MANAJEMEN INFORMATIKA 
+TUJUAN 
+Tujuan pembuatan Tulisan Ilmiah adalah melatih mahasiswa menuangkan hasil 
+pengamatan atau pembuatan sesuatu atau pengalaman kerja dalam bentuk sebuah laporan 
+tertulis berdasarkan kaidah penelitian ilmiah. 
+ISI DAN MATERI 
+Isi dari Tulisan Ilmiah memenuhi aspek-aspek di bawah ini: 
+1. Relevan dengan Program Studi dari mahasiswa yang bersangkutan. 
+2. Mempunyai pokok permasalahan dan batasan yang jelas. 
+3. Masalah dibatasi, sesempit mungkin. Memenuhi kaidah penelitian ilmiah. 
+STRUKTUR TULISAN ILMIAH 
+Susunan struktur Tulisan Ilmiah adalah sebagai berikut: 
+1. Bagian Awal 
+2. Pendahuluan 
+3. Tinjauan Pustaka 
+4. Pembahasan / Hasil Penelitian dan Analisa 
+5. Penutup (Kesimpulan dan Saran) 
+6. Bagian Akhir 
+1. Bagian Awal 
+Bagian Awal, terdiri atas: 
+- 
+Halaman Judul 
+Ditulis sesuai dengan cover depan Tulisan Ilmiah standar Universitas Gunadarma. 
+- 
+Lembar Originalitas dan Publikasi 
+Berisi tentang pernyataan keaslian pembuatan tulisan serta kerelaan untuk 
+dipublikasikan oleh Gunadarma. 
+- 
+Lembar Pengesahan 
+Dituliskan Judul PI, Nama, NPM, Tanggal Sidang, Tanggal Lulus, dan tanda tangan 
+Pembimbing, Kepala Bagian Sidang Ujian, serta Kepala Program Studi. 
+- 
+Abstrak 
+Berisi ringkasan dari tulisan. Maksimal 1 halaman saja. 
+- 
+Kata Pengantar 
+Berisi ucapan terima kasih kepada pihak-pihak yang ikut berperan dalam pelaksanaan 
+penelitian dan tulisan ilmiah yakni: Rektor, Direktur, Kepala Program Studi, Kabag 
+Sidang Ujian, Pembimbing, Perusahaan, Keluarga, Rekan-rekan, dan lain lain. 
+- 
+Daftar Isi 
+- 
+Daftar Tabel 
+ 
+- 
+Daftar Gambar              Bila ada 
+- 
+Daftar Lampiran     
+Bagian Pokok 
+Petunjuk Tulisan Ilmiah Program Studi Manajemen Informatika 
+2 
+2. Pendahuluan 
+Pendahuluan menguraikan pokok persoalan. Terdiri dari: 
+- 
+Latar Belakang (Masalah) 
+Menguraikan mengapa penulis sampai kepada pemilihan topik permasalahan yang 
+bersangkutan. 
+- 
+Batasan Masalah 
+Memberikan batasan yang jelas bagian mana dari persoalan yang dikaji. 
+- 
+Tujuan Penelitian 
+Menggambarkan hasil yang diharapkan dari penelitian ini dengan memberikan 
+jawaban terhadap masalah yang diteliti. 
+- 
+Metode Penelitian 
+Bagian metode penelitian menjelaskan secara rinci setiap kegiatan yang dilakukan 
+untuk menjawab tujuan yang sudah diuraikan pada bab 1. Bagian ini juga menjelaskan 
+peralatan dan bahan yang dibutuhkan dalam penelitian (jika ada). Inti dari bagian ini 
+adalah pembaca dapat melakukan ulang persis seperti peneliti lakukan berdasarkan 
+uraian yang diberikan peneliti dalam bagian ini. Semua langkah-langkah yang 
+dilakukan tidak boleh ada yang ditutupi, dan dijelaskan secara kronologis dan 
+sistematis. Untuk penelitian ilmu komputer, bagian ini dapat diisi dengan uraian 
+peralatan yang dibutuhkan, algoritma / metode yang digunakan, prosedur implementasi 
+(mengacu pada SDLC). 
+Contoh bagian Metode Penelitian yang dapat digunakan sebagai rujukan (tidak 
+mutlak harus seperti ini, tergantung dari kebutuhan masing-masing): 
+Perangkat yang Dibutuhkan 
+Contoh: 
+Penelitian ini membutuhkan perangkat keras dan perangkat lunak. Perangkat keras 
+yang dibutuhkan adalah satu (1) unit komputer pribadi lengkap dengan spesifikasi 
+minimum  ......  (sebutkan). Perangkat lunak yang dibutuhkan adalah  ...  (sebutkan). 
+Prosedur Pembuatan Aplikasi 
+Pada    bagian    ini    dijelaskan    prosedur    pembuatan    aplikasi    dengan    
+detail, bukan pembuatannya. Contoh: 
+Pembuatan aplikasi dilakukan dalam beberapa tahap: 
+1. Pembuatan rancangan input. Rancangan input dibuat menggunakan algoritma.... 
+(kalau ada khusus dari teori yang digunakan, jangan dijelaskan rancangan inputnya 
+di sini). 
+2. Pembuatan rancangan output. Rancangan output dibuat menggunakan algoritma… (kalau 
+ada khusus dari teori yang digunakan, jangan dijelaskan rancangan outputnya di 
+sini). 
+3. Pembuatan logika pemrograman. Logika program dibuat menggunakan bentuk 
+diagram alur. 
+4. Pembuatan naskah program. Naskah program dibuat menggunakan bahasa 
+pemrograman…
+Petunjuk Tulisan Ilmiah Program Studi Manajemen Informatika 
+3 
+Uji Coba Aplikasi 
+Dijelaskan dengan detil bagaimana uji coba aplikasi dilakukan dan apa yang diamati 
+dalam uji coba tersebut. Contohnya: 
+Uji coba aplikasi didahului dengan proses debugging. Program yang sudah valid dan 
+terverifikasi, selanjutnya dijalankan selama... kali. Hal yang diperhatikan selama 
+penjalanan program adalah konsistensi output yang dihasilkan…  (dan seterusnya). 
+- 
+Sistematika Penulisan 
+Memberikan gambaran umum dari bab ke bab isi dari Tulisan Ilmiah. 
+3. Tinjauan Pustaka 
+Menguraikan teori-teori yang menunjang tulisan/penelitian (definisi, pengertian, dan lain-
+lain), yang bisa diperkuat dengan menunjukkan hasil penelitian sebelumnya. Dapat pula 
+ditambahkan Tool/Program penunjang yang digunakan untuk membantu penelitian, 
+sebatas sejarah perkembangan, kelebihannya, keuntungan dan keterbatasan tool. Tidak 
+perlu memasukkan manualnya. Dianjurkan untuk memasukkan minimal satu artikel (dari 
+jurnal/prosiding) yang mendukung. 
+4. Gambaran Umum Perusahaan (untuk yang melakukan kerja praktek di perusahaan) 
+Menguraikan secara singkat profil perusahaan tempat dilakukannya kerja praktek. Dibuat 
+bab sendiri (tidak termasuk dalam Tinjauan Pustaka / Bab 2). 
+5. Pembahasan 
+Bagian ini dapat berisi: 
+- 
+Hasil Penelitian (Analisis Perusahaan) 
+Menguraikan hasil penelitian yang mencakup semua aspek yang terkait dengan 
+penelitian, termasuk temuan masalah yang akan dipecahkan dengan pembuatan / 
+pengembangan aplikasi / sistem yang diusulkan. 
+- 
+Perancangan dan Implementasi 
+Menguraikan tentang perancangan dari aplikasi / sistem yang dibuat atau 
+pengembangan aplikasi / sistem yang diusulkan. Dapat berupa tampilan rancangan 
+layout input, output atau hasil dan menguraikan bagaimana cara membuat aplikasi / 
+sistem tersebut, berikut tampilan hasilnya. Setiap hasil berupa gambar ataupun tabel 
+harus diceritakan atau dideskripsikan. Spesifikasi hardware dan software disebutkan 
+untuk penggunaan akhir dari aplikasinya / sistemnya. 
+6. Penutup (Berisi Kesimpulan dan Saran) 
+- 
+Kesimpulan 
+Berisi jawaban dari tujuan yang diajukan penulis pada Bab 1, yang diperoleh dari 
+penelitian. 
+- 
+Saran 
+Ditujukan kepada pihak-pihak terkait, sehubungan dengan pengembangan penelitian. 
+Petunjuk Tulisan Ilmiah Program Studi Manajemen Informatika 
+4 
+7.  Bagian Akhir 
+- 
+Daftar Pustaka 
+Berisi daftar referensi (buku, jurnal, majalah, dll), yang digunakan dalam tulisan. 
+- 
+Daftar Simbol 
+Berisi deretan simbol-simbol yang digunakan di dalam penulisan, lengkap dengan 
+keterangannya. 
+- 
+Lampiran 
+Penjelasan tambahan, dapat berupa uraian, listing program, gambar, perhitungan-
+perhitungan, grafik, atau tabel, yang merupakan penjelasan rinci dari apa yang disajikan 
+di bagian-bagian terkait sebelumnya. 
+ 
+TEKNIK PENULISAN 
+ 
+1. Penomoran Bab serta Subbab 
+- 
+Bab dinomori dengan menggunakan angka latin. 
+- 
+Subbab dinomori dengan menggunakan angka latin dengan mengacu pada nomor 
+bab/subbab dimana bagian ini terdapat. 
+Contoh: 
+1. PENDAHULUAN 
+ 
+1.1. Latar Belakang 
+1.2. Judul Subbab  
+1.2.1. Judul Sub-Subbab 
+ 
+- 
+Penulisan nomor dan judul bab di tengah dengan huruf besar (UPPER CASE), ukuran 
+font 14, tebal. 
+- 
+Penulisan nomor dan judul subbab / sub-subbab dimulai dari tepi kiri, dimulai dengan 
+huruf besar (Capitalize Each Word), ukuran font 12, tebal. 
+2. Penomoran Halaman 
+- 
+Bagian Awal, nomor halaman ditulis dengan angka romawi huruf kecil (i, ii, iii, iv, …). 
+Posisi di tengah bawah (2 cm dari bawah). Khusus untuk lembar judul / cover, nomor 
+halaman tidak perlu ditampilkan, tapi tetap dihitung. 
+- 
+Bagian Pokok, nomor halaman ditulis dengan angka latin. Halaman pertama dari bab 
+pertama adalah halaman nomor satu. Peletakan nomor halaman untuk setiap awal bab 
+di bagian bawah tengah, sedangkan halaman lainnya di pojok kanan atas. 
+- 
+Bagian akhir. Nomor halaman Daftar Pustaka ditulis di bagian bawah tengah dengan 
+angka latin dan merupakan kelanjutan dari penomoran pada bagian pokok. Nomor 
+halaman pada Lampiran ditulis di bagian bawah tengah dengan angka latin yang di 
+depannya diberi kode L- (dimulai dari L-1, kemudian L-2, L-3, dan seterusnya). 
+3. Judul dan Nomor Gambar / Grafik dan Tabel 
+- 
+Judul gambar / grafik diketik di bagian bawah tengah dari gambar. 
+- 
+Judul tabel diketik di sebelah atas tengah dari tabel. 
+- 
+Penomoran tergantung pada bab yang bersangkutan, 
+contoh : Gambar 3.1. berarti gambar pertama yang ada di bab 3. 
+ 
+Petunjuk Tulisan Ilmiah Program Studi Manajemen Informatika 
+5 
+4. Penulisan Daftar Pustaka 
+− Dituliskan urut secara alfabetik, dan diberi nomor urut. 
+− Nama penulis/pengarang asing ditulis dengan format: nama keluarga, nama depan 
+(dibalik). 
+− Nama penulis/pengarang Indonesia (ras ASIA) ditulis normal. 
+− Gelar tidak perlu dituliskan. 
+− Setiap pustaka diketik dengan jarak satu spasi (rata kiri). Jarak antara satu pustaka 
+dengan pustaka lainnya diberi jarak dua spasi. 
+− Semua nama pengarang ditulis lengkap. 
+− Tahun terbit disarankan maksimal 5 tahun di belakang (5 tahun terakhir). 
+− Sumber pustaka dari jurnal/ prosiding, buku, web formal (hindari dari wikipedia / web 
+pribadi). 
+− Penulisan daftar pustaka tergantung jenis informasinya yang secara umum memiliki 
+urutan sebagai berikut: 
+o Nama Penulis, Judul Buku (ditulis Miring), Edisi, Nama Penerbit, Kota 
+Penerbit, Tahun Penerbitan. 
+o Nama Penulis, “Judul artikel” (dalam tanda kutip ” ”), Nama Jurnal / Prosiding 
+(Ditulis Miring), Volume, Nomor, Rentang Halaman Artikel, Tahun 
+Penerbitan, Halaman artikel, Tahun Penerbitan, DOI (jika ada) atau URL (untuk 
+jurnal online / tidak ada halaman artikel). 
+ 
+Buku : 
+Nama Penulis : Didik Wijaya dan Ander Parulian Hutasoit 
+Judul Buku 
+: TIP DAN TRIK MACROMEDIA FLASH MX DENGAN ACTION 
+SCRIPT 
+Nama Penerbit : PT. Elex Media Komputindo 
+Kota Penerbit : Jakarta 
+Tahun Terbit 
+: 2004 
+[1]. D. Wijaya dan A. P. Hutasoit, Tip dan Trik Macromedia Flash MX dengan Action 
+Script, PT. Elex Media Komputindo, Jakarta, 2004. 
+ 
+[2]. Date, C. J., An Introduction to Database Systems, 6th ed., Addison Willey Publishing 
+Wesley Company, Inc., Reading Massachusetts, 2000. 
+Tidak ada Nama Pengarang : 
+[3]. Anonim, Sistem Pemerintahan di Indonesia, cetakan pertama, PT. Gunung Agung, 
+Jakarta, 1983. 
+Jurnal / Prosiding: 
+Nama penulis : Nur Indah Kusumawardhani dan Ika Nur Fajri 
+Judul artikel 
+: IMPLEMENTASI QUICK RESPONSE CODE UNTUK PENDUKUNG 
+SISTEM INFORMASI PRESENSI 
+Nama jurnal 
+: Jurnal Ilmiah Informatika Komputer 
+Volume 
+: 29 
+Nomor 
+: 3 
+Halaman artikel : 241 sampai 253 
+Tahun terbit 
+: 2024 
+DOI 
+: http://dx.doi.org/10.35760/ik.2024.v29i3.12189 
+ 
+[4]. N. I. Kusumawardhani dan I. N. Fajri, “Implementasi quick response code untuk 
+pendukung sistem informasi presensi”, Jurnal Ilmiah Informatika Komputer, 29(3), 
+pp. 241-253, 2024, http://dx.doi.org/10.35760/ik.2024.v29i3.12189 
+ 
+[5]. Cattell, R. G. G. and Skeen, J. “Object operation benchmark”. ACM Trans. Database 
+Systems, 17, pp. 1-31, 1992. 
+(Jika ada, nama penerbit dan kota penerbit dapat dicantumkan di antara volume dan halaman). 
+Lebih dari dua penulis : 
+[5]. Stoica, I., Cattell R. G. G. and Skeen, J. “A Proportional Share Resource Allocation 
+Algorithm for Real-Time, Time-Shared Systems”, Proceedings Real-Time Systems 
+Symposium, IEEE Comp. Press, Desember, pp. 288-299, 1996, 
+Artikel : 
+[6]. Owsley, N. L., 1985, “Sonar array processing”, Array Signal Processing, S. Haykin, 
+Ed., Englewood Cliffs, NJ: Prentice-Hall, ch. 3, pp. 115-193. 
+Internet : 
+[7]. Galagher, P. R. Jr., “A guide to understanding audit in trusted system”, 
+http://www.radium.nesc.mil/library/rainbow/NCSC-TG-001-2.html, 1 Juni 1988, 
+Tanggal akses: 1 April 2025. 
+Petunjuk Tulisan Ilmiah Program Studi Manajemen Informatika 
+6 
+5. Pengutipan 
+Agar pengutipan menjadi sederhana, judul materi yang diacu tidak perlu diletakkan di bagian 
+bawah pada halaman yang bersangkutan, melainkan cukup dengan memberikan nomor urut 
+acuan dari daftar pustaka, sebagai berikut: ……………………………………………..…… 
+………. (kutipan) …………… [3].  Berarti kutipan diambil dari pustaka ketiga di Daftar 
+Pustaka. 
+Bila terdapat lebih dari tiga pengarang, dan dikutip lebih dari sekali, maka pada kutipan yang 
+pertama dituliskan semua nama penulisnya, dan pada kutipan selanjutnya cukup ditulis pengarang 
+pertama saja dengan tambahan et al. 
+Jika kutipan kurang atau sama dari tiga baris, bagian awal dan akhir kutipan diberi tanda 
+kutip, spasi tetap biasa. 
+Kutipan yang lebih panjang dari tiga baris tidak perlu diberi tanda kutip, tapi diketik dengan 
+jarak satu spasi dengan indent yang lebih dalam 7 ketuk pada bagian kiri. 
+6. Format Pengetikan 
+- 
+Menggunakan kertas ukuran A4. 
+- 
+Margin Atas : 4 cm, Margin Bawah : 3 cm, Margin Kiri : 4 cm, Margin Kanan : 3 cm. 
+- 
+Jarak spasi : 1,5 (khusus untuk ABSTRAK hanya 1 spasi) 
+- 
+Jenis huruf (Font) : Times New Roman. 
+- 
+Ukuran / variasi huruf : 
+Judul Bab 
+: ukuran 14, Tebal, Huruf Kapital 
+Isi / paragraf 
+: ukuran 12, Normal 
+Subbab/Sub-Subbab : ukuran 12, Tebal 
+7. Hasil Tulisan Ilmiah / Laporan Kerja Praktek : 
+- 
+Diseminarkan / sidang ujian dengan membawa bahan/materi presentasi yang dibuat 
+dalam format file presentasi mengikuti format yang ada di studentsite, dalam bentuk 
+softcopy (disimpan dalam flashdisk/laptop). 
+- 
+Naskah Laporan PI / Kerja Praktek diketik dengan menggunakan aplikasi pengolah 
+kata legal atau open source antara lain: Open Office, LaTeX, dan sebagainya. 
+- 
+Setelah selesai Revisi (Acc Revisi) setelah sidang, naskah laporan dicetak dengan 
+printer (dianjurkan dengan Laser Printer) dan dijilid hardcover, untuk kemudian 
+dimintakan tandatangan pengesahan, dan kemudian diserahkan ke Perpustakaan.
+Petunjuk Tulisan Ilmiah Program Studi Manajemen Informatika 
+7 
+8. Ketentuan Isi file PI yang akan diserahkan ke Perpustakaan 
+ 
+ 
+a. Mulai   tahun   2003,   untuk   semua   angkatan   yang   telah   lulus   sidang   PI,   
+file PI yang diserahkan ke perpustakaan harus dalam format PDF (*.pdf). 
+Dalam rangka mengisi repository Universitas Gunadarma, file yang perlu diserahkan 
+dibuat   dalam  2   format,   yaitu  (1) file  PDF  yang   terpisah, dan  (2) file   full  
+PDF  (nama filenya : NPM.pdf). 
+c. Susunan Isi File Tulisan Ilmiah yang terpisah, terdiri dari : 
+ 
+1. COVER.pdf 
+2. PERNYATAAN ORIGINALITAS DAN PUBLIKASI.pdf 
+3. LEMBAR PENGESAHAN.pdf 
+4. KATA PENGANTAR.pdf 
+5. BAB 1.pdf 
+6. BAB 2.pdf 
+7. BAB 3.pdf 
+8. BAB 4.pdf 
+9. ABSTRAK.pdf 
+10. DAFTAR ISI.pdf 
+11. DAFTAR TABEL.pdf 
+12. DAFTAR GAMBAR.pdf 
+13. DAFTAR PUSTAKA.pdf 
+14. LAMPIRAN.pdf / LISTING PROGRAM.pdf  
+ 
+d.  Ketentuan untuk HARD COVER 
+Di punggung Hard Cover diberi/dituliskan : 
+- 
+Judul PI 
+- 
+NPM 
+- 
+Nama Mahasiswa 
+- 
+Tahun Penulisan 
+NB : 
+Ketentuan ini harap diperhatikan karena bila tidak sesuai akan DITOLAK. 
+Untuk   mengkonversi   dokumen   Microsoft   Word   gunakan   program   
+bantu   lain seperti 
+Adobe Acrobat 
+Distiller 
+(www.adobe.com), 
+CutePDF (www.acrosoftware.com), dan lain-lain. 
+Untuk dokumen OpenOffice, dapat menggunakan fitur built-in dari program yang 
+bersangkutan untuk meghasilkan dokumen PDF. 
+Direkomendasikan untuk menggunakan LaTeX. 
+b. 
+file boleh terpisah 
+ataupun dijadikan 
+satu 
+file terpisah untuk 
+setiap bab 
+file boleh terpisah 
+ataupun dijadikan 
+satu 
+Petunjuk Tulisan Ilmiah Program Studi Manajemen Informatika 
+8 
+Contoh halaman judul : 
+UNIVERSITAS GUNADARMA 
+DIREKTORAT PROGRAM DIPLOMA TIGA TEKNOLOGI INFORMASI 
+ 
+TULISAN ILMIAH 
+PEMBUATAN APLIKASI PENGENALAN HURUF ABJAD 
+BERBASIS ANDROID 
+Nama 
+NPM 
+Program Studi 
+Pembimbing 
+: Diisi Nama Mahasiswa 
+: 30123456 
+: Manajemen Informatika 
+: Dr. Nama dan Gelar, SKom., MMSI 
+Diajukan guna Memperoleh Gelar Ahli Madya 
+Jakarta 
+2025
+Petunjuk Tulisan Ilmiah Program Studi Manajemen Informatika 
+9 
+PERNYATAAN ORIGINALITAS DAN PUBLIKASI 
+Saya yang bertanda tangan di bawah ini, 
+Nama 
+: Diisi Nama Mahasiswa 
+NPM 
+: 30123456 
+Judul PI 
+: PEMBUATAN APLIKASI PENGENALAN HURUF ABJAD 
+BERBASIS NDROID 
+Tanggal Sidang 
+: 15 Agustus 2025 
+Tanggal Lulus 
+: 15 Agustus 2025 
+menyatakan bahwa tulisan ini adalah merupakan hasil karya saya sendiri dan dapat 
+dipublikasikan sepenuhnya oleh Universitas Gunadarma. Segala kutipan dalam bentuk apa 
+pun telah mengikuti kaidah, etika yang berlaku. Mengenai isi dan tulisan adalah merupakan 
+tanggung jawab Penulis, bukan Universitas Gunadarma. 
+Demikian pernyataan ini dibuat dengan sebenarnya dan dengan penuh kesadaran. 
+Depok, 15 Agustus 2025 
+tandatangan 
+(Diisi Nama Mahasiswa) 
+ii 
+Petunjuk Tulisan Ilmiah Program Studi Manajemen Informatika 
+10 
+Contoh Lembar Pengesahan : 
+LEMBAR PENGESAHAN 
+Judul PI 
+: PEMBUATAN APLIKASI PENGENALAN HURUF ABJAD 
+BERBASIS ANDROID 
+Nama 
+: Diisi Nama Mahasiswa 
+NPM 
+: 30123456 
+Tanggal Sidang 
+: 15 Agustus 2025 
+Tanggal Lulus 
+: 15 Agustus 2025 
+Menyetujui 
+Pembimbing 
+Kepala Bagian Sidang Ujian 
+(Nama Dan Gelar, SKom., MMSI) 
+(Dr. Edi Sukirman, SSi., MM., MIkom) 
+Kaprodi Manajemen Informatika 
+(Dr. Romdhoni Susiloatmadja, SPd., MMSI) 
+iii 
+Petunjuk Tulisan Ilmiah Program Studi Manajemen Informatika 
+11 
+Contoh penulisan Abstrak : 
+ABSTRAK 
+ 
+ 
+Diisi Nama Mahasiswa. 30123456 
+PEMBUATAN APLIKASI PENGENALAN HURUF ABJAD BERBASIS ANDROID  
+PI. Manajemen Informatika, Direktorat Program Diploma Tiga Teknologi Informasi, Universitas 
+Gunadarma, 2025 
+Kata Kunci : diisi, urut abjad, maksimum, lima kata 
+(xi + 62 + Lampiran) 
+Abstrak merupakan pemadatan dari hasil penelitian/tulisan. Ditulis 1 spasi dengan 
+jumlah maksimum 200 kata (maksimum 1 halaman). Isi abstrak mencakup masalah utama, 
+tujuan atau pertanyaan yang ingin dijawab oleh peneliti, metode penelitian/penulisan, hasil 
+penelitian dan kesimpulan yang diperoleh dari penelitian. Abstrak merupakan pemadatan 
+dari hasil penelitian/tulisan. Walaupun posisi abstrak ada di bagian awal / di depan 
+(sebelum bab 1), tetapi abstrak dibuat belakangan, setelah selesai dibuat bab 1 
+(pendahuluan) sampai bab terakhir (penutup). 
+Daftar Pustaka (2020 - 2025) 
+iv 
+Petunjuk Tulisan Ilmiah Program Studi Manajemen Informatika 
+12 
+Contoh kata pengantar : 
+KATA PENGANTAR 
+Puji syukur ………………………………………………………………..……….. 
+……………………………………………………………………………………………… 
+…………………… diucapkan terima kasih kepada: 
+1. Ibu Prof. Dr. E. S. Margianti, SE., MM selaku Rektor Universitas Gunadarma. 
+2. Bapak Prof. Drs. Rudi Irawan, MSc., PhD selaku Direktur Program Diploma Tiga 
+Teknologi Informasi.  
+3. Bapak Dr. Romdhoni Susiloatmadja, SPd., MMSI selaku Ketua Program Studi 
+Manajemen Informatika. 
+4. Bapak Dr. Edi Sukirman, SSi, MM., MIkom selaku Kepala Bagian Sidang Ujian. 
+5. Ibu Dr. Nama, SKom., MMSI selaku Dosen Pembimbing ................................. 
+Dan seterusnya 
+ 
+ 
+Depok, 15 Agustus 2025 
+Penulis, 
+(Boleh ditambahkan nama)
+ 
+ 
+ 
+ 
+ 
+Petunjuk Tulisan Ilmiah Program Studi Manajemen Informatika 
+13 
+Contoh Daftar Pustaka : 
+DAFTAR PUSTAKA 
+ 
+ 
+ 
+[1] Cattell, R.G. G. and Skeen, J. “Object Operation Benchmark”.  ACM Trans. Database 
+Systems, 17, pp. 1-31, 1992. 
+ 
+[2] Date, C. J., An Introduction To Database Systems, 6th ed, Addison Willey Publishing 
+Wesley Publishing Wesley Company, Inc, Reading Massachusetts, 1995. 
+ 
+[3] D. Wijaya dan A. P. Hutasoit, Tip dan Trik Macromedia Flash MX dengan Action Script, 
+PT. Elex Media Komputindo, Jakarta, 2004. 
+ 
+[4] Galagher, P. R. Jr., “A guide to understanding audit in trusted system”, 
+http://www.radium.nesc.mil/library/rainbow/NCSC-TG-001-2.html, 1988, Diakses 
+pada: 1 Juni 2025 
+ 
+[5] Kimball, R., Data Warehouse Toolkit, John Wiley & Son, Inc., Toronto, 1996. 
+ 
+[6] Owsley, N. L., “Sonar array processing”, in Array Signal Processing, S. Haykin, Ed., 
+Englewood Cliffs, NJ: Prentice Hall, ch. 3, pp.115-193, 1985. 
+ 
+[7] Pearl, J. and Kim J. H., “Studies in Semi-Admissible Heuristics”, IEEE Trans. Pattern 
+Analysis and Machine Intelligence, Vol. 4, pp. 392-399, 1982. 

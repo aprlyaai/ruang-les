@@ -1,0 +1,418 @@
+FREE 
+PPT TEMPLATES
+INSERT THE TITLE 
+OF YOUR PRESENTATION HERE
+Direktorat Program Diploma 
+Teknologi Informasi
+WORKSHOP PEMBUATAN 
+TUGAS AKHIR MAHASISWA 
+PRODI MANAJEMEN INFORMATIKA
+Dr. IDA ASTUTI
+Outline
+• Overview PI/Tugas Akhir
+• Tahapan Penelitian
+• Topik PI dan Pemilihan Metode
+Overview Penulisan Ilmiah (PI)
+• Penulisan Ilmiah (PI ) 2 sks
+• PI/ Tugas Akhir sebagai syarat sidang Diploma
+• Tujuan :
+melatih mahasiswa menuangkan hasil pengamatan
+atau pembuatan sesuatu atau pengalaman kerja dalam bentuk
+sebuah laporan tertulis berdasarkan kaidah penelitian ilmiah.
+Overview PI/ Tugas Akhir
+1. Relevan dengan bidang ilmu Manajemen
+Informatika
+2. Tingkat kedalaman dan keluasan isi tulisan
+ilmiah minimum setara dengan level 5 KKNI. 
+(memiliki kemampuan teknis dan manajerial
+tingkat menengah yang berfokus pada
+penerapan sistem informasi, pengelolaan
+data, serta dukungan teknis)
+3. Batasan masalah disesuaikan dengan batas
+waktu penyelesaian tulisan ilmiah (1 
+semester).
+4. Tidak melakukan plagiasi dari hasil penelitian
+atau tulisan ilmiah yang sudah ada.
+Sistematika Tugas Akhir / Penulisan Ilmiah
+BAB1. 
+Pendahuluan
+• Latar Belakang
+• Batasan Masalah
+•Tujuan Penelitian
+• Metode penelitian
+• Sistematika
+Tulisan Ilmiah
+BAB 2. 
+Tinjauan Pustaka
+•Kajian Teori
+•Hasil Penelitian
+yang Relevan
+(Min. 1 
+Jurnal/Prosiding)
+BAB 3. 
+Pembahasan
+•Hasil Penelitian
+•Perancangan dan
+Implementasi
+•Pengujian
+BAB 4. 
+Penutup
+•Kesimpulan
+•Saran
+Bagian Akhir
+•Daftar Pustaka
+•Lampiran
+Penulisan Ilmiah
+Bagian Awal
+•Cover
+•Lembar Originalitas
+•Lembar Pengesahan
+•Abstrak
+•Kata Pengantar
+•Daftar Isi, Tabel, 
+Gambar , Lampiran
+BAB 3. Gambaran
+Umum Perusahaan 
+(Kerja Praktek)
+•Profil Perusahaan 
+Tempat Kerja
+Praktek
+Tahapan Penelitian
+Tknis Membimbing PI
+Menemukan Tema Penelitian
+•Membaca 
+referensi 
+penulisan/ Tugas 
+akhir orang lain 
+(PI atau Skripsi)
+•Membaca artikel
+hasil penelitian
+orang lain
+•Memperhatikan
+keadaan  sekitar, 
+baik dalam ruang 
+lingkup kecil 
+maupun ruang 
+lingkup lebih luas
+Sumber Informasi
+Jurnal/ Prosiding
+Buku
+Publikasi: surat kabar, majalah, radio, 
+TV
+Pengalaman Kerja/Magang, Kejadian
+nyata pada kehidupan sehari - hari
+Kelompok Tema PI
+TEMA
+Disain, analisis atau pengembangan sebuah aplikasi
+Berupa laporan hasil kerja praktek.
+Disain, analisis dan pengembangan sebuah sistem keamanan
+komputer, jaringan komputer atau infrastruktur teknologi informasi
+Implementasi dari sebuah konsep teori sistem informasi dalam
+rangka pemecahan masalah
+Aplikasi web, Aplikasi mobile, 
+inovasi digital, manajemen proses 
+bisnis
+Termasuk IoT, Cloud Computing, 
+Smart Home, Smart City
+Kecerdasan Artificial (AI), 
+Matematika, Riset Operasional, 
+Graph
+Kelompok Tema PI/ Tugas Akhir
+Membuat Aplikasi berbasis Web atau Mobile
+Eksplorasi Tools, Bhs Pemrograman atau Aplikasi
+dengan contoh penggunaannya
+Implementasi Aplikasi Artificial Intelligence (AI), Data 
+Mining,  Matematika, Riset Operasional, Graph 
+Implementasi Data Visualisasi sebagai Penunjang
+Pegambilan Keputusan
+Multimedia (Game/ Virtual Reality)
+Implementasi dari sebuah konsep teori sistem informasi
+dalam rangka pemecahan masalah
+Desain, Konfigurasi dan Manajemen Jaringan
+Contoh Judul PI
+Implementasi dari Sebuah Konsep Teori Sistem
+Informasi dalam rangka pemecahan masalah
+Jenis-jenis Sistem Infomasi:
+Membuat Aplikasi Sederhana yang 
+berhubungan dengan AI
+Artificial Intelligence 
+merupakan simulasi kecerdasan
+yang dimiliki oleh manusia yang 
+dimodelkan di dalam mesin dan
+diprogram, agar bisa berpikir seperti
+halnya manusia.
+Implementasi Aplikasi Artificial Intelligence (AI) 
+Implementasi Data Visualisasi sebagai
+Penunjang Pegambilan Keputusan
+Manfaat Visualisasi Data :
+•
+Membantu untuk memahami cerita atau masalah
+dengan lebih baik
+•
+Menunjukkan insight yang bisa saja terlewatkan jika
+data ditampilkan dengan laporan tradisional
+•
+Membantu eksekutif bisnis untuk mengambil keputusan
+berdasarkan data, akurat, dan tepat
+•
+Mempermudah penyampaian informasi secara efisien, 
+jelas, dan efektif
+•
+Mengidentifikasi tren yang tengah berlangsung
+Eksplorasi Tools, Bhs Pemrograman atau Aplikasi
+dengan contoh penggunaannya
+Isi :
+•
+Pembahasan fungsi-fungsi dari Tools
+•
+Cara kerja dari Tools
+•
+Library dari Tools
+•
+Pengaplikasian Tools
+•
+Kelebihan Tools dibanding aplikasi sejenis
+Contoh Judul PI: 
+•
+CAMUNDA WORKFLOW ENGINE SEBAGAI APLIKASI 
+PROSES BISNIS
+Implementasi dari Sebuah Konsep Teori Sistem
+Informasi dalam rangka pemecahan masalah
+Graph:
+Riset Operasional
+Menentukan Minimum Spanning Tree Menggunakan
+Algoritma Modifikasi Dari Algoritma Prim Dan Kruskal
+Dalam Perencanaan Rute Wisata Yang Efisien
+Implementasi Teori Pewarnaan Graph Pada
+Pengaturan Lampu Lalu Lintas
+Menentukan Minimum Spanning Tree Menggunakan
+Algoritma Modifikasi Dari Algoritma Prim Dan Kruskal
+Dalam Perencanaan Rute Wisata Yang Efisien
+Multimedia (Game/ Virtual Reality)
+Desain, Konfigurasi dan Manajemen Jaringan
+Metode Penelitian
+Dapat menguraikan tahapan penelitian dengan
+menggunakan Network Development Life Cycle
+(NDLC)
+•
+Analisis kebutuhan – perangkat keras dan
+perangkat lunak
+•
+Disain topologi
+•
+Implementasi pemantauan trafik jaringan
+•
+Evaluasi hasil pemantauan
+Analisis Performa Jaringan dengan
+Menggunakan Wireshark
+Instalasi Jaringan Komputer pada
+Organisasi
+Menulis
+Dokumen PI/ Tugas Akhir
+ISI DOKUMEN PI
+Bagian Awal
+Bab 1: …….
+Bab 2: ……..
+Bab 3: …… 
+Bab 4: …….
+Bagian Akhir
+ISI DOKUMEN PI
+Bab 1: 
+•
+Latar Belakang : mengapa mengambil topik tersebut
+alasan / masalah yang ada
+•
+Batasan Masalah : batasan yang jelas bagian mana 
+dari persoalan yang dikaji.
+•
+Tujuan Penelitian : Menggambarkan hasil yang 
+diharapkan dari penelitian ini dengan memberikan
+jawaban terhadap masalah yang diteliti
+•
+Metode Penelitian : cara atau langkah-langkah yang 
+digunakan untuk menjawab tujuan.
+•
+Sistematika Penulisan : Memberikan gambaran umum 
+dari bab ke bab isi dari Tulisan Ilmiah. 
+ISI DOKUMEN PI
+Bab 2: Menguraikan teori-teori yang menunjang
+tulisan/penelitian (definisi, pengertian, dan lainlain), 
+yang bisa diperkuat dengan menunjukkan hasil
+penelitian sebelumnya, penjelasan tools
+Bab 3 : Ikuti langkah dalam Metode Penelitian
+Perencanaan
+Analisis
+Design
+Implementasi Metode yang digunakan
+Pengujian Metode
+PEMBAHASAN 
+BAB 3
+• Bagian pembahasan menguraikan tahapan
+kegiatan penelitian yang dilakukan untuk
+menjawab tujuan penelitian dan hasil yang 
+dicapai sesuai dengan tujuan penelitian
+yang dituangkan pada subbagian 1.3. 
+• Kalimat yang digunakan pada bab ini
+adalah kalimat informasi bukan kalimat
+perintah.
+PEMBAHASAN 
+BAB 3
+• Apabila tulisan ilmiah berupa implementasi dari
+sebuah konsep teori sistem informasi dalam
+rangka pemecahan masalah. (misal : Kecerdasan
+Artificial, Data Mining, Riset Operasional
+Matematika, Graph dll) pembahasan berupa
+langkah implementasi disertai dengan contoh
+serta hasil implementasi konsep dan teori
+ISI DOKUMEN PI
+Bab 4: 
+• Kesimpulan
+Berisi jawaban dari tujuan yang diajukan penulis
+pada Bab 1, yang diperoleh dari penelitian. 
+• Saran 
+Ditujukan kepada pihak-pihak terkait, sehubungan
+dengan pengembangan penelitian. 
+Bagian Akhir
+Metode Pengembangan Sistem
+Perencanaan
+Analisis
+Desain
+Coding
+Testing
+Deployment
+SDLC
+Desain
+1.
+BPMN (Business Process Modelling Notation)
+–
+Metode diagram alur standar yang memungkinkan Anda membuat dan 
+membagikan diagram yang mudah dipahami. Diagram ini dapat secara
+visual mencontohkan langkah proses bisnis menyeluruh.  
+–
+Alasan Menggunakan BPMN
+•
+Meningkatkan Efisiensi
+•
+Meningkatkan kepuasan pelanggan
+•
+Meningkatkan respons organisasi
+•
+Meningkatkan koordinasi dan kontrol bisnis
+•
+Memperkenalkan produk atau lini bisnis baru
+•
+Mematuhi peraturan baru
+•
+Menanggapi acara unik seperti merger atau akuisisi
+Desain
+2.
+UML (Unified Modelling Language) 
+–
+Metode dalam pemodelan secara visual yang digunakan sebagai sarana
+perancangan sistem berorientasi objek. 
+–
+Fungsi UML
+•
+Dapat memberikan bahasa pemodelan visual atau gambar kepada
+para pengguna.
+•
+Menyatukan informasi-informasi terbaik yang ada dalam pemodelan.
+•
+Memberikan suatu gambaran model atau sebagai bahasa pemodelan
+visual yang  ekspresif dalam pengembangan sistem.
+•
+Tidak hanya menggambarkan model sistem software saja, namun
+dapat memodelkan sistem berorientasi objek.
+•
+Mempermudah pengguna untuk membaca suatu sistem.
+•
+Berguna sebagai blueprint, jelas ini nantinya menjelaskan informasi yan
+g lebih detail   dalam perancangan berupa coding suatu program.
+Desain
+3.
+Flowchart
+–
+Diagram yang menampilkan langkah-langkah dan keputusan untuk melakukan seb
+uah proses dari suatu program. Setiap langkah digambarkan dalam bentuk diagra
+m dan dihubungkan dengan garis atau arah panah.
+•
+Flowchart dokumen
+•
+Flowchart program
+•
+Flowchart proses
+•
+Flowchart system
+•
+Flowchart skematik
+4.
+Data Flow Diagram (DFD)
+–
+Diagram yang menggambarkan aliran data dari sebuah proses yang sering
+dise
+but dengan sistem informasi. Di dalam data flow diagram juga menyediakan inform
+asi mengenai input dan output dari tiap entitas dan proses itu sendiri.
+–
+Fungsi DFD
+•
+Menyampaikan Rancangan Sistem
+•
+Menggambarkan Suatu Sistem
+•
+Perancangan Model
+Simbol Flowchart
+Simbol DFD
+Desain
+4.
+Entity Relationship Diagram (ERD)
+–
+Diagram yang digunakan untuk perancangan suatu database dan m
+enunjukan relasi atau hubungan antar objek atau entitas beserta atr
+ibut-atributnya secara detail. Dengan menggunakan ERD, sistem da
+tabase yang sedang dibentuk
+dapat digambarkan dengan lebih
+terstruktur dan terlihat rapi.
+–
+Tools untuk DFD, ERD, Flowchart: Ms. Visio, Draw.io
+5.
+Wireframe
+–
+Kerangka untuk menata suatu item di laman website atau aplikasi. 
+Pembuatan wireframe biasanya dilakukan sebelum pembuatan
+produk tersebut dilakukan.   Item yang berkaitan seperti teks, 
+gambar, layoiting, dan sebagainya.
+–
+Tools: Figma, Zeppelin, Cacoo, Jumpchart, Gliffy, Adobe Illustrator, 
+dan
+Mockflow Whimsical.
+Simbol ERD
+Contoh Wireframe
+Coding
+1.
+Bahasa Pemrograman Web
+–
+Front-end: HTML, CSS, JavaScript, Vue.JS, React.JS, Polymer
+–
+Back-end: Python, Java, PHP, C#, Node.JS, Golang, Rubby
+2.
+Bahasa Pemrograman Mobile
+–
+Android: Java, Kotlin
+–
+IOS: Swift, Objective-C
+–
+Microsoft: C#
+3.
+Cross Platform
+–
+Flutter
+–
+Reach Native
+–
+Xamarin
+Pengujian (Testing)
+Deployment
+Deployment
+Deployment dalam Data Sains
+HKI
+Terima Kasih

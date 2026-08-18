@@ -1,0 +1,469 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-mono,monospace);font-size:13px;line-height:1.6;color:var(--color-text-primary)}
+.tree{padding:16px 0}
+.node{display:flex;align-items:flex-start;cursor:pointer;padding:2px 0;border-radius:4px;transition:background .15s}
+.node:hover{background:var(--color-background-secondary)}
+.indent{padding-left:20px;border-left:1.5px solid var(--color-border-tertiary);margin-left:10px}
+.toggle{width:16px;min-width:16px;display:inline-flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:10px;margin-right:2px;transition:transform .2s}
+.toggle.open{transform:rotate(90deg)}
+.icon{margin-right:6px;font-size:14px}
+.name{font-weight:500;color:var(--color-text-primary)}
+.badge{font-size:10px;font-weight:500;padding:2px 7px;border-radius:10px;margin-left:8px;white-space:nowrap}
+.badge.fe{background:#d4f7e7;color:#1a7a4a}
+.badge.be{background:#dce8ff;color:#1a4db8}
+.badge.db{background:#fff0d4;color:#a05c00}
+.badge.cfg{background:#f0e0ff;color:#6b21a8}
+.badge.imp{background:#ffe0e0;color:#c0392b;border:1px solid #f5b8b8}
+.comment{color:var(--color-text-tertiary);font-size:11px;margin-left:8px;font-style:italic}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;padding:10px 14px;background:var(--color-background-secondary);border-radius:8px;border:1px solid var(--color-border-tertiary)}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--color-text-secondary)}
+.collapsed{display:none}
+h2{font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:10px}
+.root-label{font-size:14px;font-weight:500;color:var(--color-text-primary)}
+.controls{display:flex;gap:8px;margin-bottom:12px}
+.btn{font-size:11px;padding:4px 10px;border-radius:6px;border:1px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-secondary);cursor:pointer;transition:background .15s}
+.btn:hover{background:var(--color-background-primary)}
+</style>
+
+<div style="padding:16px 20px">
+<h2>📁 Struktur Folder — Ruang Les by Ismaturrohmah</h2>
+<div class="legend">
+  <span class="legend-item"><span class="badge fe">Frontend</span> Blade / Tailwind CSS</span>
+  <span class="legend-item"><span class="badge be">Backend</span> Laravel / PHP</span>
+  <span class="legend-item"><span class="badge db">Database</span> Migration / Model</span>
+  <span class="legend-item"><span class="badge cfg">Config</span> Setup / Konfigurasi</span>
+  <span class="legend-item"><span class="badge imp">⭐ Penting</span> File wajib dibuat</span>
+</div>
+<div class="controls">
+  <button class="btn" onclick="expandAll()">Buka Semua</button>
+  <button class="btn" onclick="collapseAll()">Tutup Semua</button>
+</div>
+<div class="tree" id="tree"></div>
+</div>
+
+<script>
+const data = {
+  name:"ruang-les/", icon:"📦", badge:null, comment:"Root project Laravel",
+  children:[
+    {name:"app/", icon:"📂", badge:"be", comment:"Logika utama aplikasi",
+      children:[
+        {name:"Http/", icon:"📂", badge:"be",
+          children:[
+            {name:"Controllers/", icon:"📂", badge:"be",
+              children:[
+                {name:"Auth/", icon:"📂", badge:"be",
+                  children:[
+                    {name:"LoginController.php", icon:"📄", badge:"be", imp:true, comment:"Login Admin, Ortu, Mentor"},
+                    {name:"RegisterController.php", icon:"📄", badge:"be", imp:true},
+                  ]},
+                {name:"Admin/", icon:"📂", badge:"be",
+                  children:[
+                    {name:"DashboardController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"SiswaController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"MentorController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"PaketController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"JadwalController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"PresensiController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"CatatanController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"NilaiController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"KeuanganController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"RepositoriController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"NotifikasiController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"PengumumanController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"CmsController.php", icon:"📄", badge:"be", imp:true, comment:"Kelola konten landing page"},
+                    {name:"LayananController.php", icon:"📄", badge:"be", imp:true, comment:"Feedback & request ortu"},
+                    {name:"EvaluasiAiController.php", icon:"📄", badge:"be", imp:true, comment:"Generate laporan AI"},
+                  ]},
+                {name:"Mentor/", icon:"📂", badge:"be",
+                  children:[
+                    {name:"DashboardMentorController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"PresensiMentorController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"CatatanMentorController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"NilaiMentorController.php", icon:"📄", badge:"be", imp:true},
+                  ]},
+                {name:"OrangTua/", icon:"📂", badge:"be",
+                  children:[
+                    {name:"DashboardOrangTuaController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"PendaftaranController.php", icon:"📄", badge:"be", imp:true, comment:"Form 7 langkah"},
+                    {name:"KeuanganOrangTuaController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"RepositoriOrangTuaController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"LayananOrangTuaController.php", icon:"📄", badge:"be", imp:true},
+                    {name:"SwitchSiswaController.php", icon:"📄", badge:"be", imp:true, comment:"Fitur multi-anak"},
+                  ]},
+                {name:"PublicController.php", icon:"📄", badge:"be", imp:true, comment:"Landing page & company profile"},
+              ]},
+            {name:"Middleware/", icon:"📂", badge:"be",
+              children:[
+                {name:"RoleMiddleware.php", icon:"📄", badge:"be", imp:true, comment:"Cek hak akses: admin/mentor/ortu"},
+                {name:"CheckPembayaranAktif.php", icon:"📄", badge:"be", imp:true, comment:"Blokir jika pembayaran pending"},
+              ]},
+            {name:"Requests/", icon:"📂", badge:"be",
+              children:[
+                {name:"PendaftaranRequest.php", icon:"📄", badge:"be", imp:true, comment:"Validasi form pendaftaran"},
+                {name:"PresensiRequest.php", icon:"📄", badge:"be"},
+                {name:"UploadBuktiRequest.php", icon:"📄", badge:"be"},
+              ]},
+          ]},
+        {name:"Models/", icon:"📂", badge:"db",
+          children:[
+            {name:"User.php", icon:"📄", badge:"db", imp:true, comment:"Akun login (Admin, Mentor, Ortu)"},
+            {name:"Siswa.php", icon:"📄", badge:"db", imp:true, comment:"Data anak (relasi 1 ortu → banyak anak)"},
+            {name:"Mentor.php", icon:"📄", badge:"db", imp:true},
+            {name:"Paket.php", icon:"📄", badge:"db", imp:true, comment:"Master paket belajar"},
+            {name:"Pendaftaran.php", icon:"📄", badge:"db", imp:true, comment:"Form 7 langkah"},
+            {name:"Jadwal.php", icon:"📄", badge:"db", imp:true, comment:"Slot sesi belajar"},
+            {name:"Presensi.php", icon:"📄", badge:"db", imp:true},
+            {name:"Catatan.php", icon:"📄", badge:"db", imp:true, comment:"Catatan perkembangan harian"},
+            {name:"Nilai.php", icon:"📄", badge:"db", imp:true},
+            {name:"Pembayaran.php", icon:"📄", badge:"db", imp:true, comment:"Upload bukti bayar & verifikasi"},
+            {name:"Kuota.php", icon:"📄", badge:"db", imp:true, comment:"Sisa sesi (bisa negatif)"},
+            {name:"Materi.php", icon:"📄", badge:"db", imp:true, comment:"Repositori file pembelajaran"},
+            {name:"Notifikasi.php", icon:"📄", badge:"db", imp:true},
+            {name:"Pengumuman.php", icon:"📄", badge:"db", imp:true},
+            {name:"Layanan.php", icon:"📄", badge:"db", imp:true, comment:"Feedback & request dari ortu"},
+            {name:"EvaluasiAi.php", icon:"📄", badge:"db", imp:true, comment:"Hasil generate laporan AI"},
+            {name:"KontenLanding.php", icon:"📄", badge:"db", imp:true, comment:"CMS konten dinamis landing page"},
+          ]},
+        {name:"Services/", icon:"📂", badge:"be",
+          children:[
+            {name:"NotifikasiService.php", icon:"📄", badge:"be", imp:true, comment:"Kirim notif in-app & email"},
+            {name:"KuotaService.php", icon:"📄", badge:"be", imp:true, comment:"Hitung & update sisa sesi"},
+            {name:"HariHService.php", icon:"📄", badge:"be", imp:true, comment:"Estimasi & geser tanggal Hari-H"},
+            {name:"EvaluasiAiService.php", icon:"📄", badge:"be", imp:true, comment:"Integrasi API AI untuk laporan"},
+            {name:"PembayaranService.php", icon:"📄", badge:"be", imp:true},
+          ]},
+        {name:"Jobs/", icon:"📂", badge:"be",
+          children:[
+            {name:"KirimPengingatTagihanJob.php", icon:"📄", badge:"be", imp:true, comment:"H-7, H-3, H-1, Hari-H"},
+            {name:"KirimPengingatSesiJob.php", icon:"📄", badge:"be", comment:"1 jam sebelum sesi"},
+          ]},
+        {name:"Mail/", icon:"📂", badge:"be",
+          children:[
+            {name:"PendaftaranBerhasilMail.php", icon:"📄", badge:"be"},
+            {name:"PembayaranVerifikasiMail.php", icon:"📄", badge:"be", imp:true},
+            {name:"PengingatTagihanMail.php", icon:"📄", badge:"be", imp:true},
+            {name:"LaporanAiMail.php", icon:"📄", badge:"be"},
+          ]},
+        {name:"Notifications/", icon:"📂", badge:"be",
+          children:[
+            {name:"InAppNotification.php", icon:"📄", badge:"be"},
+          ]},
+      ]},
+    {name:"database/", icon:"📂", badge:"db", comment:"Semua keperluan database",
+      children:[
+        {name:"migrations/", icon:"📂", badge:"db", comment:"Skema tabel MySQL",
+          children:[
+            {name:"2024_01_01_create_users_table.php", icon:"📄", badge:"db", imp:true},
+            {name:"2024_01_02_create_siswas_table.php", icon:"📄", badge:"db", imp:true},
+            {name:"2024_01_03_create_mentors_table.php", icon:"📄", badge:"db", imp:true},
+            {name:"2024_01_04_create_pakets_table.php", icon:"📄", badge:"db", imp:true, comment:"Master paket: privat, semi privat, reguler"},
+            {name:"2024_01_05_create_pendaftarans_table.php", icon:"📄", badge:"db", imp:true},
+            {name:"2024_01_06_create_jadwals_table.php", icon:"📄", badge:"db", imp:true, comment:"Slot sesi + kuota per slot"},
+            {name:"2024_01_07_create_presensis_table.php", icon:"📄", badge:"db", imp:true, comment:"Status: hadir/alfa/libur"},
+            {name:"2024_01_08_create_catatans_table.php", icon:"📄", badge:"db", imp:true},
+            {name:"2024_01_09_create_nilais_table.php", icon:"📄", badge:"db", imp:true},
+            {name:"2024_01_10_create_pembayarans_table.php", icon:"📄", badge:"db", imp:true},
+            {name:"2024_01_11_create_kuotas_table.php", icon:"📄", badge:"db", imp:true, comment:"Sisa sesi (bisa -1, -2, dst)"},
+            {name:"2024_01_12_create_materis_table.php", icon:"📄", badge:"db", imp:true, comment:"File repositori pembelajaran"},
+            {name:"2024_01_13_create_notifikasis_table.php", icon:"📄", badge:"db", imp:true},
+            {name:"2024_01_14_create_pengumumans_table.php", icon:"📄", badge:"db", imp:true},
+            {name:"2024_01_15_create_layanans_table.php", icon:"📄", badge:"db", imp:true},
+            {name:"2024_01_16_create_evaluasi_ais_table.php", icon:"📄", badge:"db", imp:true},
+            {name:"2024_01_17_create_konten_landings_table.php", icon:"📄", badge:"db", imp:true, comment:"CMS dinamis landing page"},
+          ]},
+        {name:"seeders/", icon:"📂", badge:"db",
+          children:[
+            {name:"DatabaseSeeder.php", icon:"📄", badge:"db"},
+            {name:"UserSeeder.php", icon:"📄", badge:"db", imp:true, comment:"Akun admin default"},
+            {name:"PaketSeeder.php", icon:"📄", badge:"db", imp:true, comment:"Isi data paket awal (privat, dll)"},
+            {name:"KontenLandingSeeder.php", icon:"📄", badge:"db", imp:true},
+          ]},
+        {name:"factories/", icon:"📂", badge:"db",
+          children:[
+            {name:"SiswaFactory.php", icon:"📄", badge:"db", comment:"Data dummy untuk testing"},
+            {name:"UserFactory.php", icon:"📄", badge:"db"},
+          ]},
+      ]},
+    {name:"resources/", icon:"📂", badge:"fe", comment:"Semua file tampilan (Frontend)",
+      children:[
+        {name:"views/", icon:"📂", badge:"fe", comment:"File Blade template",
+          children:[
+            {name:"layouts/", icon:"📂", badge:"fe",
+              children:[
+                {name:"app.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Layout utama (header + footer)"},
+                {name:"admin.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Layout dashboard admin"},
+                {name:"mentor.blade.php", icon:"📄", badge:"fe", imp:true},
+                {name:"ortu.blade.php", icon:"📄", badge:"fe", imp:true},
+                {name:"guest.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Layout tanpa login"},
+              ]},
+            {name:"components/", icon:"📂", badge:"fe",
+              children:[
+                {name:"header.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Header dinamis (guest/login)"},
+                {name:"footer.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Footer 4 kolom"},
+                {name:"navbar-admin.blade.php", icon:"📄", badge:"fe", imp:true},
+                {name:"sidebar-admin.blade.php", icon:"📄", badge:"fe", imp:true},
+                {name:"sidebar-ortu.blade.php", icon:"📄", badge:"fe", imp:true},
+                {name:"sidebar-mentor.blade.php", icon:"📄", badge:"fe", imp:true},
+                {name:"notifikasi-bell.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Ikon lonceng notifikasi"},
+                {name:"progress-bar.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Indikator 7 langkah pendaftaran"},
+                {name:"switch-siswa.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Dropdown multi-anak (ortu)"},
+                {name:"card-paket.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Kartu pilihan paket belajar"},
+                {name:"modal.blade.php", icon:"📄", badge:"fe"},
+                {name:"alert.blade.php", icon:"📄", badge:"fe"},
+              ]},
+            {name:"public/", icon:"📂", badge:"fe", comment:"Halaman tanpa login",
+              children:[
+                {name:"beranda.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Landing page utama"},
+                {name:"tentang.blade.php", icon:"📄", badge:"fe"},
+                {name:"program.blade.php", icon:"📄", badge:"fe"},
+                {name:"faq.blade.php", icon:"📄", badge:"fe"},
+                {name:"kontak.blade.php", icon:"📄", badge:"fe"},
+              ]},
+            {name:"auth/", icon:"📂", badge:"fe",
+              children:[
+                {name:"login.blade.php", icon:"📄", badge:"fe", imp:true},
+                {name:"register.blade.php", icon:"📄", badge:"fe", imp:true},
+              ]},
+            {name:"pendaftaran/", icon:"📂", badge:"fe",
+              children:[
+                {name:"step1-identitas.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Identitas anak + hitung usia otomatis"},
+                {name:"step2-akademik.blade.php", icon:"📄", badge:"fe", imp:true},
+                {name:"step3-ortu.blade.php", icon:"📄", badge:"fe", imp:true},
+                {name:"step4-paket.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Pilih paket (card layout)"},
+                {name:"step5-jadwal.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Pilih slot sesi + validasi kuota"},
+                {name:"step6-review.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Ringkasan semua data"},
+                {name:"step7-pembayaran.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Upload bukti bayar"},
+              ]},
+            {name:"admin/", icon:"📂", badge:"fe",
+              children:[
+                {name:"dashboard.blade.php", icon:"📄", badge:"fe", imp:true},
+                {name:"siswa/", icon:"📂", badge:"fe",
+                  children:[
+                    {name:"index.blade.php", icon:"📄", badge:"fe"},
+                    {name:"show.blade.php", icon:"📄", badge:"fe"},
+                  ]},
+                {name:"mentor/", icon:"📂", badge:"fe",
+                  children:[
+                    {name:"index.blade.php", icon:"📄", badge:"fe"},
+                    {name:"form.blade.php", icon:"📄", badge:"fe"},
+                  ]},
+                {name:"jadwal/", icon:"📂", badge:"fe",
+                  children:[
+                    {name:"index.blade.php", icon:"📄", badge:"fe", imp:true},
+                    {name:"form.blade.php", icon:"📄", badge:"fe", imp:true},
+                  ]},
+                {name:"presensi/", icon:"📂", badge:"fe",
+                  children:[
+                    {name:"index.blade.php", icon:"📄", badge:"fe", imp:true},
+                  ]},
+                {name:"catatan/", icon:"📂", badge:"fe",
+                  children:[
+                    {name:"index.blade.php", icon:"📄", badge:"fe", imp:true},
+                  ]},
+                {name:"nilai/", icon:"📂", badge:"fe",
+                  children:[
+                    {name:"index.blade.php", icon:"📄", badge:"fe"},
+                    {name:"rekapitulasi.blade.php", icon:"📄", badge:"fe"},
+                  ]},
+                {name:"keuangan/", icon:"📂", badge:"fe",
+                  children:[
+                    {name:"pembayaran.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Verifikasi bukti bayar"},
+                    {name:"kuota.blade.php", icon:"📄", badge:"fe", imp:true},
+                  ]},
+                {name:"repositori/", icon:"📂", badge:"fe",
+                  children:[
+                    {name:"index.blade.php", icon:"📄", badge:"fe", imp:true},
+                    {name:"upload.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Upload materi + kategorisasi"},
+                  ]},
+                {name:"notifikasi/", icon:"📂", badge:"fe",
+                  children:[
+                    {name:"index.blade.php", icon:"📄", badge:"fe"},
+                  ]},
+                {name:"pengumuman/", icon:"📂", badge:"fe",
+                  children:[
+                    {name:"index.blade.php", icon:"📄", badge:"fe"},
+                    {name:"form.blade.php", icon:"📄", badge:"fe"},
+                  ]},
+                {name:"cms/", icon:"📂", badge:"fe",
+                  children:[
+                    {name:"landing.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Edit konten landing page (CMS)"},
+                    {name:"paket.blade.php", icon:"📄", badge:"fe", imp:true},
+                    {name:"faq.blade.php", icon:"📄", badge:"fe"},
+                    {name:"testimoni.blade.php", icon:"📄", badge:"fe"},
+                    {name:"kontak.blade.php", icon:"📄", badge:"fe"},
+                  ]},
+                {name:"layanan/", icon:"📂", badge:"fe",
+                  children:[
+                    {name:"index.blade.php", icon:"📄", badge:"fe"},
+                  ]},
+                {name:"evaluasi-ai/", icon:"📂", badge:"fe",
+                  children:[
+                    {name:"index.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Generate & lihat laporan AI"},
+                  ]},
+              ]},
+            {name:"mentor/", icon:"📂", badge:"fe",
+              children:[
+                {name:"dashboard.blade.php", icon:"📄", badge:"fe", imp:true},
+                {name:"jadwal.blade.php", icon:"📄", badge:"fe"},
+                {name:"presensi.blade.php", icon:"📄", badge:"fe", imp:true},
+                {name:"catatan.blade.php", icon:"📄", badge:"fe", imp:true},
+                {name:"nilai.blade.php", icon:"📄", badge:"fe"},
+                {name:"evaluasi-ai.blade.php", icon:"📄", badge:"fe", comment:"Lihat laporan (read-only)"},
+              ]},
+            {name:"ortu/", icon:"📂", badge:"fe",
+              children:[
+                {name:"dashboard.blade.php", icon:"📄", badge:"fe", imp:true},
+                {name:"kelas/", icon:"📂", badge:"fe",
+                  children:[
+                    {name:"jadwal.blade.php", icon:"📄", badge:"fe"},
+                    {name:"presensi.blade.php", icon:"📄", badge:"fe"},
+                    {name:"catatan.blade.php", icon:"📄", badge:"fe"},
+                    {name:"nilai.blade.php", icon:"📄", badge:"fe"},
+                  ]},
+                {name:"keuangan/", icon:"📂", badge:"fe",
+                  children:[
+                    {name:"tagihan.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Sisa kuota sesi"},
+                    {name:"pembayaran.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Upload bukti bayar (top-up)"},
+                    {name:"riwayat.blade.php", icon:"📄", badge:"fe"},
+                  ]},
+                {name:"repositori.blade.php", icon:"📄", badge:"fe", imp:true, comment:"Akses materi (terkunci jika pending)"},
+                {name:"layanan.blade.php", icon:"📄", badge:"fe"},
+              ]},
+            {name:"emails/", icon:"📂", badge:"fe",
+              children:[
+                {name:"pembayaran-verifikasi.blade.php", icon:"📄", badge:"fe", imp:true},
+                {name:"pengingat-tagihan.blade.php", icon:"📄", badge:"fe", imp:true},
+                {name:"laporan-ai.blade.php", icon:"📄", badge:"fe"},
+                {name:"pendaftaran-berhasil.blade.php", icon:"📄", badge:"fe"},
+              ]},
+          ]},
+        {name:"css/", icon:"📂", badge:"fe",
+          children:[
+            {name:"app.css", icon:"📄", badge:"fe", imp:true, comment:"Entry Tailwind CSS (@tailwind directives)"},
+          ]},
+        {name:"js/", icon:"📂", badge:"fe",
+          children:[
+            {name:"app.js", icon:"📄", badge:"fe", imp:true, comment:"Entry point JS (Alpine.js, dsb)"},
+            {name:"pendaftaran.js", icon:"📄", badge:"fe", imp:true, comment:"Logika 7 langkah + hitung usia real-time"},
+            {name:"jadwal-slot.js", icon:"📄", badge:"fe", imp:true, comment:"Disable slot penuh (kuota)"},
+          ]},
+      ]},
+    {name:"routes/", icon:"📂", badge:"be", comment:"Definisi semua URL / endpoint",
+      children:[
+        {name:"web.php", icon:"📄", badge:"be", imp:true, comment:"Route utama: publik, auth, admin, mentor, ortu"},
+        {name:"api.php", icon:"📄", badge:"be", imp:true, comment:"Endpoint AJAX (cek slot, hitung usia, notif)"},
+      ]},
+    {name:"config/", icon:"📂", badge:"cfg",
+      children:[
+        {name:"app.php", icon:"📄", badge:"cfg", imp:true, comment:"Nama app, timezone: Asia/Jakarta, locale: id"},
+        {name:"database.php", icon:"📄", badge:"cfg", imp:true, comment:"Koneksi MySQL"},
+        {name:"mail.php", icon:"📄", badge:"cfg", imp:true, comment:"Config SMTP untuk email notifikasi"},
+        {name:"filesystems.php", icon:"📄", badge:"cfg", imp:true, comment:"Penyimpanan file materi & bukti bayar"},
+        {name:"queue.php", icon:"📄", badge:"cfg", comment:"Config queue untuk job pengingat"},
+      ]},
+    {name:"public/", icon:"📂", badge:"fe", comment:"File yang bisa diakses browser langsung",
+      children:[
+        {name:"index.php", icon:"📄", badge:"be", imp:true, comment:"Entry point Laravel (jangan diubah)"},
+        {name:"css/", icon:"📂", badge:"fe",
+          children:[
+            {name:"app.css", icon:"📄", badge:"fe", comment:"Output build Tailwind (auto-generate)"},
+          ]},
+        {name:"js/", icon:"📂", badge:"fe",
+          children:[
+            {name:"app.js", icon:"📄", badge:"fe", comment:"Output build JS (auto-generate)"},
+          ]},
+        {name:"images/", icon:"📂", badge:"fe",
+          children:[
+            {name:"logo-ruang-les.png", icon:"🖼️", badge:"fe", imp:true, comment:"Logo teks 2 baris"},
+            {name:"hero/", icon:"📂", badge:"fe", comment:"Gambar section hero landing page"},
+            {name:"profil/", icon:"📂", badge:"fe"},
+          ]},
+        {name:"storage/", icon:"📂", badge:"be", comment:"Symlink ke storage/app/public"},
+      ]},
+    {name:"storage/", icon:"📂", badge:"be",
+      children:[
+        {name:"app/", icon:"📂", badge:"be",
+          children:[
+            {name:"public/", icon:"📂", badge:"be",
+              children:[
+                {name:"bukti-pembayaran/", icon:"📂", badge:"be", imp:true, comment:"File upload bukti bayar dari ortu"},
+                {name:"materi/", icon:"📂", badge:"be", imp:true, comment:"File PDF, Docx, video repositori"},
+                {name:"foto-profil/", icon:"📂", badge:"be"},
+              ]},
+          ]},
+        {name:"logs/", icon:"📂", badge:"be", comment:"Log error Laravel"},
+      ]},
+    {name:".env", icon:"📄", badge:"cfg", imp:true, comment:"Variabel rahasia: DB, SMTP, APP_KEY, AI API"},
+    {name:".env.example", icon:"📄", badge:"cfg", imp:true, comment:"Template .env untuk tim"},
+    {name:"tailwind.config.js", icon:"📄", badge:"cfg", imp:true, comment:"Konfigurasi Tailwind + warna tema hijau #B7D9B1"},
+    {name:"vite.config.js", icon:"📄", badge:"cfg", imp:true, comment:"Build tool (Vite untuk Laravel + Tailwind)"},
+    {name:"package.json", icon:"📄", badge:"cfg", imp:true, comment:"Dependensi Node: Tailwind, Vite, Alpine.js"},
+    {name:"composer.json", icon:"📄", badge:"cfg", imp:true, comment:"Dependensi PHP: Laravel, Sanctum, dll"},
+    {name:"artisan", icon:"📄", badge:"be", imp:true, comment:"CLI Laravel (migrate, serve, make:model, dll)"},
+  ]
+};
+
+function badge(b, imp){
+  let html = '';
+  if(b) html += `<span class="badge ${b}">${{fe:'Frontend',be:'Backend',db:'Database',cfg:'Config'}[b]}</span>`;
+  if(imp) html += `<span class="badge imp">⭐ Penting</span>`;
+  return html;
+}
+
+function renderNode(node, depth=0){
+  const hasChildren = node.children && node.children.length > 0;
+  const id = 'n'+Math.random().toString(36).substr(2,9);
+  
+  let html = `<div>`;
+  html += `<div class="node" ${hasChildren?`onclick="toggle('${id}')"`:''}  style="padding-left:${depth*18}px">`;
+  html += `<span class="toggle ${hasChildren?'open':''}" id="t${id}">${hasChildren?'▶':''}</span>`;
+  html += `<span class="icon">${node.icon||'📄'}</span>`;
+  html += `<span class="name">${node.name}</span>`;
+  html += badge(node.badge, node.imp);
+  if(node.comment) html += `<span class="comment">— ${node.comment}</span>`;
+  html += `</div>`;
+  
+  if(hasChildren){
+    html += `<div id="${id}" class="">`;
+    for(const child of node.children){
+      html += renderNode(child, depth+1);
+    }
+    html += `</div>`;
+  }
+  html += `</div>`;
+  return html;
+}
+
+function toggle(id){
+  const el = document.getElementById(id);
+  const t = document.getElementById('t'+id);
+  if(el.classList.contains('collapsed')){
+    el.classList.remove('collapsed');
+    t.classList.add('open');
+  } else {
+    el.classList.add('collapsed');
+    t.classList.remove('open');
+  }
+}
+
+function expandAll(){
+  document.querySelectorAll('[id^="n"]').forEach(el=>{
+    el.classList.remove('collapsed');
+  });
+  document.querySelectorAll('[id^="tn"]').forEach(el=>{
+    el.classList.add('open');
+  });
+}
+function collapseAll(){
+  document.querySelectorAll('[id^="n"]').forEach(el=>{
+    el.classList.add('collapsed');
+  });
+  document.querySelectorAll('[id^="tn"]').forEach(el=>{
+    el.classList.remove('open');
+  });
+}
+
+document.getElementById('tree').innerHTML = renderNode(data);
+</script>

@@ -1,0 +1,292 @@
+﻿2. TINJAUAN PUSTAKA
+
+
+1. Sistem Informasi
+Sistem informasi merupakan konsep dasar dalam pengembangan solusi berbasis teknologi. Laudon dan Laudon (2021) mendefinisikan sistem informasi sebagai sekumpulan komponen yang saling berkaitan untuk mengumpulkan, memproses, menyimpan, dan mendistribusikan informasi guna mendukung pengambilan keputusan, koordinasi, pengendalian, analisis, serta visualisasi dalam suatu organisasi. [a]Mutiarni, Purwanto, Nadliroh, Ramadhani, dan Jaladri (2024) mendefinisikan sistem informasi sebagai kombinasi terorganisasi dari teknologi informasi, manusia, dan prosedur yang saling bekerja sama untuk mengumpulkan, mengolah, menyimpan, dan menyebarkan informasi guna mendukung pengambilan keputusan serta pengendalian dalam suatu organisasi. Dari kedua definisi tersebut, dapat dipahami bahwa sistem informasi tidak sekedar mencakup perangkat teknologi, melainkan juga melibatkan unsur manusia dan prosedur sebagai satu kesatuan yang terintegrasi.
+Secara umum, sistem informasi terdiri dari tiga komponen utama, yaitu input, proses, dan output. Input merupakan data yang dimasukkan ke dalam sistem, proses adalah tahapan pengolahan data menjadi informasi, dan output adalah hasil informasi yang dapat digunakan oleh pengguna. Ketiga komponen tersebut saling berhubungan dalam menghasilkan informasi yang bernilai.
+
+
+2. Sistem Informasi Manajemen
+Sistem Informasi Manajemen (SIM) merupakan bentuk khusus dari sistem informasi yang dirancang untuk mendukung fungsi manajerial dan pengambilan keputusan dalam suatu organisasi. Laudon dan Laudon (2021) mendefinisikan SIM sebagai sistem yang menyediakan laporan dan ringkasan rutin mengenai kinerja organisasi kepada manajer tingkat menengah, berbeda dengan sistem informasi umum yang hanya berfungsi memproses transaksi operasional harian. Mutiarni, Purwanto, Nadliroh, Ramadhani, dan Jaladri (2024) mendefinisikan SIM sebagai sebuah sistem yang menggabungkan teknologi informasi dengan proses manajerial untuk mengumpulkan, menyimpan, mengelola, dan menganalisis data guna mendukung fungsi manajemen dalam sebuah organisasi. Dari kedua definisi tersebut, dapat disimpulkan bahwa SIM berfokus pada penyediaan informasi yang relevan bagi kegiatan perencanaan, pengendalian, dan pengambilan keputusan.
+
+
+3. Aplikasi Berbasis Web (Web Application)
+Aplikasi berbasis web merupakan perangkat lunak yang dijalankan melalui jaringan internet dan dapat diakses menggunakan peramban (browser) tanpa memerlukan instalasi pada perangkat pengguna. Laudon dan Laudon (2021) mendefinisikan aplikasi berbasis web sebagai program yang disimpan di server jarak jauh dan dikirimkan melalui internet serta ditampilkan melalui peramban web. Rahmawati dan Sumarsono (2024) menjelaskan bahwa website saat ini tidak lagi sekadar berfungsi sebagai media informasi yang bersifat statis, melainkan telah berkembang menjadi media yang interaktif ketika data disimpan di server dan dapat diakses oleh individu, kelompok, maupun organisasi melalui jaringan. Dari kedua penjelasan tersebut, dapat dipahami bahwa aplikasi berbasis web memiliki karakteristik fleksibel dan dapat diakses dari berbagai perangkat selama perangkat tersebut memiliki peramban dan koneksi jaringan.
+Aplikasi berbasis web umumnya menggunakan arsitektur client-server ketika browser berperan sebagai klien yang mengirimkan permintaan kepada server, kemudian server memproses permintaan tersebut dan mengembalikan hasilnya kepada pengguna. Berdasarkan sifatnya, aplikasi web dapat dibedakan menjadi website statis dan aplikasi web dinamis. Aplikasi web dinamis mampu menghasilkan tampilan dan informasi yang berbeda sesuai dengan interaksi pengguna dan data yang tersimpan dalam sistem.
+
+
+4. Bimbingan Belajar
+Bimbingan belajar merupakan salah satu bentuk layanan pendidikan nonformal yang bertujuan untuk mendukung proses pembelajaran siswa di luar lingkungan sekolah formal. Jaya, Maliki, Lestari, Irawan, dan Wasid (2024) menyatakan bahwa bimbingan belajar merupakan lembaga yang bergerak di dunia pendidikan dan masuk ke dalam kategori bentuk pendidikan nonformal, yang berfungsi memberikan bantuan kepada siswa dalam meningkatkan kualitas belajarnya di luar jam sekolah. Situmorang, Fitri, dan Benrahman (2021) mendefinisikan bimbingan belajar sebagai layanan pendidikan informal yang bertujuan meningkatkan kualitas pelayanan dan mutu dalam penyelenggaraan kegiatan belajar-mengajar di luar institusi pendidikan formal. Hal ini sejalan dengan Undang-Undang Nomor 20 Tahun 2003 tentang Sistem Pendidikan Nasional yang menempatkan lembaga bimbingan belajar sebagai satuan pendidikan non-formal yang berfungsi melengkapi, menambah, dan memperkaya pendidikan formal yang telah diterima peserta didik.
+Bimbingan belajar memiliki peran penting sebagai pelengkap pendidikan formal, terutama dalam membantu siswa memahami materi pelajaran secara lebih mendalam, mengatasi kesulitan belajar, serta mempersiapkan diri menghadapi evaluasi akademik. Selain itu, bimbingan belajar juga memberikan manfaat bagi orang tua dalam memantau perkembangan akademik anak secara lebih terarah.
+
+
+5. Software Development Life Cycle (SDLC)
+Software Development Life Cycle (SDLC) merupakan kerangka kerja terstruktur yang mendefinisikan tahapan-tahapan yang harus dilalui dalam proses pengembangan sistem perangkat lunak, mulai dari perencanaan hingga pemeliharaan sistem. Rahmawati dan Sumarsono (2024) menyatakan bahwa model Waterfall merupakan pendekatan linier dan terstruktur dalam pengembangan perangkat lunak yang dilaksanakan secara berurutan ketika setiap tahapan harus diselesaikan sebelum tahapan berikutnya dapat dimulai. Safitri, Listyorini, dan Supriyati (2026) menyatakan bahwa metode pengembangan sistem Waterfall merupakan metode yang dilaksanakan secara sistematis dan berurutan mulai dari tahap analisis, perancangan, implementasi, pengujian, hingga pemeliharaan. Dengan kerangka kerja ini, pengembang memiliki panduan yang jelas mengenai urutan aktivitas yang harus dilakukan, serta titik evaluasi di setiap akhir tahapan sebelum melanjutkan ke tahap berikutnya.
+Model Waterfall terdiri atas enam tahapan utama yang saling berurutan, yaitu analisis kebutuhan (requirements analysis), perancangan sistem (system design), implementasi (implementation), pengujian (testing), perilisan (deployment), dan pemeliharaan (maintenance). Setiap tahapan menghasilkan keluaran yang menjadi dasar bagi tahap selanjutnya, sehingga proses pengembangan berlangsung secara terstruktur dan terdokumentasi dengan baik. Pendekatan ini membantu memastikan bahwa sistem dibangun sesuai dengan kebutuhan yang telah ditentukan sejak awal.
+
+
+  
+
+Gambar 2.1 Software Development Life Cycle (SDLC) Model Waterfall
+
+
+
+
+6. Unified Modeling Language (UML)
+Unified Modeling Language (UML) merupakan bahasa pemodelan visual standar yang digunakan dalam rekayasa perangkat lunak untuk menspesifikasikan, memvisualisasikan, membangun, dan mendokumentasikan suatu sistem perangkat lunak berbasis objek. Situmorang, Fitri, dan Benrahman (2021) menjelaskan bahwa UML menyediakan notasi-notasi yang membantu memodelkan sistem dari berbagai perspektif, dan merupakan pengganti metode analisis serta desain berorientasi objek yang sebelumnya banyak digunakan. Anggraeni dan Susetyo (2025) mendefinisikan UML sebagai pemodelan sistem berorientasi objek yang memungkinkan visualisasi, spesifikasi, dan dokumentasi untuk membangun sistem perangkat lunak secara terstruktur. Dengan demikian, UML berperan sebagai alat komunikasi antara analis sistem, pengembang, dan pemangku kepentingan dalam memahami arsitektur dan alur kerja sistem sebelum proses implementasi dimulai.
+
+
+   1. Use Case Diagram
+Use Case Diagram merupakan jenis diagram UML yang digunakan untuk menggambarkan hubungan interaksi antara pengguna dengan fungsi-fungsi yang tersedia dalam suatu sistem. Situmorang, Fitri, dan Benrahman (2021) menyatakan bahwa Use Case Diagram digunakan untuk menjelaskan hubungan interaksi antara pengguna dan sistem informasi manajemen, sekaligus menggambarkan ruang lingkup serta fungsi utama yang dapat diakses oleh setiap aktor sesuai dengan perannya. Simbol-simbol utama dalam Use Case Diagram dapat dilihat pada Tabel 3.1.
+
+
+Tabel 3.1 Simbol-simbol dalam Use Case Diagram
+Simbol
+	Nama
+	Keterangan
+	  
+
+	Actor
+	Merepresentasikan pengguna atau entitas eksternal (manusia maupun sistem lain) yang berinteraksi langsung dengan sistem.
+	  
+
+	Use Case
+	Menggambarkan suatu fungsi atau proses yang dapat dilakukan oleh sistem untuk memenuhi kebutuhan actor.
+	
+
+  
+
+	Association
+	Menunjukkan hubungan interaksi antara actor dengan use case yang terlibat dalam suatu proses.
+	  
+
+	Include
+	Menyatakan bahwa suatu use case pasti menjalankan use case lain sebagai bagian wajib dari alurnya (dieksekusi setiap kali use case utama berjalan).
+	  
+
+	Extend
+	Mendeskripsikan bahwa suatu use case dapat menjalankan use case lain secara opsional, hanya ketika kondisi tertentu terpenuhi (tidak wajib selalu dieksekusi).
+	  
+
+	Generalization
+	Menggambarkan hubungan pewarisan antar actor atau antar use case, di mana actor/use case turunan (child) mewarisi perilaku dari actor/use case induk (parent).
+	
+
+
+
+   2. Activity Diagram
+Activity Diagram merupakan diagram UML yang menggambarkan alur kerja atau proses bisnis dalam suatu sistem secara terstruktur. Anggraeni dan Susetyo (2025) menjelaskan bahwa Activity Diagram digunakan untuk menggambarkan alur kerja atau proses bisnis secara runtut dan terstruktur, yang mencakup langkah-langkah yang diambil oleh pengguna maupun sistem dalam menyelesaikan suatu proses. Simbol-simbol Activity Diagram dapat dilihat pada Tabel 3.2.
+
+
+Tabel 3.2 Simbol-simbol dalam Activity Diagram
+Simbol
+	Nama
+	Keterangan
+	  
+
+	Initial Node
+	Menandakan titik awal atau tindakan awal aktivitas pada sistem.
+	  
+
+	Activity
+	Menyatakan suatu aktivitas atau proses yang dilakukan oleh sistem dan aktor dalam alur kerja.
+	  
+
+	Control Flow
+	Digunakan untuk aliran kendali/urutan tindakan dari satu aktivitas ke aktivitas berikutnya.
+	  
+
+	Decision
+	Menggambarkan pilihan atau percabangan alur berdasarkan suatu kondisi tertentu (menghasilkan lebih dari satu alur keluar).
+	  
+
+	Merge Event
+	Menggabungkan beberapa alur kendali alternatif (hasil dari decision) menjadi satu alur kembali, tanpa harus menunggu semua alur selesai.
+	  
+
+	Fork
+	Memecah satu alur kendali menjadi beberapa alur yang berjalan paralel/bersamaan (concurrent).
+	  
+
+	Join
+	Menggabungkan beberapa alur kendali paralel menjadi satu alur kembali, dan harus menunggu semua alur selesai terlebih dahulu.
+	  
+
+	Final Node
+	Menandakan titik akhir dari suatu aktivitas atau alur kerja sistem.
+	  
+
+	Swimlane
+	Menggambarkan pembagian tanggung jawab aktivitas berdasarkan aktor/peran dalam satu diagram.
+	
+
+
+
+   3. Class Diagram
+Class Diagram merupakan diagram UML yang menggambarkan struktur statis sebuah sistem dengan menampilkan kelas-kelas beserta atribut dan metodenya, serta relasi yang ada di antara kelas-kelas tersebut. Situmorang, Fitri, dan Benrahman (2021) menyatakan bahwa Class Diagram digunakan untuk merepresentasikan struktur basis data dan hubungan antarkelas dalam sistem informasi yang sedang dibuat. Simbol-simbol dalam Class Diagram dapat dilihat pada Tabel 3.3.
+
+
+Tabel 3.3 Simbol-simbol dalam Class Diagram 
+Simbol
+	Nama
+	Keterangan
+	  
+
+	Class
+	Menggambarkan kelas dalam sistem yang terdiri dari nama kelas, atribut (data/properti), dan method (fungsi/operasi) yang dimiliki kelas tersebut.
+	  
+
+	Association
+	Menggambarkan hubungan struktural antar dua class yang saling berinteraksi atau mengetahui satu sama lain, tanpa menyiratkan kepemilikan (ownership) atau kontrol siklus hidup.
+	  
+
+	Aggregation
+	Menggambarkan hubungan "whole-part" (keseluruhan-bagian) yang bersifat lemah, di mana class bagian (child) dapat berdiri sendiri dan tidak ikut terhapus meskipun class utama (whole) dihapus.
+	  
+
+	Composition
+	Menggambarkan hubungan "whole-part" yang kuat, di mana class bagian (child) tidak dapat berdiri sendiri dan akan ikut terhapus jika class utama (whole) dihapus.
+	  
+
+	Inheritance atau Generalization
+	Menggambarkan hubungan pewarisan (inheritance) dari satu class (parent/superclass) ke class lain (child/subclass), di mana subclass mewarisi atribut dan method dari superclass.
+	  
+
+	Directed Association
+	Menggambarkan hubungan antar class yang bersifat satu arah (unidirectional), di mana satu class mengetahui/berelasi dengan class lain, tetapi tidak sebaliknya.
+	
+
+
+
+7. Struktur Navigasi
+Struktur navigasi merupakan kerangka yang mengatur hubungan dan perpindahan antar halaman dalam sebuah aplikasi berbasis web. Perancangan struktur navigasi yang tepat sangat penting dalam desain antarmuka pengguna, karena secara langsung mempengaruhi kemudahan pengguna dalam mengakses fitur dan informasi yang tersedia. Rahmawati dan Sumarsono (2024) menegaskan bahwa desain antarmuka pengguna dan pengalaman pengguna (UI/UX) merupakan dimensi penting dalam perancangan website yang berkembang, dan kualitas navigasi yang baik berdampak langsung pada efisiensi penggunaan serta kepuasan pengguna. Anggraeni dan Susetyo (2025) menambahkan bahwa antarmuka yang responsif dan mudah digunakan merupakan kebutuhan utama sistem informasi agar dapat membantu pengguna menyelesaikan proses secara mandiri tanpa hambatan teknis. 
+
+
+   4. Struktur Navigasi Linier
+Struktur navigasi linier merupakan pola navigasi satu arah yang mengarahkan pengguna mengikuti urutan halaman yang telah ditetapkan secara berurutan dari awal hingga akhir. Karakteristik utama struktur ini adalah pengguna hanya dapat bergerak maju ke halaman berikutnya atau mundur ke halaman sebelumnya, tanpa dapat melompati langkah atau berpindah secara acak ke bagian yang belum seharusnya dikunjungi (Rahmawati dan Sumarsono, 2024). Gambar 2.2 menunjukkan contoh model struktur navigasi linier.
+
+
+  
+
+Gambar 2.2 Contoh Model Struktur Navigasi Linier
+
+
+
+
+   5. Struktur Navigasi Hirarki
+Struktur navigasi hirarki merupakan pola navigasi bertingkat yang mengorganisasikan halaman dalam hubungan induk-anak (parent-child), di mana setiap halaman induk memiliki satu atau lebih halaman anak yang dapat diakses darinya. Karakteristik utama struktur ini adalah adanya hierarki kategori yang jelas ketika pengguna bergerak dari halaman umum ke halaman yang lebih spesifik melalui tingkatan menu yang terstruktur (Rahmawati dan Sumarsono, 2024). Gambar 2.3 menunjukkan contoh model struktur navigasi hirarki.
+
+
+  
+
+Gambar 2.3 Contoh Model Struktur Navigasi Hirarki
+
+
+   6. Struktur Navigasi Non Linier
+Struktur navigasi non-linier merupakan pola navigasi bebas yang memungkinkan pengguna berpindah ke halaman manapun tanpa urutan yang telah ditetapkan sebelumnya. Karakteristik utama struktur ini adalah fleksibilitas penuh bagi pengguna dalam menentukan jalur kunjungan mereka sendiri, sehingga setiap halaman dapat diakses langsung tanpa harus melalui halaman perantara tertentu (Rahmawati dan Sumarsono, 2024). Gambar 2.4 menunjukkan contoh model struktur navigasi non linier.
+
+
+  
+
+Gambar 2.4 Contoh Model Struktur Navigasi Non Linier
+
+
+
+
+   7. Struktur Navigasi Campuran
+Struktur navigasi campuran merupakan kombinasi dari dua atau lebih pola navigasi yang diterapkan secara bersamaan dalam satu sistem, di mana masing-masing pola diterapkan pada bagian sistem yang paling sesuai dengan karakteristiknya. Karakteristik utama struktur ini adalah fleksibilitasnya dalam mengakomodasi kebutuhan sistem yang kompleks dan memiliki beragam tipe konten serta alur interaksi yang berbeda-beda (Anggraeni dan Susetyo, 2025). Gambar 2.5 menunjukkan contoh model struktur navigasi campuran.
+
+
+  
+
+Gambar 2.5 Contoh Model Struktur Navigasi Campuran
+
+
+
+
+8. PHP
+PHP (Hypertext Preprocessor) merupakan bahasa pemrograman sisi server (server-side) yang digunakan secara luas untuk pengembangan aplikasi web yang bersifat dinamis dan interaktif. Safitri, Listyorini, dan Supriyati (2026) mendefinisikan PHP sebagai bahasa pemrograman sisi server yang mampu berintegrasi dengan basis data seperti MySQL sehingga memungkinkan pengolahan dan penyajian data secara real-time, dengan sintaks yang sederhana, fleksibel, serta bersifat open source. PHP pertama kali dikembangkan oleh Rasmus Lerdorf pada tahun 1994 dan terus mengalami perkembangan hingga mendukung pemrograman berorientasi objek secara lebih lengkap.
+
+
+9. Laravel Framework
+Laravel merupakan framework PHP berbasis arsitektur Model-View-Controller (MVC) yang dirancang untuk mempermudah dan mempercepat proses pengembangan aplikasi web modern. Rahmawati dan Sumarsono (2024) mendefinisikan Laravel sebagai framework yang mengimplementasikan arsitektur MVC untuk memisahkan aplikasi menjadi tiga bagian utama, yaitu Model yang bertanggung jawab untuk logika data dan pengelolaan database, View yang mengurus tampilan antarmuka pengguna, dan Controller yang mengatur alur data antara Model dan View serta menangani interaksi pengguna. Anggraeni dan Susetyo (2025) menambahkan bahwa implementasi framework Laravel memungkinkan pengembang untuk membangun sistem informasi bimbingan belajar yang fungsional, responsif, dan mudah dipelihara dengan dukungan berbagai fitur bawaan yang terintegrasi. Pemisahan tanggung jawab yang jelas melalui pola MVC ini tidak hanya meningkatkan keterbacaan kode, tetapi juga memudahkan proses pengujian dan pengembangan fitur secara modular.
+Laravel menyediakan berbagai fitur bawaan yang mendukung pengembangan aplikasi web secara efisien, seperti Eloquent ORM untuk pengelolaan basis data berbasis objek, Blade templating engine untuk pembuatan tampilan dinamis, sistem routing yang terstruktur, middleware untuk pengelolaan akses, serta fitur autentikasi. Selain itu, Laravel memiliki keunggulan dalam hal keamanan, dokumentasi yang lengkap, serta dukungan ekosistem yang luas, sehingga banyak digunakan dalam pengembangan aplikasi web modern.
+
+
+10. Tailwind CSS
+Tailwind CSS merupakan utility-first CSS framework yang menyediakan kelas-kelas utilitas tingkat rendah (low-level utility classes) yang dapat digunakan langsung dalam markup HTML untuk membangun tampilan antarmuka yang kustom tanpa harus meninggalkan file HTML atau menulis CSS tambahan. Anggraeni dan Susetyo (2025) menggunakan Tailwind CSS dalam pengembangan sistem informasi bimbingan belajar berbasis Laravel, menyatakan bahwa Tailwind CSS memungkinkan aplikasi web menghasilkan tampilan yang responsif dan estetis dengan cara yang terintegrasi langsung dalam komponen antarmuka. Safitri, Listyorini, dan Supriyati (2026) juga memanfaatkan Tailwind CSS sebagai salah satu teknologi frontend utama dalam pengembangan sistem informasi manajemen bimbingan belajar berbasis web, bersama dengan HTML dan JavaScript. 
+Berbeda dengan framework CSS konvensional seperti Bootstrap, Tailwind CSS tidak menyediakan komponen siap pakai, melainkan memberikan fleksibilitas kepada pengembang untuk merancang tampilan secara kustom menggunakan kombinasi kelas utilitas. Keunggulan ini memungkinkan terciptanya desain yang konsisten, ringan, dan mudah dikonfigurasi.
+
+
+11. JavaScript & Alpine.js
+JavaScript merupakan bahasa pemrograman sisi klien (client-side) yang dijalankan langsung di browser pengguna untuk menambahkan interaktivitas dan perilaku dinamis pada halaman web tanpa perlu mengirimkan permintaan ke server setiap kali terjadi interaksi. Safitri, Listyorini, dan Supriyati (2026) menyebutkan JavaScript sebagai salah satu teknologi frontend inti dalam pengembangan sistem informasi berbasis web modern, yang digunakan bersama HTML dan CSS untuk membangun antarmuka yang interaktif dan responsif. JavaScript memiliki kemampuan untuk memanipulasi Document Object Model (DOM) halaman web secara langsung, menangani event dari pengguna (seperti klik, input, dan hover), serta berkomunikasi dengan server secara asinkron. Ekosistem JavaScript yang sangat kaya juga telah melahirkan berbagai framework dan library yang memperluas kemampuannya, termasuk Alpine.js.
+Alpine.js merupakan framework JavaScript yang ringan untuk menambahkan reaktivitas langsung pada elemen HTML menggunakan atribut deklaratif, tanpa memerlukan proses build yang kompleks sehingga cocok digunakan pada aplikasi berbasis server-side rendering seperti Laravel Blade. Dengan Alpine.js, interaktivitas dapat ditambahkan secara efisien tanpa harus menggunakan framework frontend yang lebih besar.
+
+
+12. MySQL
+MySQL merupakan sistem manajemen basis data relasional (Relational Database Management System/RDBMS) yang bersifat open source dan banyak digunakan pada aplikasi berbasis web. Safitri, Listyorini, dan Supriyati (2026) mendefinisikan MySQL sebagai RDBMS yang memanfaatkan bahasa SQL untuk mengelola data, seperti menambah, mengubah, menghapus, dan menampilkan informasi, serta dikenal memiliki kinerja yang stabil, cepat, dan mudah diintegrasikan dengan berbagai bahasa pemrograman termasuk PHP.
+Sebagai basis data relasional, MySQL menyimpan data dalam bentuk tabel yang terdiri dari baris dan kolom, serta mendukung relasi antar tabel melalui mekanisme foreign key, yaitu kolom yang nilai-nilainya merujuk ke primary key tabel lain, sehingga integritas referensial data terjaga secara otomatis oleh mesin basis data. Jaya, Maliki, Lestari, Irawan, dan Wasid (2024) menegaskan bahwa penggunaan database relasional dengan relasi foreign key memungkinkan konsistensi dan kinerja sistem dalam mengelola data yang saling berkaitan antar entitas. Dengan integritas referensial ini, operasi penghapusan atau pembaruan data pada tabel induk dapat dikonfigurasi untuk secara otomatis berdampak pada tabel anak yang memiliki relasi, sehingga data tidak pernah berada dalam kondisi inkonsisten.
+
+
+13. Laragon
+Laragon merupakan lingkungan pengembangan lokal (local development environment) untuk sistem operasi Windows yang menyediakan perangkat lunak server secara lengkap dalam satu paket instalasi yang ringkas. Laragon mengintegrasikan web server (Apache dan Nginx), PHP dengan dukungan multi-versi, serta MySQL dalam satu antarmuka terpadu yang dapat diinstal dan dijalankan dengan cepat tanpa konfigurasi yang rumit. Laragon secara otomatis mendeteksi dan mengonfigurasi virtual host berdasarkan nama folder proyek, sehingga setiap aplikasi web dapat diakses melalui domain lokal yang bersih (misalnya [http://nama-proyek.test](http://nama-proyek.test)) tanpa harus mengubah file konfigurasi secara manual.
+
+
+14. Figma
+Figma merupakan tools desain antarmuka pengguna berbasis browser yang digunakan untuk membuat wireframe, prototype, dan desain antarmuka secara kolaboratif dalam satu platform. Figma berjalan sepenuhnya di browser tanpa memerlukan instalasi perangkat lunak, sehingga tim desain dan pengembang dapat bekerja bersama pada file desain yang sama secara real-time dari perangkat apa pun.
+
+
+15. Visual Studio Code
+Visual Studio Code (VS Code) merupakan source code editor lintas platform yang dikembangkan oleh Microsoft dan tersedia secara gratis serta open source. VS Code berjalan di desktop dan tersedia untuk Windows, macOS, serta Linux, dilengkapi dengan fitur syntax highlighting, IntelliSense (saran kode berbasis konteks), integrated terminal, dan ekstensi yang sangat banyak untuk berbagai bahasa pemrograman dan runtime. 
+
+
+16. Black Box Testing
+Black Box Testing merupakan metode pengujian perangkat lunak yang mengevaluasi fungsionalitas sistem dari sudut pandang pengguna tanpa memperhatikan struktur internal kode program. Febriyanti, Sudana, dan Piarsa (2021) mendefinisikan Black Box Testing sebagai metode yang dipakai untuk menguji sebuah software tanpa harus memperhatikan detail software, dilakukan dengan cara mencoba program yang telah dibuat dengan memasukkan data pada setiap form untuk mengetahui apakah program tersebut berjalan sesuai dengan yang dibutuhkan. Abdillah, Kurniastuti, Susanto, dan Yudianto (2023) menambahkan bahwa Black Box Testing merupakan metode yang menguji perangkat lunak dari segi spesifikasi fungsional tanpa menguji desain dan kode program, bertujuan untuk mengetahui apakah fungsi, masukan, dan keluaran dari perangkat lunak sesuai dengan spesifikasi yang dibutuhkan. 
+Metode ini berorientasi pada pengujian dari sudut pandang pengguna, sehingga dapat digunakan untuk memastikan bahwa setiap fungsi dalam sistem berjalan sesuai dengan kebutuhan. Dalam penelitian ini, Black Box Testing digunakan untuk menguji fungsionalitas sistem secara keseluruhan agar sesuai dengan spesifikasi yang telah ditentukan.
+
+
+17. User Acceptance Test (UAT)
+User Acceptance Test (UAT) merupakan tahap pengujian akhir dalam pengembangan sistem tempat pengguna nyata (end user) mengevaluasi apakah sistem yang dikembangkan benar-benar memenuhi kebutuhan dan harapan mereka sebelum sistem diimplementasikan secara resmi. Abdillah, Kurniastuti, Susanto, dan Yudianto (2023) menjelaskan bahwa pengujian penerimaan pengguna dilakukan untuk menentukan apakah sebuah aplikasi sudah sesuai dengan kebutuhan pengguna atau belum, dengan melibatkan pengguna langsung dalam proses evaluasi menggunakan skenario penggunaan yang mencerminkan kondisi nyata di lapangan. 
+Berbeda dengan Black Box Testing yang dilakukan oleh tim pengembang atau penguji teknis untuk memvalidasi kesesuaian fungsionalitas dengan spesifikasi teknis, UAT dilakukan oleh calon pengguna akhir yang sesungguhnya, sehingga hasil evaluasinya mencerminkan penerimaan dan kepuasan pengguna dari sudut pandang operasional, bukan hanya teknis. UAT dilakukan dalam lingkungan yang mendekati kondisi penggunaan sebenarnya dan bertujuan untuk memastikan bahwa sistem mudah digunakan, sesuai dengan alur kerja, serta mampu memenuhi kebutuhan operasional pengguna. Dalam penelitian ini, UAT digunakan untuk mengevaluasi tingkat penerimaan pengguna terhadap sistem yang dikembangkan sebelum sistem diimplementasikan secara penuh.
+
+
+18. Penelitian Terdahulu
+Penelitian terdahulu ini digunakan sebagai acuan untuk melihat sejauh mana sistem informasi manajemen bimbingan belajar berbasis web telah dikembangkan sebelumnya. Kebanyakan penelitian yang ada sudah membahas penggunaan framework Laravel serta pengelolaan data operasional seperti presensi dan pembayaran. Namun, dari kajian tersebut, penelitian ini berfokus pada sisi yang belum banyak dibahas, yaitu penerapan logika kalender dinamis dengan mekanisme pergeseran Hari-H dan sistem kuota sesi negatif. Untuk lebih jelasnya, perbandingan antara penelitian-penelitian sebelumnya dengan penelitian ini disajikan secara sistematis pada Tabel 3.4 berikut:
+
+
+Tabel 3.4 Penelitian Terdahulu
+No
+	Penelitian
+	Metode
+	Hasil
+	Persamaan
+	Perbedaan
+	1
+	Perancangan Sistem Informasi Berbasis Web pada Bimbingan Belajar (Bimbel) "BNF" (Jaya, Maliki, Lestari, Irawan, dan Wasid, 2024)
+	Waterfall, PHP
+	Sistem Informasi pengelolaan data siswa, jadwal pembelajaran, pencatatan pembayaran, dan laporan operasional lembaga bimbel secara digital
+	Konteks objek penelitian (lembaga bimbingan belajar), web-based, Waterfall
+	Tidak ada logika kalender dinamis, kuota sesi, notifikasi otomatis, dan 3 peran pengguna
+	2
+	Sistem Informasi Bimbingan Belajar Berbasis Web dengan Metode Waterfall (Situmorang, Fitri, dan Benrahman, 2021)
+	Waterfall, PHP
+	Digitalisasi administrasi bimbel (data siswa, jadwal belajar, kehadiran)
+	Topik Sistem Informasi bimbingan belajar, web-based, Waterfall, fitur manajemen data siswa & jadwal
+	Tidak menggunakan Laravel, tidak ada kuota sesi, tidak ada kalender dinamis
+	3
+	Perancangan Sistem Informasi Manajemen Bimbingan Belajar Berbasis Web untuk Efisiensi Administrasi dan Komunikasi dengan Fitur Notifikasi Otomatis (Studi Kasus: Bimbel Ilman Nafi') (Safitri, Listyorini, dan Supriyati, 2026)
+	Waterfall, Laravel
+	Sistem Informasi manajemen bimbel multi-peran dengan notifikasi otomatis
+	Framework Laravel, objek penelitian (lembaga bimbingan belajar), fitur notifikasi otomatis, manajemen multi-peran
+	Tidak ada kuota sesi negatif, tidak ada logika kalender dinamis Hari-H, tidak ada paket layanan
+	4
+	Implementation of the Laravel Framework in Tutoring Information System (Case Study: Glow Math Course) (Anggraeni dan Susetyo, 2025)
+	Waterfall, Laravel
+	Sistem Informasi bimbingan belajar dengan fitur pendaftaran, payment gateway (Midtrans), dan akses materi pembelajaran berbasis PDF
+	Framework Laravel, Blade, Tailwind CSS, Waterfall, konteks objek penelitian (lembaga bimbingan belajar)
+	Fokus pada payment gateway & akses materi, tidak ada manajemen operasional harian, kuota sesi, dan kalender dinamis
+	
+
+
+
+[a]Antara kutipan 1 dan kutipan 2 ini, sebelum nama penulis dan tahunnya, pengutipan di awal kalimat itu perlu pakai kata transisi/hubung seperti "Adapun, Sementara itu, dll" atau tidak ya?
