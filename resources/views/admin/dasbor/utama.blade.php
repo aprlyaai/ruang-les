@@ -7,7 +7,7 @@
     <div x-show="mounted" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="mb-8">
         <x-admin.tajuk-halaman description="Selamat datang di pusat kendali. Berikut adalah ringkasan performa dan aktivitas Ruang Les hari ini.">
             <x-slot name="titleSlot">
-                <span class="flex items-center">Halo, {{ Auth::user()->name }}! <span class="ml-2 text-4xl animate-bounce" style="animation-duration: 2s;">👋</span></span>
+                <span class="inline-flex items-center flex-wrap">Halo, {{ Auth::user()->name }}! <span class="ml-2 text-3xl sm:text-4xl inline-block animate-bounce" style="animation-duration: 2s;">👋</span></span>
             </x-slot>
             <x-slot name="rightActions">
                 <a href="{{ route('admin.settings.index') }}" class="px-4 py-2 bg-white border border-gray-200 text-gray-600 rounded-xl font-bold text-sm hover:bg-gray-50 transition-colors shadow-sm flex items-center">

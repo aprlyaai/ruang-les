@@ -12,7 +12,7 @@
         <!-- Welcome Section -->
         <x-admin.tajuk-halaman description="Selamat datang di Ruang Les. Mari bantu wujudkan potensi terbaik setiap murid hari ini.">
             <x-slot name="titleSlot">
-                <span class="flex items-center">Halo, {{ Auth::user()->name }}! <span class="ml-2 text-4xl inline-block animate-bounce" style="animation-duration: 2s;">👋</span></span>
+                <span class="inline-flex items-center flex-wrap">Halo, {{ Auth::user()->name }}! <span class="ml-2 text-3xl sm:text-4xl inline-block animate-bounce" style="animation-duration: 2s;">👋</span></span>
             </x-slot>
         </x-admin.tajuk-halaman>
     </div>

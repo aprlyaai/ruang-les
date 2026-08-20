@@ -14,7 +14,7 @@
 <?php endif; ?>
 <?php $component->withAttributes(['description' => 'Selamat datang di pusat kendali. Berikut adalah ringkasan performa dan aktivitas Ruang Les hari ini.']); ?>
              <?php $__env->slot('titleSlot', null, []); ?> 
-                <span class="flex items-center">Halo, <?php echo e(Auth::user()->name); ?>! <span class="ml-2 text-4xl animate-bounce" style="animation-duration: 2s;">👋</span></span>
+                <span class="inline-flex items-center flex-wrap">Halo, <?php echo e(Auth::user()->name); ?>! <span class="ml-2 text-3xl sm:text-4xl inline-block animate-bounce" style="animation-duration: 2s;">👋</span></span>
              <?php $__env->endSlot(); ?>
              <?php $__env->slot('rightActions', null, []); ?> 
                 <a href="<?php echo e(route('admin.settings.index')); ?>" class="px-4 py-2 bg-white border border-gray-200 text-gray-600 rounded-xl font-bold text-sm hover:bg-gray-50 transition-colors shadow-sm flex items-center">
