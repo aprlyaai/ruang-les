@@ -84,7 +84,7 @@
     </div>
 
     <!-- Chat Thread -->
-    <div class="flex-1 bg-gray-50 rounded-2xl shadow-inner border border-gray-200 p-4 sm:p-6 space-y-6 max-h-[600px] overflow-y-auto mb-6" id="chat-container">
+    <div class="flex-1 bg-gray-50 rounded-2xl shadow-inner border border-gray-200 p-4 sm:p-6 space-y-6 min-h-[250px] mb-6" id="chat-container">
 
         <!-- Balasan-balasan -->
         @foreach($ticket->replies as $reply)

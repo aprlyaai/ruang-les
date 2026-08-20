@@ -1,15 +1,50 @@
-@props([
+<?php $attributes ??= new \Illuminate\View\ComponentAttributeBag;
+
+$__newAttributes = [];
+$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames(([
     'name', 
     'id' => null, 
     'accept' => 'image/jpeg,image/jpg,image/png,image/webp,application/pdf',
     'xShowError' => false,
     'required' => true,
     'disabled' => false
-])
+]));
 
-@php
+foreach ($attributes->all() as $__key => $__value) {
+    if (in_array($__key, $__propNames)) {
+        $$__key = $$__key ?? $__value;
+    } else {
+        $__newAttributes[$__key] = $__value;
+    }
+}
+
+$attributes = new \Illuminate\View\ComponentAttributeBag($__newAttributes);
+
+unset($__propNames);
+unset($__newAttributes);
+
+foreach (array_filter(([
+    'name', 
+    'id' => null, 
+    'accept' => 'image/jpeg,image/jpg,image/png,image/webp,application/pdf',
+    'xShowError' => false,
+    'required' => true,
+    'disabled' => false
+]), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
+    $$__key = $$__key ?? $__value;
+}
+
+$__defined_vars = get_defined_vars();
+
+foreach ($attributes->all() as $__key => $__value) {
+    if (array_key_exists($__key, $__defined_vars)) unset($$__key);
+}
+
+unset($__defined_vars, $__key, $__value); ?>
+
+<?php
     $inputId = $id ?? $name;
-@endphp
+?>
 
 <div>
     <div x-data="{
@@ -36,9 +71,9 @@
             this.fileName = file.name;
             this.fileSize = (file.size / 1024 / 1024).toFixed(2) + ' MB';
             this.isImage = file.type.startsWith('image/');
-            @if($xShowError && $xShowError !== 'true' && $xShowError !== 'false') 
-                {{ $xShowError }} = false; 
-            @endif
+            <?php if($xShowError && $xShowError !== 'true' && $xShowError !== 'false'): ?> 
+                <?php echo e($xShowError); ?> = false; 
+            <?php endif; ?>
             
             if (this.isImage) {
                 const reader = new FileReader();
@@ -55,18 +90,18 @@
             this.previewUrl = null;
             this.isImage = false;
             document.getElementById(inputId).value = '';
-            @if($xShowError && $xShowError !== 'true' && $xShowError !== 'false') 
-                {{ $xShowError }} = true; 
-            @endif
+            <?php if($xShowError && $xShowError !== 'true' && $xShowError !== 'false'): ?> 
+                <?php echo e($xShowError); ?> = true; 
+            <?php endif; ?>
         }
     }" class="relative group w-full border-2 border-dashed rounded-2xl p-6 transition-all duration-200 flex flex-col items-center justify-center min-h-[160px]"
-        :class="isDragging ? 'border-primary-500 bg-primary-50/50' : (file ? 'border-primary-200 bg-white' : ({{ $xShowError ?: 'false' }} ? 'border-red-500 bg-red-50/10' : 'border-gray-300 hover:border-primary-400 bg-gray-50'))"
+        :class="isDragging ? 'border-primary-500 bg-primary-50/50' : (file ? 'border-primary-200 bg-white' : (<?php echo e($xShowError ?: 'false'); ?> ? 'border-red-500 bg-red-50/10' : 'border-gray-300 hover:border-primary-400 bg-gray-50'))"
         @dragover.prevent="isDragging = true"
         @dragleave.prevent="isDragging = false"
         @drop.prevent="handleFileDrop($event)">
         
         <!-- Hidden File Input -->
-        <input type="file" name="{{ $name }}" id="{{ $inputId }}" accept="{{ $accept }}" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" @change="handleFileInput($event)" {{ $required ? 'required' : '' }} {{ $disabled ? 'disabled' : '' }}>
+        <input type="file" name="<?php echo e($name); ?>" id="<?php echo e($inputId); ?>" accept="<?php echo e($accept); ?>" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" @change="handleFileInput($event)" <?php echo e($required ? 'required' : ''); ?> <?php echo e($disabled ? 'disabled' : ''); ?>>
         
         <!-- UI Placeholder saat tidak ada file -->
         <div x-show="!file" class="space-y-3 text-center pointer-events-none relative z-0 w-full">
@@ -94,7 +129,7 @@
              <div class="text-center w-full max-w-xs px-2">
                  <p class="text-sm font-bold text-gray-800 truncate" x-text="fileName"></p>
                  <p class="text-xs text-gray-500" x-text="fileSize"></p>
-                 <button type="button" @click.prevent="removeFile('{{ $inputId }}')" class="mt-2 inline-flex items-center text-xs font-bold text-red-500 hover:text-red-700 hover:bg-red-50 px-2 py-1 rounded-md transition-colors relative z-30">
+                 <button type="button" @click.prevent="removeFile('<?php echo e($inputId); ?>')" class="mt-2 inline-flex items-center text-xs font-bold text-red-500 hover:text-red-700 hover:bg-red-50 px-2 py-1 rounded-md transition-colors relative z-30">
                      <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                      Hapus
                  </button>
@@ -103,6 +138,8 @@
      </div>
      
      <div class="mt-2.5 text-xs text-gray-500 font-medium leading-relaxed">
-         {{ $slot }}
+         <?php echo e($slot); ?>
+
      </div>
 </div>
+<?php /**PATH C:\laragon\www\ruang-les\resources\views/components/antarmuka/unggah-berkas.blade.php ENDPATH**/ ?>

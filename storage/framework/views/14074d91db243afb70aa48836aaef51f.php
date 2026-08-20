@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Mentor Panel') - Ruang Les</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <title><?php echo $__env->yieldContent('title', 'Admin Panel'); ?> - Ruang Les</title>
+    <link rel="icon" type="image/x-icon" href="<?php echo e(asset('favicon.ico')); ?>">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
     <!-- AlpineJS -->
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -23,7 +23,10 @@
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
-    @stack('styles')
+    <!-- SortableJS -->
+    <script src="<?php echo e(asset('js/sortable.min.js')); ?>"></script>
+    
+    <?php echo $__env->yieldPushContent('styles'); ?>
 
     <style>
         /* TomSelect Tailwind Integration Fixes */
@@ -61,14 +64,6 @@
             color: #426c3c;
         }
 
-        .no-scrollbar::-webkit-scrollbar {
-            display: none !important;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none !important;
-            scrollbar-width: none !important;
-        }
-
         /* Elegant Blob Animation */
         @keyframes blob {
             0% { transform: translate(0px, 0px) scale(1); }
@@ -79,6 +74,14 @@
         .animate-blob {
             animation: blob 15s infinite alternate ease-in-out;
         }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none !important;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+        }
+        [x-cloak] { display: none !important; }
     </style>
 </head>
 <body class="bg-primary-50 text-gray-600 font-sans antialiased text-sm overflow-hidden relative leading-relaxed">
@@ -93,20 +96,58 @@
     <div x-data="{ sidebarOpen: false }" class="flex h-screen overflow-hidden relative z-10 p-2 sm:p-4 gap-4">
         
         <!-- Sidebar Component -->
-        <x-mentor.bilah-samping />
+        <?php if (isset($component)) { $__componentOriginal3840567be359d4851de873882e9685fd = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal3840567be359d4851de873882e9685fd = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.bilah-samping','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.bilah-samping'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal3840567be359d4851de873882e9685fd)): ?>
+<?php $attributes = $__attributesOriginal3840567be359d4851de873882e9685fd; ?>
+<?php unset($__attributesOriginal3840567be359d4851de873882e9685fd); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal3840567be359d4851de873882e9685fd)): ?>
+<?php $component = $__componentOriginal3840567be359d4851de873882e9685fd; ?>
+<?php unset($__componentOriginal3840567be359d4851de873882e9685fd); ?>
+<?php endif; ?>
 
         <!-- Main Wrapper -->
         <div class="flex-1 flex flex-col h-full overflow-hidden relative">
             <!-- Header Component -->
-            <x-mentor.tajuk />
+            <?php if (isset($component)) { $__componentOriginalda31d3f3090d1a10f8d10b1cf1809649 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalda31d3f3090d1a10f8d10b1cf1809649 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.tajuk','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.tajuk'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalda31d3f3090d1a10f8d10b1cf1809649)): ?>
+<?php $attributes = $__attributesOriginalda31d3f3090d1a10f8d10b1cf1809649; ?>
+<?php unset($__attributesOriginalda31d3f3090d1a10f8d10b1cf1809649); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalda31d3f3090d1a10f8d10b1cf1809649)): ?>
+<?php $component = $__componentOriginalda31d3f3090d1a10f8d10b1cf1809649; ?>
+<?php unset($__componentOriginalda31d3f3090d1a10f8d10b1cf1809649); ?>
+<?php endif; ?>
 
             <!-- Content Area -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto px-2 pt-7 pb-8 sm:px-4 lg:px-6 custom-scrollbar">
                 
                 <!-- Native Alpine.js Toast Notification System -->
-                @include('components.notifikasi-singkat')
+                <?php echo $__env->make('components.notifikasi-singkat', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
-                @yield('content')
+                <?php echo $__env->yieldContent('content'); ?>
             </main>
         </div>
         
@@ -183,9 +224,77 @@
                     });
                 }
             });
+
+            // Global SweetAlert2 untuk Konfirmasi Tutup Tiket (.close-ticket-form)
+            document.body.addEventListener('submit', function(e) {
+                if (e.target && e.target.classList.contains('close-ticket-form')) {
+                    e.preventDefault();
+                    let form = e.target;
+                    Swal.fire({
+                        title: 'Tutup Tiket?',
+                        text: "Apakah Anda yakin ingin menutup tiket ini? Pengguna tidak akan bisa membalas lagi.",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya, Tutup Tiket',
+                        cancelButtonText: 'Batal',
+                        width: '24rem',
+                        padding: '1.5rem',
+                        buttonsStyling: false,
+                        customClass: {
+                            popup: '!rounded-2xl !shadow-2xl !border !border-gray-100',
+                            title: '!text-xl !font-extrabold font-heading !text-gray-900 !pt-2',
+                            htmlContainer: '!text-sm !text-gray-500 !mt-2',
+                            icon: '!scale-75 !mt-0 !mb-2 !border-amber-400 !text-amber-500',
+                            actions: '!mt-6 !w-full !flex !justify-center !gap-3',
+                            confirmButton: '!bg-red-500 hover:!bg-red-600 !text-white !rounded-xl !text-sm !font-bold !px-8 !py-2.5 !transition-all !duration-100 !shadow-sm hover:!shadow-md transform hover:!-translate-y-0.5',
+                            cancelButton: '!bg-gray-100 hover:!bg-gray-200 !text-gray-700 !rounded-xl !text-sm !font-bold !px-8 !py-2.5 !transition-all !duration-100'
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
+                }
+            });
+
+            // Global SweetAlert2 untuk Konfirmasi Reset Password (.reset-password-form)
+            document.body.addEventListener('submit', function(e) {
+                if (e.target && e.target.classList.contains('reset-password-form')) {
+                    e.preventDefault();
+                    let form = e.target;
+                    let itemName = form.getAttribute('data-name') || 'akun';
+                    Swal.fire({
+                        title: 'Reset Password?',
+                        text: "Password untuk " + itemName + " akan direset menjadi 'user12345'. Anda yakin?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya, Reset',
+                        cancelButtonText: 'Batal',
+                        width: '24rem',
+                        padding: '1.5rem',
+                        buttonsStyling: false,
+                        customClass: {
+                            popup: '!rounded-2xl !shadow-2xl !border !border-gray-100',
+                            title: '!text-xl !font-extrabold font-heading !text-gray-900 !pt-2',
+                            htmlContainer: '!text-sm !text-gray-500 !mt-2',
+                            icon: '!scale-75 !mt-0 !mb-2 !border-amber-400 !text-amber-500',
+                            actions: '!mt-6 !w-full !flex !justify-center !gap-3',
+                            confirmButton: '!bg-red-500 hover:!bg-red-600 !text-white !rounded-xl !text-sm !font-bold !px-8 !py-2.5 !transition-all !duration-100 !shadow-sm hover:!shadow-md transform hover:!-translate-y-0.5',
+                            cancelButton: '!bg-gray-100 hover:!bg-gray-200 !text-gray-700 !rounded-xl !text-sm !font-bold !px-8 !py-2.5 !transition-all !duration-100'
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
+                }
+            });
+
+
         });
     </script>
     
-    @stack('scripts')
+    <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>
 </html>
+<?php /**PATH C:\laragon\www\ruang-les\resources\views/layouts/admin.blade.php ENDPATH**/ ?>

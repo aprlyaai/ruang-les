@@ -1,21 +1,34 @@
-@extends('layouts.mentor')
+<?php $__env->startSection('title', 'Layanan & Bantuan'); ?>
 
-@section('title', 'Layanan & Bantuan')
+<?php $__env->startSection('content'); ?>
+<div x-data="{ tab: 'Semua', modalOpen: <?php echo e($errors->any() ? 'true' : 'false'); ?>, errors: { kategori_layanan: <?php echo e($errors->has('kategori_layanan') ? 'true' : 'false'); ?>, subject_layanan: <?php echo e($errors->has('subject_layanan') ? 'true' : 'false'); ?>, pesan: <?php echo e($errors->has('pesan') ? 'true' : 'false'); ?> }, categoryType: '<?php echo e(old('category_select', '')); ?>', customCategory: '<?php echo e(old('custom_category', '')); ?>', closeModal() { this.modalOpen = false; this.errors = { kategori_layanan: false, subject_layanan: false, pesan: false }; } }" class="space-y-0">
 
-@section('content')
-<div x-data="{ tab: 'Semua', modalOpen: {{ $errors->any() ? 'true' : 'false' }}, errors: { kategori_layanan: {{ $errors->has('kategori_layanan') ? 'true' : 'false' }}, subject_layanan: {{ $errors->has('subject_layanan') ? 'true' : 'false' }}, pesan: {{ $errors->has('pesan') ? 'true' : 'false' }} }, categoryType: '{{ old('category_select', '') }}', customCategory: '{{ old('custom_category', '') }}', closeModal() { this.modalOpen = false; this.errors = { kategori_layanan: false, subject_layanan: false, pesan: false }; } }" class="space-y-0">
-
-    <x-admin.tajuk-halaman
-        title="Layanan & Bantuan"
-        description="Sampaikan testimoni, pertanyaan, keluhan, atau kendala Anda kepada pihak Ruang Les."
-    >
-        <x-slot name="rightActions">
+    <?php if (isset($component)) { $__componentOriginalbab0e3efdab257546d29c6a1a8dc50ce = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalbab0e3efdab257546d29c6a1a8dc50ce = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.tajuk-halaman','data' => ['title' => 'Layanan & Bantuan','description' => 'Sampaikan testimoni, pertanyaan, keluhan, atau kendala Anda kepada pihak Ruang Les.']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.tajuk-halaman'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['title' => 'Layanan & Bantuan','description' => 'Sampaikan testimoni, pertanyaan, keluhan, atau kendala Anda kepada pihak Ruang Les.']); ?>
+         <?php $__env->slot('rightActions', null, []); ?> 
             <button @click="modalOpen = true" class="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-white transition-all duration-100 bg-primary-600 rounded-xl hover:bg-primary-700 shadow-sm hover:-translate-y-0.5">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                 Buat Tiket Baru
             </button>
-        </x-slot>
-    </x-admin.tajuk-halaman>
+         <?php $__env->endSlot(); ?>
+     <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalbab0e3efdab257546d29c6a1a8dc50ce)): ?>
+<?php $attributes = $__attributesOriginalbab0e3efdab257546d29c6a1a8dc50ce; ?>
+<?php unset($__attributesOriginalbab0e3efdab257546d29c6a1a8dc50ce); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalbab0e3efdab257546d29c6a1a8dc50ce)): ?>
+<?php $component = $__componentOriginalbab0e3efdab257546d29c6a1a8dc50ce; ?>
+<?php unset($__componentOriginalbab0e3efdab257546d29c6a1a8dc50ce); ?>
+<?php endif; ?>
 
     <!-- Tab Navigation -->
     <div class="bg-white/80 backdrop-blur-md rounded-t-2xl shadow-sm border border-primary-100/50 border-b-0 overflow-hidden mt-6">
@@ -49,66 +62,136 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
-                    @forelse($tickets as $ticket)
-                        @php
+                    <?php $__empty_1 = true; $__currentLoopData = $tickets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ticket): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                        <?php
                             $hasUnread = $ticket->replies->where('dibaca_pengguna', false)->where('user_id', '!=', auth()->id())->count() > 0;
                             $rowClass = $hasUnread ? 'bg-primary-50 font-semibold' : ($ticket->status_layanan == 'Open' ? 'bg-blue-50/30' : '');
-                        @endphp
-                        <tr x-show="tab === 'Semua' || tab === '{{ $ticket->status_layanan }}'" x-cloak class="hover:bg-primary-50/50 transition-colors {{ $rowClass }}">
+                        ?>
+                        <tr x-show="tab === 'Semua' || tab === '<?php echo e($ticket->status_layanan); ?>'" x-cloak class="hover:bg-primary-50/50 transition-colors <?php echo e($rowClass); ?>">
                             <td class="px-4 py-3 align-middle whitespace-nowrap">
                                 <div class="flex items-center gap-2">
-                                    @if($hasUnread)
+                                    <?php if($hasUnread): ?>
                                         <span class="w-2 h-2 bg-red-500 rounded-full flex-shrink-0 animate-pulse"></span>
-                                    @endif
+                                    <?php endif; ?>
                                     <div>
-                                        <div class="text-sm font-bold text-gray-900">{{ $ticket->no_ticket }}</div>
-                                        <div class="text-xs text-gray-500 mt-1">{{ $ticket->created_at->format('d M Y, H:i') }}</div>
+                                        <div class="text-sm font-bold text-gray-900"><?php echo e($ticket->no_ticket); ?></div>
+                                        <div class="text-xs text-gray-500 mt-1"><?php echo e($ticket->created_at->format('d M Y, H:i')); ?></div>
                                     </div>
                                 </div>
                             </td>
                             <td class="px-4 py-3 align-middle">
                                 <div class="text-sm font-semibold text-gray-900">
-                                    {{ $ticket->kategori_layanan }}
+                                    <?php echo e($ticket->kategori_layanan); ?>
+
                                 </div>
                             </td>
                             <td class="px-4 py-3 align-middle">
-                                <div class="text-sm font-semibold text-gray-900">{{ $ticket->subject_layanan }}</div>
+                                <div class="text-sm font-semibold text-gray-900"><?php echo e($ticket->subject_layanan); ?></div>
                             </td>
                             <td class="px-4 py-3 align-middle">
-                                @if($ticket->status_layanan == 'Open')
-                                    <x-antarmuka.lencana color="danger" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit whitespace-nowrap">
+                                <?php if($ticket->status_layanan == 'Open'): ?>
+                                    <?php if (isset($component)) { $__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.antarmuka.lencana','data' => ['color' => 'danger','class' => 'inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit whitespace-nowrap']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('antarmuka.lencana'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['color' => 'danger','class' => 'inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit whitespace-nowrap']); ?>
                                         <span class="w-1.5 h-1.5 bg-red-500 rounded-full mr-1.5 shrink-0 animate-pulse"></span>
                                         Menunggu Balasan
-                                    </x-antarmuka.lencana>
-                                @elseif($ticket->status_layanan == 'In Progress')
-                                    <x-antarmuka.lencana color="warning" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit whitespace-nowrap">
+                                     <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b)): ?>
+<?php $attributes = $__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b; ?>
+<?php unset($__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b)): ?>
+<?php $component = $__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b; ?>
+<?php unset($__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b); ?>
+<?php endif; ?>
+                                <?php elseif($ticket->status_layanan == 'In Progress'): ?>
+                                    <?php if (isset($component)) { $__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.antarmuka.lencana','data' => ['color' => 'warning','class' => 'inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit whitespace-nowrap']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('antarmuka.lencana'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['color' => 'warning','class' => 'inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit whitespace-nowrap']); ?>
                                         <span class="w-1.5 h-1.5 bg-amber-500 rounded-full mr-1.5 shrink-0"></span>
                                         Sedang Ditangani
-                                    </x-antarmuka.lencana>
-                                @else
-                                    <x-antarmuka.lencana color="gray" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit whitespace-nowrap">
+                                     <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b)): ?>
+<?php $attributes = $__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b; ?>
+<?php unset($__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b)): ?>
+<?php $component = $__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b; ?>
+<?php unset($__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b); ?>
+<?php endif; ?>
+                                <?php else: ?>
+                                    <?php if (isset($component)) { $__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.antarmuka.lencana','data' => ['color' => 'gray','class' => 'inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit whitespace-nowrap']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('antarmuka.lencana'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['color' => 'gray','class' => 'inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit whitespace-nowrap']); ?>
                                         <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mr-1.5 shrink-0"></span>
                                         Selesai
-                                    </x-antarmuka.lencana>
-                                @endif
+                                     <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b)): ?>
+<?php $attributes = $__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b; ?>
+<?php unset($__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b)): ?>
+<?php $component = $__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b; ?>
+<?php unset($__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b); ?>
+<?php endif; ?>
+                                <?php endif; ?>
                             </td>
                             <td class="px-4 py-3 align-middle text-center">
-                                <a href="{{ route('mentor.layanan.show', $ticket->id) }}" class="inline-flex items-center justify-center px-3 py-1.5 min-h-[25px] min-w-[25px] text-xs font-bold text-gray-600 bg-white border border-gray-200 transition-all duration-100 rounded-lg hover:bg-primary-50 hover:text-primary-600 hover:border-primary-200 shadow-sm">
+                                <a href="<?php echo e(route('ortu.layanan.show', $ticket->id)); ?>" class="inline-flex items-center justify-center px-3 py-1.5 min-h-[25px] min-w-[25px] text-xs font-bold text-gray-600 bg-white border border-gray-200 transition-all duration-100 rounded-lg hover:bg-primary-50 hover:text-primary-600 hover:border-primary-200 shadow-sm">
                                     Buka Chat
                                 </a>
                             </td>
                         </tr>
-                    @empty
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <tr>
                             <td colspan="5" class="px-6 py-12 align-middle">
-                                <x-admin.keadaan-kosong
-                                    icon="mail"
-                                    title="Belum Ada Riwayat Layanan"
-                                    message="Butuh bantuan atau punya masukan? Silakan sampaikan di sini. Jangan ragu untuk menghubungi tim Ruang Les ya! ^^"
-                                />
+                                <?php if (isset($component)) { $__componentOriginala248761445578b3580e6fcec2c0db260 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginala248761445578b3580e6fcec2c0db260 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.keadaan-kosong','data' => ['icon' => 'mail','title' => 'Belum Ada Riwayat Layanan','message' => 'Butuh bantuan atau punya masukan? Silakan sampaikan di sini. Jangan ragu untuk menghubungi tim Ruang Les ya! ^^']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.keadaan-kosong'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['icon' => 'mail','title' => 'Belum Ada Riwayat Layanan','message' => 'Butuh bantuan atau punya masukan? Silakan sampaikan di sini. Jangan ragu untuk menghubungi tim Ruang Les ya! ^^']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginala248761445578b3580e6fcec2c0db260)): ?>
+<?php $attributes = $__attributesOriginala248761445578b3580e6fcec2c0db260; ?>
+<?php unset($__attributesOriginala248761445578b3580e6fcec2c0db260); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginala248761445578b3580e6fcec2c0db260)): ?>
+<?php $component = $__componentOriginala248761445578b3580e6fcec2c0db260; ?>
+<?php unset($__componentOriginala248761445578b3580e6fcec2c0db260); ?>
+<?php endif; ?>
                             </td>
                         </tr>
-                    @endforelse
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
@@ -133,8 +216,8 @@
                      x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
                      class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl w-full relative z-10">
 
-                    <form action="{{ route('mentor.layanan.store') }}" method="POST" novalidate>
-                        @csrf
+                    <form action="<?php echo e(route('ortu.layanan.store')); ?>" method="POST" novalidate>
+                        <?php echo csrf_field(); ?>
                         <div class="bg-white px-4 pt-5 pb-4 sm:p-6">
 
                             <!-- Header -->
@@ -163,7 +246,7 @@
                                         <option value="Request Materi">Request Materi</option>
                                         <option value="Feedback">Feedback / Masukan</option>
                                         <option value="Testimoni">Testimoni</option>
-                                        <option value="Keluhan Murid / Ortu">Keluhan Murid / Ortu</option>
+                                        <option value="Keluhan Mentor">Keluhan Mentor</option>
                                         <option value="Kendala Sistem">Kendala Sistem Web</option>
                                         <option value="Lainnya...">Lainnya...</option>
                                     </select>
@@ -174,36 +257,57 @@
 
                                     <input type="hidden" name="kategori_layanan" :value="categoryType === 'Lainnya...' ? customCategory : categoryType">
 
-                                    @error('kategori_layanan')
+                                    <?php $__errorArgs = ['kategori_layanan'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                         <p x-show="errors.kategori_layanan" class="text-red-500 text-xs mt-2 font-medium flex items-center">
                                             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                             Kategori tiket wajib diisi.
                                         </p>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
 
                                 <div>
                                     <label for="subject_layanan" class="block text-sm font-semibold text-gray-600 mb-2">Subjek <span class="text-red-500">*</span></label>
-                                    <input type="text" name="subject_layanan" id="subject_layanan" @input="errors.subject_layanan = false" value="{{ old('subject_layanan') }}" placeholder="Tuliskan topik atau ringkasan pesan Anda" :class="errors.subject_layanan ? 'border-red-500 focus:ring-red-500 bg-red-50/30' : 'border-gray-200 focus:border-primary-400 focus:ring-primary-200'" class="block w-full rounded-2xl p-3 border shadow-sm focus:outline-none focus:ring-2 transition-colors duration-100 text-sm font-medium text-gray-800">
+                                    <input type="text" name="subject_layanan" id="subject_layanan" @input="errors.subject_layanan = false" value="<?php echo e(old('subject_layanan')); ?>" placeholder="Tuliskan topik atau ringkasan pesan Anda" :class="errors.subject_layanan ? 'border-red-500 focus:ring-red-500 bg-red-50/30' : 'border-gray-200 focus:border-primary-400 focus:ring-primary-200'" class="block w-full rounded-2xl p-3 border shadow-sm focus:outline-none focus:ring-2 transition-colors duration-100 text-sm font-medium text-gray-800">
 
-                                    @error('subject_layanan')
+                                    <?php $__errorArgs = ['subject_layanan'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                         <p x-show="errors.subject_layanan" class="text-red-500 text-xs mt-2 font-medium flex items-center">
                                             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                             Subjek tiket wajib diisi.
                                         </p>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
 
                                 <div>
                                     <label for="pesan" class="block text-sm font-semibold text-gray-600 mb-2">Isi Pesan <span class="text-red-500">*</span></label>
-                                    <textarea name="pesan" id="pesan" rows="5" @input="errors.pesan = false" placeholder="Ceritakan semua detail pesan Anda secara jelas agar tim Ruang Les dapat merespons dengan tepat..." :class="errors.pesan ? 'border-red-500 focus:ring-red-500 bg-red-50/30' : 'border-gray-200 focus:border-primary-400 focus:ring-primary-200'" class="block w-full rounded-2xl p-3 border shadow-sm focus:outline-none focus:ring-2 transition-colors duration-100 text-sm font-medium text-gray-800">{{ old('pesan') }}</textarea>
+                                    <textarea name="pesan" id="pesan" rows="5" @input="errors.pesan = false" placeholder="Ceritakan semua detail pesan Anda secara jelas agar tim Ruang Les dapat merespons dengan tepat..." :class="errors.pesan ? 'border-red-500 focus:ring-red-500 bg-red-50/30' : 'border-gray-200 focus:border-primary-400 focus:ring-primary-200'" class="block w-full rounded-2xl p-3 border shadow-sm focus:outline-none focus:ring-2 transition-colors duration-100 text-sm font-medium text-gray-800"><?php echo e(old('pesan')); ?></textarea>
 
-                                    @error('pesan')
+                                    <?php $__errorArgs = ['pesan'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                         <p x-show="errors.pesan" class="text-red-500 text-xs mt-2 font-medium flex items-center">
                                             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                             Detail wajib diisi.
                                         </p>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                         </div>
@@ -223,4 +327,6 @@
         </div>
     </template>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.orang-tua', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\ruang-les\resources\views/orang-tua/layanan/daftar.blade.php ENDPATH**/ ?>

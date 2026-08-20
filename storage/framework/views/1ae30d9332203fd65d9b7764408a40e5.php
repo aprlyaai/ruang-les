@@ -1,4 +1,32 @@
-@props(['siswa', 'jadwal', 'jadwals' => collect()])
+<?php $attributes ??= new \Illuminate\View\ComponentAttributeBag;
+
+$__newAttributes = [];
+$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames((['siswa', 'jadwal', 'jadwals' => collect()]));
+
+foreach ($attributes->all() as $__key => $__value) {
+    if (in_array($__key, $__propNames)) {
+        $$__key = $$__key ?? $__value;
+    } else {
+        $__newAttributes[$__key] = $__value;
+    }
+}
+
+$attributes = new \Illuminate\View\ComponentAttributeBag($__newAttributes);
+
+unset($__propNames);
+unset($__newAttributes);
+
+foreach (array_filter((['siswa', 'jadwal', 'jadwals' => collect()]), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
+    $$__key = $$__key ?? $__value;
+}
+
+$__defined_vars = get_defined_vars();
+
+foreach ($attributes->all() as $__key => $__value) {
+    if (array_key_exists($__key, $__defined_vars)) unset($$__key);
+}
+
+unset($__defined_vars, $__key, $__value); ?>
 
 <!-- Top Banner: Hero Card -->
 <div x-data="{ showProfile: false }" class="bg-white rounded-2xl shadow-sm border border-primary-100/50 p-6 md:p-8 relative overflow-hidden">
@@ -15,9 +43,9 @@
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <!-- 2. Teks -->
                 <div>
-                    <h2 class="text-2xl md:text-3xl font-extrabold text-primary-600">{{ $siswa->nama_murid }}</h2>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-primary-600"><?php echo e($siswa->nama_murid); ?></h2>
                     <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mt-1">
-                        <p class="text-gray-900 font-semibold text-base">{{ $siswa->sekolah ?? 'Sekolah Tidak Diketahui' }}</p>
+                        <p class="text-gray-900 font-semibold text-base"><?php echo e($siswa->sekolah ?? 'Sekolah Tidak Diketahui'); ?></p>
                         <button @click="showProfile = true" type="button" class="inline-flex justify-center items-center px-2 py-0.5 text-[11px] uppercase tracking-wide font-bold text-primary-700 bg-primary-50 hover:bg-primary-100 border border-primary-200 rounded-md transition-colors focus:outline-none w-max mx-auto sm:mx-0">
                             <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             Profil Belajar
@@ -37,7 +65,7 @@
                             Tingkat Kelas
                         </div>
                         <span class="font-bold text-gray-900 flex-1 break-words">
-                            Kelas {{ $siswa->kelas ?? '-' }} SD
+                            Kelas <?php echo e($siswa->kelas ?? '-'); ?> SD
                         </span>
                     </div>
 
@@ -47,13 +75,13 @@
                             Paket Belajar
                         </div>
                         <div class="flex flex-col gap-1 flex-1 break-words">
-                            @if(isset($jadwals) && $jadwals->count() > 0)
-                                @foreach($jadwals as $j)
-                                    <span class="font-bold text-gray-900">{{ $j->package->nama_program ?? '-' }} ({{ $j->hari }})</span>
-                                @endforeach
-                            @else
-                                <span class="font-bold text-gray-900">{{ $jadwal->package->nama_program ?? '-' }}</span>
-                            @endif
+                            <?php if(isset($jadwals) && $jadwals->count() > 0): ?>
+                                <?php $__currentLoopData = $jadwals; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $j): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <span class="font-bold text-gray-900"><?php echo e($j->package->nama_program ?? '-'); ?> (<?php echo e($j->hari); ?>)</span>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php else: ?>
+                                <span class="font-bold text-gray-900"><?php echo e($jadwal->package->nama_program ?? '-'); ?></span>
+                            <?php endif; ?>
                         </div>
                     </div>
 
@@ -63,13 +91,13 @@
                             Kelas Belajar
                         </div>
                         <div class="flex flex-col gap-1 flex-1 break-words">
-                            @if(isset($jadwals) && $jadwals->count() > 0)
-                                @foreach($jadwals as $j)
-                                    <span class="font-bold text-gray-900">{{ $j->nama_kelas }}</span>
-                                @endforeach
-                            @else
-                                <span class="font-bold text-gray-900">{{ $jadwal->nama_kelas }}</span>
-                            @endif
+                            <?php if(isset($jadwals) && $jadwals->count() > 0): ?>
+                                <?php $__currentLoopData = $jadwals; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $j): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <span class="font-bold text-gray-900"><?php echo e($j->nama_kelas); ?></span>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php else: ?>
+                                <span class="font-bold text-gray-900"><?php echo e($jadwal->nama_kelas); ?></span>
+                            <?php endif; ?>
                         </div>
                     </div>
 
@@ -79,13 +107,13 @@
                             Jadwal Belajar
                         </div>
                         <div class="flex flex-col gap-1 flex-1 break-words">
-                            @if(isset($jadwals) && $jadwals->count() > 0)
-                                @foreach($jadwals as $j)
-                                    <span class="font-bold text-gray-900">{{ $j->hari }}, {{ $j->formatted_time_range }}</span>
-                                @endforeach
-                            @else
-                                <span class="font-bold text-gray-900">{{ $jadwal->hari }}, {{ $jadwal->formatted_time_range }}</span>
-                            @endif
+                            <?php if(isset($jadwals) && $jadwals->count() > 0): ?>
+                                <?php $__currentLoopData = $jadwals; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $j): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <span class="font-bold text-gray-900"><?php echo e($j->hari); ?>, <?php echo e($j->formatted_time_range); ?></span>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php else: ?>
+                                <span class="font-bold text-gray-900"><?php echo e($jadwal->hari); ?>, <?php echo e($jadwal->formatted_time_range); ?></span>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -95,20 +123,20 @@
                     <div class="bg-primary-50/20 border border-primary-100/40 rounded-2xl p-4 flex flex-col gap-2 w-full max-w-[280px] text-xs shadow-sm">
                         <div class="flex justify-between items-center gap-6">
                             <span class="text-gray-600 font-bold">Sisa Pertemuan:</span>
-                            @if(($siswa->kuota_belajar ?? 0) > 0)
-                                <span class="font-extrabold text-primary-700 bg-primary-50 px-2.5 py-0.5 rounded-lg border border-primary-100/30 text-xs">{{ $siswa->kuota_belajar }} Sesi</span>
-                            @elseif(($siswa->kuota_belajar ?? 0) == 0)
+                            <?php if(($siswa->kuota_belajar ?? 0) > 0): ?>
+                                <span class="font-extrabold text-primary-700 bg-primary-50 px-2.5 py-0.5 rounded-lg border border-primary-100/30 text-xs"><?php echo e($siswa->kuota_belajar); ?> Sesi</span>
+                            <?php elseif(($siswa->kuota_belajar ?? 0) == 0): ?>
                                 <span class="font-extrabold text-red-700 bg-red-50 px-2.5 py-0.5 rounded-lg border border-red-100/30 text-xs">Habis</span>
-                            @else
-                                <span class="font-extrabold text-red-700 bg-red-50 px-2.5 py-0.5 rounded-lg border border-red-100/30 text-xs">Habis ( {{ $siswa->kuota_belajar }} Sesi )</span>
-                            @endif
+                            <?php else: ?>
+                                <span class="font-extrabold text-red-700 bg-red-50 px-2.5 py-0.5 rounded-lg border border-red-100/30 text-xs">Habis ( <?php echo e($siswa->kuota_belajar); ?> Sesi )</span>
+                            <?php endif; ?>
                         </div>
-                        @if($siswa->estimasi_hari_h)
+                        <?php if($siswa->estimasi_hari_h): ?>
                         <div class="flex justify-between items-center gap-6 pt-2 border-t border-primary-100/30">
                             <span class="text-gray-600 font-bold">Estimasi Selesai:</span>
-                            <span class="font-extrabold text-gray-900">{{ \Carbon\Carbon::parse($siswa->estimasi_hari_h)->translatedFormat('d M Y') }}</span>
+                            <span class="font-extrabold text-gray-900"><?php echo e(\Carbon\Carbon::parse($siswa->estimasi_hari_h)->translatedFormat('d M Y')); ?></span>
                         </div>
-                        @endif
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -140,24 +168,24 @@
 
                         <div class="bg-primary-50/50 p-4 rounded-xl border border-primary-100/50 mb-5">
                             <p class="text-[10px] text-primary-600 font-bold mb-1 uppercase tracking-wider">Data Murid</p>
-                            <p class="font-bold text-gray-900">{{ $siswa->nama_murid }}</p>
-                            <p class="text-sm text-gray-900 mt-1">Sekolah: <span>{{ $siswa->school_name ?? '-' }}</span></p>
+                            <p class="font-bold text-gray-900"><?php echo e($siswa->nama_murid); ?></p>
+                            <p class="text-sm text-gray-900 mt-1">Sekolah: <span><?php echo e($siswa->school_name ?? '-'); ?></span></p>
                         </div>
 
                         <div class="space-y-4">
                             <div class="bg-white border border-gray-200 rounded-xl p-4">
                                 <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Mata Pelajaran yang Perlu Ditingkatkan (Sulit)</p>
-                                <p class="text-sm font-semibold text-gray-900">{{ $siswa->mapel_sulit ?? 'Belum ada catatan.' }}</p>
+                                <p class="text-sm font-semibold text-gray-900"><?php echo e($siswa->mapel_sulit ?? 'Belum ada catatan.'); ?></p>
                             </div>
 
                             <div class="bg-white border border-gray-200 rounded-xl p-4">
                                 <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Mata Pelajaran yang Disukai</p>
-                                <p class="text-sm font-semibold text-gray-900">{{ $siswa->mapel_ditingkatkan ?? 'Belum ada catatan.' }}</p>
+                                <p class="text-sm font-semibold text-gray-900"><?php echo e($siswa->mapel_ditingkatkan ?? 'Belum ada catatan.'); ?></p>
                             </div>
 
                             <div class="bg-white border border-gray-200 rounded-xl p-4">
                                 <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Karakteristik & Gaya Belajar Murid</p>
-                                <p class="text-sm font-semibold text-gray-900 leading-relaxed">{{ $siswa->karakteristik_anak ?? 'Belum ada catatan.' }}</p>
+                                <p class="text-sm font-semibold text-gray-900 leading-relaxed"><?php echo e($siswa->karakteristik_anak ?? 'Belum ada catatan.'); ?></p>
                             </div>
                         </div>
 
@@ -172,3 +200,4 @@
         </div>
     </template>
 </div>
+<?php /**PATH C:\laragon\www\ruang-les\resources\views/components/mentor/profil-murid.blade.php ENDPATH**/ ?>

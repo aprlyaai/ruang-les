@@ -19,17 +19,17 @@
 
     <!-- Tab Navigation -->
     <div class="bg-white/80 backdrop-blur-md rounded-t-2xl shadow-sm border border-primary-100/50 border-b-0 overflow-hidden mt-6">
-        <nav class="flex flex-wrap overflow-x-auto" aria-label="Tabs">
-            <button @click="tab = 'Semua'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': tab === 'Semua', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': tab !== 'Semua'}" class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+        <nav class="flex overflow-x-auto whitespace-nowrap no-scrollbar" style="-ms-overflow-style: none; scrollbar-width: none;" aria-label="Tabs">
+            <button @click="tab = 'Semua'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': tab === 'Semua', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': tab !== 'Semua'}" class="flex-1 min-w-max whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                 Semua
             </button>
-            <button @click="tab = 'Open'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': tab === 'Open', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': tab !== 'Open'}" class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+            <button @click="tab = 'Open'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': tab === 'Open', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': tab !== 'Open'}" class="flex-1 min-w-max whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                 Menunggu Balasan
             </button>
-            <button @click="tab = 'In Progress'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': tab === 'In Progress', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': tab !== 'In Progress'}" class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+            <button @click="tab = 'In Progress'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': tab === 'In Progress', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': tab !== 'In Progress'}" class="flex-1 min-w-max whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                 Sedang Ditangani
             </button>
-            <button @click="tab = 'Closed'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': tab === 'Closed', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': tab !== 'Closed'}" class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+            <button @click="tab = 'Closed'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': tab === 'Closed', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': tab !== 'Closed'}" class="flex-1 min-w-max whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                 Selesai
             </button>
         </nav>
@@ -76,20 +76,20 @@
                             </td>
                             <td class="px-4 py-3 align-middle">
                                 @if($ticket->status_layanan == 'Open')
-                                    <x-antarmuka.lencana color="danger" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border w-fit">
-                                        <span class="w-1.5 h-1.5 bg-red-500 rounded-full mr-1.5 animate-pulse"></x-antarmuka.lencana>
+                                    <x-antarmuka.lencana color="danger" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit whitespace-nowrap">
+                                        <span class="w-1.5 h-1.5 bg-red-500 rounded-full mr-1.5 shrink-0 animate-pulse"></span>
                                         Menunggu Balasan
-                                    </span>
+                                    </x-antarmuka.lencana>
                                 @elseif($ticket->status_layanan == 'In Progress')
-                                    <x-antarmuka.lencana color="warning" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border w-fit">
-                                        <span class="w-1.5 h-1.5 bg-amber-500 rounded-full mr-1.5"></x-antarmuka.lencana>
+                                    <x-antarmuka.lencana color="warning" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit whitespace-nowrap">
+                                        <span class="w-1.5 h-1.5 bg-amber-500 rounded-full mr-1.5 shrink-0"></span>
                                         Sedang Ditangani
-                                    </span>
+                                    </x-antarmuka.lencana>
                                 @else
-                                    <x-antarmuka.lencana color="gray" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border w-fit">
-                                        <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mr-1.5"></x-antarmuka.lencana>
+                                    <x-antarmuka.lencana color="gray" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit whitespace-nowrap">
+                                        <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mr-1.5 shrink-0"></span>
                                         Selesai
-                                    </span>
+                                    </x-antarmuka.lencana>
                                 @endif
                             </td>
                             <td class="px-4 py-3 align-middle text-center">

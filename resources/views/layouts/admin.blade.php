@@ -74,6 +74,13 @@
         .animate-blob {
             animation: blob 15s infinite alternate ease-in-out;
         }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none !important;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+        }
         [x-cloak] { display: none !important; }
     </style>
 </head>

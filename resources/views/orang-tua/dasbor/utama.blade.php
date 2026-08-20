@@ -23,9 +23,9 @@
                     Kami siap membantu anak Anda mencapai potensi belajar terbaiknya dengan mentor profesional dan modul evaluasi cerdas. Mulailah perjalanan akademik anak Anda sekarang.
                 </p>
 
-                <a href="{{ route('pendaftaran.form') }}" class="inline-flex items-center justify-center px-10 py-5 border border-transparent text-xl font-bold rounded-2xl text-white bg-primary-600 hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-600/40 focus:outline-none focus:ring-4 focus:ring-primary-500 focus:ring-offset-2 transition-all transform hover:-translate-y-1">
-                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                    Isi Formulir Pendaftaran Anak
+                <a href="{{ route('pendaftaran.form') }}" class="inline-flex items-center justify-center px-5 sm:px-10 py-4 sm:py-5 border border-transparent text-base sm:text-xl font-bold rounded-2xl text-white bg-primary-600 hover:bg-primary-700 hover:shadow-xl hover:shadow-primary-600/40 focus:outline-none focus:ring-4 focus:ring-primary-500 focus:ring-offset-2 transition-all transform hover:-translate-y-1 w-full sm:w-auto text-center">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6 mr-2.5 sm:mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                    <span>Isi Formulir Pendaftaran Anak</span>
                 </a>
             </div>
         </div>
@@ -60,9 +60,9 @@
                     Terima kasih telah melakukan pembayaran! Admin kami sedang meninjau dan memverifikasi pendaftaran <strong>{{ $activeSiswa->panggilan_murid ?? 'Anak Anda' }}</strong>. Fitur Ruang Les akan terbuka secara otomatis setelah proses verifikasi selesai.
                 </p>
 
-                <div class="mt-8 bg-amber-50/80 backdrop-blur-sm border border-amber-200 rounded-2xl p-4 inline-flex items-center gap-3 shadow-sm">
-                    <svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <span class="text-amber-800 font-medium">Status saat ini: Menunggu Konfirmasi Admin</span>
+                <div class="mt-8 bg-amber-50/80 backdrop-blur-sm border border-amber-200 rounded-2xl p-4 inline-flex items-center gap-3 shadow-sm text-left max-w-full">
+                    <svg class="w-6 h-6 text-amber-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span class="text-amber-800 font-medium text-sm sm:text-base leading-snug">Status saat ini: Menunggu Konfirmasi Admin</span>
                 </div>
             </div>
         </div>
@@ -175,17 +175,17 @@
                     <div class="divide-y divide-gray-100 overflow-y-auto flex-1 max-h-[400px]">
                         @foreach($pengumumans as $pengumuman)
                         <div class="p-6 {{ $pengumuman->diprioritaskan ? 'bg-amber-50/30' : 'hover:bg-primary-50/10 transition-colors' }}">
-                            <div class="flex items-start justify-between mb-2">
-                                <div class="flex items-center gap-2">
+                            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-1 mb-2">
+                                <div class="flex items-start gap-2 flex-1">
                                     @if($pengumuman->diprioritaskan)
-                                    <x-antarmuka.lencana color="warning" class="text-[10px] py-0 px-2 group-hover:scale-105">
+                                    <x-antarmuka.lencana color="warning" class="text-[10px] py-0 px-2 group-hover:scale-105 shrink-0 mt-0.5 whitespace-nowrap">
                                         <svg class="w-3 h-3 mr-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path></svg>
                                         Pinned
                                     </x-antarmuka.lencana>
                                     @endif
-                                    <h4 class="font-bold text-gray-900">{{ $pengumuman->judul_pengumuman }}</h4>
+                                    <h4 class="font-bold text-gray-900 leading-snug">{{ $pengumuman->judul_pengumuman }}</h4>
                                 </div>
-                                <span class="text-xs font-semibold text-gray-500 whitespace-nowrap ml-4">{{ $pengumuman->created_at->format('d M Y') }}</span>
+                                <span class="text-xs font-semibold text-gray-500 whitespace-nowrap sm:ml-4">{{ $pengumuman->created_at->format('d M Y') }}</span>
                             </div>
                             <div class="text-sm text-gray-600 prose prose-sm max-w-none text-justify">
                                 {!! $pengumuman->isi_pengumuman !!}
