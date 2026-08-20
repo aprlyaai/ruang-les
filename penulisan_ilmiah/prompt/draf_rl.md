@@ -596,231 +596,283 @@ Gambar 3.62. Rancangan Tampilan Halaman Profil Orang Tua
 
 
 3.5. Tahap Implementasi
+Tahap implementasi merealisasikan rancangan sistem Ruang Les ke dalam bentuk kode program dan basis data yang fungsional. Pengerjaan pada tahap ini difokuskan pada empat aspek utama, yaitu: pembuatan basis data, konfigurasi koneksi basis data, pembangunan antarmuka website, dan penerapan logika operasional inti. Berikut adalah penjabaran dari setiap tahapan implementasi tersebut:
 
-Tahap implementasi merupakan tahap realisasi dari seluruh rancangan sistem yang telah disusun pada tahap sebelumnya. Pada tahap ini, rancangan basis data dan rancangan antarmuka pengguna (wireframe) diterjemahkan ke dalam bentuk perangkat lunak yang fungsional menggunakan bahasa pemrograman, framework, dan teknologi yang telah ditentukan. Implementasi pada sistem bimbingan belajar Ruang Les dibagi menjadi dua fokus utama, yaitu implementasi basis data dan implementasi halaman website.
+3.5.1. Pembuatan Database
+Tahap pertama dalam implementasi sistem bimbingan belajar Ruang Les adalah pembuatan database. Database ini berfungsi sebagai wadah utama untuk menyimpan dan mengelola seluruh data operasional sistem. Proses pembuatannya dilakukan pada lingkungan server lokal (local server) menggunakan Laragon dan dikelola melalui antarmuka phpMyAdmin. Berikut adalah tahapan proses pembuatan basis data tersebut:
 
-3.5.1. Implementasi Database
+1. Buka aplikasi Laragon, lalu klik tombol Start All. Pastikan indikator layanan Apache dan MySQL sudah menyala dan berjalan normal, seperti yang ditunjukkan pada Gambar 3.63.
 
-Tahap implementasi basis data merupakan serangkaian proses mulai dari persiapan lingkungan *server*, konfigurasi konektivitas pada sistem, hingga penerjemahan rancangan logis dan fisik struktur tabel ke dalam sistem manajemen basis data yang sesungguhnya (MySQL). Pada sistem bimbingan belajar Ruang Les, proses ini dilakukan secara bertahap dan terstruktur untuk memastikan penyimpanan dan integritas data dapat berjalan dengan baik. Berikut adalah uraian tahapan implementasinya:
+Gambar 3.63. Menjalankan Layanan Apache dan MySQL pada Laragon
 
-1. Persiapan *Server* Lokal dan Pembuatan Basis Data
-Langkah pertama dalam implementasi adalah menyiapkan *local server environment* menggunakan aplikasi Laragon. Proses diawali dengan mengaktifkan modul Apache sebagai *web server* dan MySQL sebagai *database server* melalui panel kontrol Laragon. Setelah *server* berjalan, pengelolaan basis data dilakukan melalui antarmuka grafis phpMyAdmin. Pada tahap ini, sebuah basis data kosong baru bernama `ruang_les` dibuat sebagai wadah penyimpanan seluruh tabel yang dibutuhkan oleh sistem. Tampilan proses pembuatan basis data pada phpMyAdmin dapat dilihat pada Gambar 3.63.
+2. Akses phpMyAdmin dapat dilakukan melalui browser dengan mengetikkan localhost/phpmyadmin pada kolom URL atau dengan mengklik kanan pada antarmuka Laragon lalu memilih menu MySQL → phpMyAdmin seperti pada Gambar 3.64.
 
-[TEMPAT GAMBAR DI SINI]
-**Gambar 3.63.** Pembuatan Basis Data `ruang_les` pada phpMyAdmin
+Gambar 3.64. Membuka phpMyAdmin Melalui Menu Laragon
 
-2. Konfigurasi Konektivitas Basis Data
-Setelah basis data berhasil dibuat, langkah selanjutnya adalah menghubungkan sistem aplikasi (Laravel) dengan basis data MySQL. Konfigurasi ini dilakukan dengan mendefinisikan parameter koneksi pada berkas lingkungan variabel (`.env`) yang terletak di direktori utama (*root*) proyek sistem. Beberapa parameter yang dikonfigurasi meliputi `DB_CONNECTION` yang diisi dengan `mysql`, `DB_HOST` dengan alamat `127.0.0.1`, `DB_PORT` dengan `3306`, `DB_DATABASE` dengan nama basis data `ruang_les`, serta nama pengguna `DB_USERNAME` yaitu `root` dengan kata sandi `DB_PASSWORD` yang dibiarkan kosong sesuai pengaturan bawaan Laragon. Potongan kode konfigurasi koneksi tersebut adalah sebagai berikut:
+3. Pada halaman login phpMyAdmin yang muncul, ketik root pada kolom Username dan biarkan kolom Password tetap kosong tanpa diisi karakter apa pun. Tampilan halaman login ini dapat dilihat pada Gambar 3.65. Setelah itu, klik tombol Go di bagian bawah untuk melanjutkan.
 
-```env
+Gambar 3.65. Tampilan Halaman Login phpMyAdmin
+
+4. Setelah berhasil masuk, sistem akan mengarahkan pengguna ke halaman dasbor utama phpMyAdmin yang dapat dilihat pada Gambar 3.66. 
+
+Gambar 3.66. Tampilan Dasbor Utama phpMyAdmin
+
+5. Pilih menu New yang terletak pada sidebar sebelah kiri atau klik tab Databases di bagian atas. Pada kolom Database name, ketikkan ruang_les sebagai nama database yang akan digunakan. Selanjutnya, klik tombol Create yang ada di sebelahnya, seperti terlihat dalam Gambar 3.67.
+
+Gambar 3.67. Mengisikan Nama Database
+
+6. Setelah database berhasil terbuat, nama database ruang_les secara otomatis muncul pada daftar menu di sidebar kiri. Klik nama database tersebut untuk masuk dan mulai membuat tabel.
+Selanjutnya, buat tabel-tabel yang dibutuhkan sistem sesuai dengan rancangan yang telah disiapkan sebelumnya. Hasil akhir dari seluruh tabel yang telah berhasil dibuat di dalam database ruang_les diperlihatkan pada Gambar 3.68.
+
+Gambar 3.68. Daftar Tabel pada Database ruang_les
+
+3.5.2. Pembuatan Koneksi Database
+Pembuatan koneksi basis data (database connection) dilakukan untuk menghubungkan logika sistem (backend) aplikasi dengan server database MySQL. Tanpa adanya jalur koneksi ini, sistem bimbingan belajar Ruang Les tidak dapat melakukan pertukaran data, seperti membaca, menyimpan, maupun memodifikasi informasi. Seluruh pengaturan konektivitas dipusatkan pada berkas variabel lingkungan (environment file) bernama .env yang berada di direktori utama (root) proyek. Adapun tahapan dalam konfigurasi dan pembuatan koneksi database pada sistem Ruang Les adalah sebagai berikut:
+
+1. Buka direktori proyek aplikasi Ruang Les menggunakan text editor Visual Studio Code (VS Code).
+2. Pada menu Explorer di sidebar sebelah kiri, cari dan pilih file .env .
+3. Pada file .env , sesuaikan variabel yang berawalan DB_ dengan konfigurasi server lokal Laragon dan nama basis data yang telah dibuat sebelumnya, yaitu ruang_les, seperti pada baris kode berikut:
+
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=ruang_les
 DB_USERNAME=root
 DB_PASSWORD=
-```
 
-3. Eksekusi Migrasi Basis Data
-Pada sistem ini, pembentukan tabel tidak dilakukan satu per satu secara manual melalui phpMyAdmin, melainkan diimplementasikan secara terprogram menggunakan mekanisme migrasi (*migration*) bawaan dari *framework* Laravel. Pendekatan ini memastikan seluruh skema basis data beserta batasan relasionalnya (*foreign key constraints*) terdokumentasi dengan baik di dalam kode sumber. Proses pembentukan keseluruhan dua puluh satu tabel dieksekusi melalui *Command Line Interface* (CLI) menggunakan perintah `php artisan migrate`. Melalui perintah tersebut, sistem secara otomatis menerjemahkan seluruh berkas definisi migrasi menjadi tabel-tabel fisik secara berurutan. Bukti eksekusi proses migrasi pada terminal dapat dilihat pada Gambar 3.64.
+4. Untuk memastikan aplikasi telah terhubung dengan baik ke basis data, jalankan local development server melalui terminal Visual Studio Code dengan perintah:
 
-[TEMPAT GAMBAR DI SINI]
-**Gambar 3.64.** Eksekusi Proses Migrasi Basis Data melalui Terminal
+php artisan serve
 
-4. Hasil Pembentukan Struktur Tabel
-Setelah proses migrasi berhasil dijalankan tanpa galat (*error*), tabel-tabel operasional pembentuk sistem telah terwujud secara utuh. Sebagai representasi implementasi atribut kolom dan tipe data, Gambar 3.65 memperlihatkan struktur fisik dari tabel `users` yang merupakan entitas utama untuk pengelolaan akun pengguna. Tabel ini memuat berbagai struktur secara spesifik, mencakup pendefinisian panjang tipe data *string* hingga konstrain keamanan *unique* pada kolom *email*. 
+5. Aplikasi dapat diakses melalui browser pada alamat [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
-[TEMPAT GAMBAR DI SINI]
-**Gambar 3.65.** Tampilan Detail Struktur Tabel `users` pada phpMyAdmin
+3.5.3. Pembuatan Halaman Website
+Halaman website Ruang Les dibangun dengan pola MVC (Model-View-Controller) menggunakan framework Laravel yang dipadukan dengan sistem templating Blade. Tata letaknya disesuaikan menggunakan Tailwind CSS agar tampilannya tetap rapi dan responsif saat diakses dari berbagai ukuran layar. Untuk mendukung interaktivitas yang dinamis, sistem ini juga memanfaatkan JavaScript, khususnya library Axios, untuk menangani proses AJAX sehingga data dapat diproses secara asinkron tanpa harus memuat ulang halaman secara penuh. Untuk memudahkan pembahasan struktur kode dan fitur, implementasi dibagi menjadi lima bagian, yaitu Halaman Publik, Halaman Autentikasi, Halaman Admin, Halaman Mentor, dan Halaman Orang Tua. Berikut adalah penjelasan untuk setiap implementasi halaman tersebut:
 
-Secara keseluruhan, sistem bimbingan belajar Ruang Les memiliki 21 tabel yang saling berelasi guna menjalankan logika dan aturan bisnis lembaga. Hasil implementasi keseluruhan tabel—mulai dari data pengguna, rekam akademik, hingga pengelolaan operasional lainnya—dapat dipantau dan dikelola langsung melalui antarmuka phpMyAdmin. Hasil implementasi keseluruhan 21 tabel tersebut dapat dilihat pada Gambar 3.66.
+3.5.3.1. Pembuatan Halaman untuk Halaman Publik
+Halaman Beranda diimplementasikan sebagai halaman utama yang dapat diakses secara publik tanpa memerlukan proses login terlebih dahulu. Halaman ini menggunakan tata letak satu kolom penuh yang diawali dengan header navigasi. Header tersebut terdapat logo Ruang Les, tautan menu ke Beranda, Pendaftaran, Tentang Kami, Program Belajar, FAQ, dan Kontak, serta tombol akses untuk Masuk dan Registrasi pada sudut kanan atas.
+Halaman ini menampilkan seluruh informasi lembaga secara berurutan dari atas ke bawah. Bagian Hero menampilkan judul utama, tagline lembaga, dan dua tombol aksi, yaitu Daftar Sekarang dan Lihat Program, serta gambar ilustrasi pada sisi kanan. Susunan di bawahnya dilanjutkan dengan bagian Fitur Unggulan yang memuat empat poin keunggulan, bagian Program Belajar yang menampilkan tiga pilihan paket beserta harga, bagian Testimoni orang tua dalam format slider, bagian Frequently Asked Questions (FAQ) berbasis accordion, bagian Call to Action, dan diakhiri dengan footer yang terbagi menjadi empat kolom di bagian paling bawah. Tampilan halaman Beranda dapat dilihat pada Gambar 3.69, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-[TEMPAT GAMBAR DI SINI]
-**Gambar 3.66.** Tampilan Keseluruhan Tabel Basis Data `ruang_les` pada phpMyAdmin
+Gambar 3.69. Tampilan Halaman Beranda
 
+Halaman Tentang Kami dapat diakses melalui menu navigasi di bagian atas halaman. Halaman ini menampilkan profil pendiri Ruang Les beserta foto, visi dan misi lembaga, galeri dokumentasi kegiatan belajar, serta Call to Action di bagian bawah. Tampilan halaman Tentang Kami dapat dilihat pada Gambar 3.70, sedangkan listing program dapat dilihat secara lengkap pada Lampiran.
+Halaman Tentang Kami dapat diakses secara langsung melalui menu navigasi di bagian header. Halaman ini menampilkan profil singkat Ruang Les beserta foto pendirinya menggunakan tata letak dua kolom, satu sisi narasi deskriptif, sementara sisi lainnya menampilkan foto profil yang dilengkapi dengan keterangan nama serta gelar pendiri Ruang Les.
+Susunan konten di bawahnya dilanjutkan dengan pemaparan Visi dan Misi lembaga yang ditempatkan di dalam dua panel secara berdampingan. Selanjutnya, halaman ini juga terdapat galeri dokumentasi kegiatan belajar yang ditampilkan secara interaktif menggunakan bentuk carousel foto. Halaman ini diakhiri dengan Call to Action dan bagian footer di posisi paling bawah. Tampilan halaman Tentang Kami dapat dilihat pada Gambar 3.70, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-3.5.2. Implementasi Halaman Website
+Gambar 3.70. Tampilan Halaman Tentang Kami
 
-3.5.2.1. Implementasi Halaman Publik
+3.5.3.2. Pembuatan Halaman untuk Halaman Autentikasi
+Halaman Registrasi khusus untuk proses pendaftaran akun bagi pengguna dengan hak akses (role) sebagai Orang Tua atau Wali Murid. Antarmuka halaman ini menggunakan tata letak terpusat (centered layout) dengan menampilkan sebuah kartu formulir di tengah layar. Kartu formulir tersebut memuat label "BUAT AKUN BARU", judul "Pendaftaran Akun Orang Tua/Wali", beserta empat bidang isian (input field), yaitu Nama Lengkap, Alamat Email, Kata Sandi, dan Konfirmasi Kata Sandi. Khusus untuk input kata sandi, sistem menerapkan validasi keamanan minimal delapan karakter yang dilengkapi dengan fitur ikon toggle untuk menampilkan atau menyembunyikan karakter teks.
+Setelah calon pengguna melengkapi seluruh formulir dan menekan tombol "Daftar Sekarang", sistem akan memproses dan menyimpan data tersebut ke dalam basis data (database), sekaligus secara otomatis menetapkan peran pengguna sebagai Orang Tua. Akun yang telah berhasil didaftarkan dapat langsung digunakan untuk proses login ke dalam sistem. Selain itu, pada bagian bawah kartu formulir juga disediakan tautan "Masuk di sini" untuk memfasilitasi pengguna yang sebelumnya sudah memiliki akun. Tampilan halaman Registrasi dapat dilihat pada Gambar 3.71, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-3.5.2.2. Implementasi Halaman Autentikasi
+Gambar 3.71. Tampilan Halaman Registrasi
 
-3.5.2.3. Implementasi Halaman Admin
+Halaman Login sebagai pintu masuk (gateway) utama bagi seluruh pengguna sistem, yang meliputi Admin, Mentor, dan Orang Tua. Antarmuka halaman ini dirancang dengan tata letak yang serupa dengan halaman Registrasi. Kartu formulir pada halaman ini memuat label "MASUK PORTAL" dan judul "Selamat Datang!", beserta bidang isian Alamat Email dan Kata Sandi yang dilengkapi dengan fitur toggle untuk menampilkan atau menyembunyikan karakter. Selain itu, formulir ini juga menyediakan opsi kotak centang "Ingat Saya di perangkat ini" serta tombol aksi "Masuk Portal".
+Untuk mengakses sistem, pengguna harus memasukkan alamat email dan kata sandi, kemudian menekan tombol "Masuk Portal". Sistem selanjutnya akan memverifikasi kredensial akun tersebut dan secara otomatis mengarahkan pengguna ke halaman dashboard yang sesuai dengan hak akses atau peran (role) masing-masing. Sebagai tambahan, bagi calon pengguna yang belum memiliki akun, sistem menyediakan tautan "Daftar di sini" pada bagian bawah kartu formulir. Tampilan halaman Login dapat dilihat pada Gambar 3.72, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-3.5.2.4. Implementasi Halaman Mentor
+Gambar 3.72. Tampilan Halaman Login
 
-3.5.2.5. Implementasi Halaman Orang Tua
+3.5.3.3. Pembuatan Halaman untuk Admin
+Pembuatan halaman pada panel Admin terdiri dari tujuh belas (17) halaman fungsional yang dibangun sebagai pusat kendali utama (command center) bagi pengelola operasional Ruang Les. Setiap halaman dilengkapi komponen global berupa sidebar navigasi di sisi kiri serta header yang terdiri dari breadcrumb, tanggal hari ini, dan menu profil pengguna. Berikut adalah hasil implementasi fungsional dari masing-masing halaman pada panel Admin:
 
-[Gambar 3.21. Tampilan Modul Kelola Data Master]
+1. Halaman Dashboard Admin merupakan tampilan utama yang muncul setelah admin berhasil melakukan autentikasi (login). Halaman ini menyajikan ringkasan aktivitas operasional Ruang Les melalui empat kartu metrik, yaitu Pendapatan Masuk, Pendaftaran Pending, Kuota Murid Habis, dan Tiket Layanan Baru, yang masing-masing berfungsi sebagai pintasan (shortcut) menuju modul terkait. Pada bagian bawahnya ditampilkan tabel Pembayaran Belum Diverifikasi untuk memantau transaksi yang masih menunggu verifikasi, tabel Peringatan Mentor untuk menampilkan data mentor yang belum melengkapi aktivitas pembelajaran pada hari tersebut dilengkapi dengan tombol Kirim Pengingat, ringkasan Jadwal Kelas Hari Ini untuk menampilkan jadwal pembelajaran, serta grafik Tren Pendaftaran murid baru selama enam bulan terakhir. Pada bagian kanan atas juga tersedia tombol pintasan menuju Kelola Halaman Depan (CMS) dan Lihat Website. Tampilan halaman dashboard admin dapat dilihat pada Gambar 3.73, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Modul Verifikasi Pendaftaran menampilkan antrean pendaftaran berstatus pending. Halaman detail menampilkan seluruh data siswa dan bukti pembayaran dalam satu layar dengan tombol Verifikasi dan Tolak.
+Gambar 3.73. Tampilan Halaman Dashboard Admin
 
-[Gambar 3.22. Tampilan Modul Verifikasi Pendaftaran]
+2. Halaman Verifikasi Pendaftaran digunakan oleh admin untuk meninjau antrean pendaftaran calon murid baru. Data pendaftaran ditampilkan dalam bentuk tabel yang berisi tanggal daftar, nama calon murid beserta orang tua, program yang dipilih, status pendaftaran, dan tombol Lihat Detail untuk memproses verifikasi. Tampilan halaman Verifikasi Pendaftaran dapat dilihat pada Gambar 3.74, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Modul Jadwal Kelas memungkinkan admin menghubungkan data siswa, mentor, hari, dan sesi waktu menjadi satu jadwal kelas aktif.
+Gambar 3.74. Tampilan Halaman Verifikasi Pendaftaran
 
-[Gambar 3.23. Tampilan Modul Jadwal Kelas]
+3. Halaman Paket Program Belajar digunakan untuk mengelola seluruh data program bimbingan belajar yang tersedia di Ruang Les. Data ditampilkan dalam bentuk tabel yang berisi nama paket, spesifikasi paket, harga beserta jumlah sesi dan durasi, dua toggle switch untuk mengatur status Aktif dan status Rekomendasi halaman Beranda, serta tombol aksi Ubah dan Hapus. Setiap baris dilengkapi ikon drag handle untuk mengatur urutan tampil. Admin dapat menambahkan paket baru melalui tombol Tambah Paket pada bagian kanan atas. Tampilan halaman Paket Program Belajar dapat dilihat pada Gambar 3.75, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Modul Presensi menampilkan rekap kehadiran dalam tiga tampilan: harian, mingguan, dan bulanan. Admin memiliki kewenangan untuk menginput status Hadir meskipun sisa kuota siswa sudah mencapai nol.
+Gambar 3.75. Tampilan Halaman Paket Program Belajar
 
-[Gambar 3.24. Tampilan Modul Presensi Admin]
+4. Halaman Data Mentor digunakan untuk mengelola seluruh tenaga pengajar yang mengajar di Ruang Les. Halaman ini dilengkapi kolom pencarian (search bar) dan filter berdasarkan status untuk mempermudah penelusuran data, dengan tabel yang berisi nama dan spesialisasi mentor, kontak, jumlah kelas yang diampu, status keaktifan mentor, serta tiga tombol aksi, yaitu Lihat Detail, Ubah, dan Hapus Data. Admin dapat menambahkan mentor baru melalui tombol Tambah Mentor pada bagian kanan atas. Tampilan halaman Data Mentor dapat dilihat pada Gambar 3.76, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Modul Catatan Perkembangan menampilkan rekap catatan harian yang diinput mentor. Admin dapat mengirim notifikasi pengingat kepada mentor yang belum mengisi data dalam 1 kali 24 jam.
+Gambar 3.76. Tampilan Halaman Data Mentor
 
-[Gambar 3.25. Tampilan Modul Catatan Perkembangan Admin]
+5. Halaman Data Murid digunakan untuk melihat dan mengelola data seluruh murid yang terdaftar di Ruang Les. Data ditampilkan dalam bentuk tabel yang berisi informasi nama dan status keaktifan murid, asal sekolah beserta tingkat kelas, serta nama wali murid yang terhubung, dilengkapi kolom pencarian dan filter status. Tampilan halaman Data Murid dapat dilihat pada Gambar 3.77, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Modul Keuangan menampilkan daftar pembayaran masuk beserta detail dan bukti bayar. Admin memverifikasi atau menolak pembayaran, dan sistem memperbarui kuota siswa secara otomatis setelah verifikasi.
+Gambar 3.77. Tampilan Halaman Data Murid
 
-[Gambar 3.27. Tampilan Modul Keuangan Admin]
+6. Halaman Data Orang Tua Murid digunakan untuk mengelola data seluruh akun orang tua atau wali murid yang terdaftar sebagai pihak pendamping belajar murid. Data ditampilkan dalam bentuk tabel yang berisi nama orang tua, informasi kontak, status hubungan dengan murid, serta jumlah anak yang terdaftar, lengkap dengan fitur pencarian dan tiga tombol aksi, yaitu Lihat Detail, Ubah, dan Hapus. Tampilan halaman Data Wali Murid dapat dilihat pada Gambar 3.78, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Modul Layanan menampilkan daftar tiket bantuan dari orang tua. Setiap tiket memiliki nomor unik yang digenerate otomatis. Admin dan orang tua sama-sama berhak menutup tiket secara mandiri.
+Gambar 3.78. Tampilan Halaman Data Wali Murid
 
-[Gambar 3.28. Tampilan Modul Layanan Admin]
+7. Halaman Jadwal Kelas digunakan untuk mengatur dan menampilkan seluruh jadwal kelas yang berlangsung di Ruang Les. Jadwal ditampilkan dalam bentuk kartu (card) yang dikelompokkan berdasarkan hari, dari Senin hingga Sabtu. Setiap kartu memuat kode kelas, jam belajar, nama mentor, jenis dan spesifikasi program, serta jumlah murid terdaftar terhadap kapasitas maksimal kelas, dilengkapi tombol Lihat Detail Kelas, Edit, dan Hapus. Tampilan halaman Jadwal Kelas dapat dilihat pada Gambar 3.79, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Modul Pengumuman memungkinkan admin membuat dan menjadwalkan pengumuman dengan pilihan target: publik, orang tua, atau mentor.
+Gambar 3.79. Tampilan Halaman Jadwal Kelas
 
-[Gambar 3.29. Tampilan Modul Pengumuman Admin]
+8. Halaman Presensi digunakan untuk memantau rekapitulasi data kehadiran murid secara menyeluruh di seluruh kelas. Halaman ini dilengkapi panel Filter Pencarian dengan lima parameter. Data ditampilkan dalam bentuk tabel yang berisi paket program, jadwal kelas, tanggal dan waktu pertemuan, nama murid, status presensi, mentor, serta tombol aksi Koreksi dan Hapus pada setiap baris data. Tampilan halaman Presensi dapat dilihat pada Gambar 3.80, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Modul Kelola Bimbel (CMS) memungkinkan admin mengubah seluruh konten landing page melalui formulir teks tanpa modifikasi kode.
+Gambar 3.80. Tampilan Halaman Presensi
 
-[Gambar 3.30. Tampilan Modul CMS Admin]
+9. Halaman Catatan Perkembangan digunakan untuk memantau seluruh catatan perkembangan belajar murid. Halaman ini dilengkapi filter pencarian dengan kriteria penyaringan data yang sama seperti halaman Presensi. Data ditampilkan dalam bentuk tabel yang berisi paket program, jadwal kelas, tanggal dan waktu pertemuan, nama murid, topik dan fokus pembelajaran beserta skor pemahaman, mentor, serta tombol aksi Koreksi dan Hapus pada setiap baris data. Tampilan halaman Catatan Perkembangan dapat dilihat pada Gambar 3.81, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Modul Repositori Materi memungkinkan admin mengunggah file dokumen atau tautan video eksternal dengan label jenjang kelas, mata pelajaran, tipe konten, dan tingkat akses.
+Gambar 3.81. Tampilan Halaman Catatan Perkembangan
 
-[Gambar 3.31. Tampilan Modul Repositori Materi Admin]
+10. Halaman Nilai digunakan untuk memantau rekapitulasi data nilai murid secara menyeluruh di seluruh kelas. Halaman ini dilengkapi filter pencarian dengan kriteria penyaringan data yang sama seperti halaman Presensi dan Catatan Perkembangan. Data ditampilkan dalam bentuk tabel yang berisi paket program, jadwal kelas, tanggal dan waktu penilaian, nama murid, topik penilaian, skor, mentor, serta tombol aksi Koreksi dan Hapus pada setiap baris data. Tampilan halaman Nilai dapat dilihat pada Gambar 3.82, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
+Gambar 3.82. Tampilan Halaman Nilai
 
-3.5.2.3. Panel Mentor
+11. Halaman Materi Belajar digunakan untuk mengelola seluruh repositori bahan ajar dan materi pembelajaran. Halaman ini dilengkapi panel Filter Pencarian berdasarkan kata kunci, jenjang kelas, mata pelajaran, dan tipe materi. Data ditampilkan dalam bentuk tabel yang berisi judul dan topik materi, jenjang kelas beserta mata pelajaran, sumber tautan, hak akses, status publikasi, jumlah klik, serta tombol aksi Ubah dan Hapus pada setiap baris data. Admin dapat menambahkan materi baru melalui tombol Tambah Materi pada bagian kanan atas. Tampilan halaman Materi Belajar dapat dilihat pada Gambar 3.83, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Dashboard Mentor menampilkan widget tugas tertunda yang memberikan peringatan apabila terdapat kelas yang telah selesai namun presensi atau catatan perkembangan belum diisi.
+Gambar 3.83. Tampilan Halaman Materi Belajar
 
-[Gambar 3.32. Tampilan Dashboard Mentor]
+12. Halaman Pembayaran digunakan untuk mengelola seluruh urusan keuangan dalam satu tempat, terbagi menjadi dua tab, yaitu tab Pembayaran dan tab Pemantauan Kuota Murid.
+Tab Pembayaran menampilkan seluruh daftar transaksi masuk beserta status verifikasinya, dilengkapi kolom pencarian nama atau kode transaksi serta filter status. Data ditampilkan dalam bentuk tabel yang berisi nama murid dan orang tua/wali, paket beserta nominal, kontak, status dan waktu transaksi, serta tombol Lihat Detail, dan tombol Tambah Pembayaran Manual pada bagian kanan atas. Tampilan halaman Pembayaran pada tab Pembayaran dapat dilihat pada Gambar 3.84, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Modul Jadwal Mengajar menampilkan daftar kelas aktif dalam tampilan kartu dengan tiga tombol aksi cepat di setiap kartu: Presensi, Catatan Perkembangan, dan Nilai.
+Gambar 3.84. Tampilan Halaman Pembayaran Tab Pembayaran
 
-[Gambar 3.33. Tampilan Modul Jadwal Mengajar Mentor]
+Tab Pemantauan Kuota Murid digunakan untuk memantau sisa kuota sesi belajar dari setiap murid, dilengkapi tiga kartu ringkasan pada bagian atas, yaitu jumlah murid aktif, murid dengan batas kuota habis (= 0), dan murid dengan kuota menunggak, beserta kolom pencarian murid dan filter kondisi. Data ditampilkan dalam bentuk tabel yang berisi nama murid, orang tua/wali, sisa kuota, dan label yang menyesuaikan kondisi murid, yaitu Aman untuk kuota murid yang masih tersedia, Jatuh Tempo untuk kuota murid yang sudah mencapai batas 0, dan berubah menjadi tombol Kirim Teguran untuk kuota menunggak. Tampilan halaman Pembayaran pada tab Pemantauan Kuota Murid dapat dilihat pada Gambar 3.85, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Modul Input Presensi menampilkan daftar siswa dalam kelas yang dipilih beserta pilihan status kehadiran (Hadir, Tidak Hadir, atau Kelas Diliburkan).
+Gambar 3.85. Tampilan Halaman Pembayaran Tab Pemantauan Kuota
 
-[Gambar 3.34. Tampilan Modul Input Presensi Mentor]
+13. Halaman Layanan (Inbox) digunakan untuk berkomunikasi dengan mentor maupun orang tua melalui sistem tiket. Halaman ini menampilkan daftar tiket dalam bentuk tabel yang dapat dipilah berdasarkan empat tab status, yaitu Semua, Baru, Dalam Penanganan, dan Selesai, masing-masing tab berisi kode dan waktu tiket, pengirim, subjek beserta kategori, status, serta tombol Buka Chat. Tampilan halaman Layanan dapat dilihat pada Gambar 3.86, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Modul Input Catatan Perkembangan menampilkan formulir dengan kolom materi yang diajarkan, skor pemahaman (skala 1–10), status fokus, dan catatan kendala belajar untuk setiap siswa yang hadir.
+Gambar 3.86. Tampilan Halaman Layanan
 
-[Gambar 3.35. Tampilan Modul Input Catatan Perkembangan Mentor]
+Ketika admin membuka salah satu tiket, halaman beralih ke ruang obrolan tiket yang menampilkan percakapan antara pengirim dan admin, dilengkapi area teks balasan serta tombol Kirim Balasan di bagian bawah, dan tombol Tutup Tiket (Selesai) pada bagian header untuk mengakhiri obrolan. Selain itu, terdapat pula tombol Jadikan Testimoni yang membantu admin memilih satu atau beberapa pesan dari pengirim untuk dikonversi secara otomatis menjadi draf pada formulir Tambah Testimoni. Fitur ini mempermudah dan mempercepat proses dokumentasi ulasan pelanggan tanpa perlu menyalin ulang teks secara manual. Tampilan halaman Layanan dapat dilihat pada Gambar 3.87, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Modul Input Nilai memungkinkan mentor mengisi nilai harian per pertemuan dan rekapitulasi nilai siswa.
+Gambar 3.87. Tampilan Ruang Obrolan Halaman Layanan
 
-[Gambar 3.36. Tampilan Modul Input Nilai Mentor]
+14. Halaman Pengumuman digunakan untuk membuat, memublikasikan, dan mengelola informasi pengumuman yang ditujukan kepada pengguna sistem. Halaman ini dilengkapi kolom pencarian dan filter status untuk penelusuran. Halaman ini menampilkan daftar pengumuman dalam bentuk tabel yang berisi tanggal, judul dan isi pengumuman, target penerima, dua toggle status publikasi yaitu Ditayangkan dan Disematkan, serta tombol aksi Ubah dan Hapus. Admin dapat membuat pengumuman baru melalui tombol Buat Pengumuman Baru pada bagian kanan atas. Tampilan halaman Pengumuman dapat dilihat pada Gambar 3.88, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Modul Repositori Materi memberikan akses penuh untuk melihat, memfilter, mempratinjau langsung di browser, dan mengunduh seluruh materi belajar dari semua jenjang kelas.
+Gambar 3.88. Tampilan Halaman Pengumuman
 
-[Gambar 3.38. Tampilan Repositori Materi Mentor]
+15. Halaman Kelola Bimbel (Content Management System/CMS) digunakan oleh admin untuk memperbarui seluruh konten pada website Ruang Les tanpa harus menyentuh kode program. Pengaturan konten dikelompokkan ke dalam sembilan tab sesuai section halaman, yaitu Header & Hero, Fitur Unggulan, Program Belajar, Testimoni, Tanya Jawab (FAQ), Tentang Kami, Galeri, Footer, dan Pendaftaran. Setiap perubahan yang dilakukan dapat dikembalikan menggunakan tombol Reset Perubahan atau disimpan melalui tombol Simpan Semua Pengaturan pada bagian bawah, serta tombol Lihat Website pada bagian kanan atas. Tampilan halaman Kelola Bimbel dapat dilihat pada Gambar 3.89, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
+Gambar 3.89. Tampilan Halaman Kelola Bimbel
 
-3.5.2.4. Portal Orang Tua
+16. Halaman Kelola Pengguna digunakan untuk memantau dan mengelola seluruh akun pengguna dari berbagai hak akses (role) yang terdaftar dalam sistem. Halaman ini dilengkapi kolom pencarian dan filter peran. Data ditampilkan dalam bentuk tabel yang berisi nama, alamat email, peran (role), tanggal terdaftar, status akun, serta tiga tombol aksi, yaitu Reset Kata Sandi, Ubah, dan Hapus. Admin dapat menambahkan pengguna baru melalui tombol Tambah Pengguna pada bagian kanan atas. Tampilan halaman Kelola Pengguna dapat dilihat pada Gambar 3.90, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Dashboard Orang Tua memiliki tiga kondisi tampilan yang berbeda berdasarkan status pendaftaran anak. Kondisi Belum Terdaftar menampilkan satu tombol besar untuk memulai formulir pendaftaran dengan seluruh menu sidebar terkunci. Kondisi Menunggu Verifikasi menampilkan banner informasi bahwa pembayaran sedang diverifikasi dengan menu sidebar masih terkunci. Kondisi Aktif membuka seluruh menu dan menampilkan widget sisa kuota serta estimasi Hari-H secara prominan.
+Gambar 3.90. Tampilan Halaman Kelola Pengguna
 
-[Gambar 3.39. Tampilan Dashboard Orang Tua — Tiga Kondisi]
+17. Halaman Profil Saya digunakan oleh admin untuk memperbarui informasi akun pribadi, mencakup foto profil, nama lengkap, alamat email, dan kata sandi beserta konfirmasi kata sandinya, dilengkapi tombol Batalkan Perubahan dan Simpan Perubahan. Halaman ini dapat diakses melalui menu dropdown profil pada pojok kanan atas header. Tampilan halaman Profil Admin dapat dilihat pada Gambar 3.91, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Fitur Switch Student menampilkan dropdown pemilihan anak di bagian atas dashboard apabila orang tua memiliki lebih dari satu anak terdaftar. Perubahan pilihan anak memperbarui seluruh isi halaman secara dinamis tanpa perlu reload penuh.
+Gambar 3.91. Tampilan Halaman Profil Admin
 
-[Gambar 3.40. Tampilan Fitur Switch Student]
+3.5.3.4. Pembuatan Halaman untuk Mentor
+Pembuatan halaman pada panel Mentor terdiri dari enam (6) halaman fungsional yang dibangun secara khusus untuk memfasilitasi kegiatan belajar mengajar dan pemantauan akademik harian bagi para tenaga pengajar Ruang Les. Setiap halaman dilengkapi komponen global berupa sidebar navigasi di sisi kiri serta header yang terdiri dari breadcrumb, tanggal hari ini, dan menu profil pengguna. Berikut adalah hasil implementasi fungsional dari masing-masing halaman pada panel Mentor:
 
-Formulir Pendaftaran 7 Langkah menampilkan progress bar interaktif di bagian atas. Sistem menyimpan data secara otomatis setiap kali pengguna berpindah langkah. Kolom usia pada Langkah 1 terisi secara otomatis dan real-time berdasarkan tanggal lahir yang dipilih, dan hanya tanggal lahir yang disimpan ke basis data. Slot jadwal pada Langkah 5 yang telah penuh ditampilkan dalam kondisi disabled dengan keterangan kuota penuh. Langkah 7 menyediakan kolom unggah bukti bayar dengan fitur drag-and-drop dan pratinjau gambar instan.
+1. Halaman Dashboard Mentor merupakan halaman utama yang muncul setelah mentor berhasil melakukan autentikasi (login). Pada bagian atas halaman ini menampilkan sapaan personal serta tiga kartu metrik ringkasan aktivitas pembelajaran, yaitu jumlah sesi yang telah dilaksanakan setiap bulannya, jumlah tugas tertunda hari ini, dan total murid yang sedang diajar. Selanjutnya, terdapat tabel pemantauan untuk memeriksa status kelengkapan pengisian data harian di kelas, seperti presensi, catatan, dan nilai. Pada bagian paling bawah, terdapat tabel ringkasan jadwal kelas hari ini. Tampilan halaman dashboard mentor dapat dilihat pada Gambar 3.92, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-[Gambar 3.41. Tampilan Formulir Pendaftaran — Langkah 1 (Usia Otomatis)]
+Gambar 3.92. Tampilan Halaman Dashboard Mentor
 
-[Gambar 3.42. Tampilan Formulir Pendaftaran — Langkah 5 (Slot Jadwal)]
+2. Halaman Jadwal Kelas digunakan untuk menampilkan seluruh daftar jadwal pembelajaran yang diampu dalam bentuk kartu (card) yang dikelompokkan berdasarkan hari. Setiap kartu menampilkan kode kelas, jam belajar, jenis dan spesifikasi program, status keaktifan kelas, serta daftar murid yang mengikuti kelas beserta sisa kuota sesi masing-masing dan tiga tombol aksi cepat, yaitu Presensi, Catatan, dan Nilai. Tampilan halaman Jadwal Kelas dapat dilihat pada Gambar 3.93, sedangkan listing program dapat dilihat secara lengkap pada bagian lampiran.
 
-[Gambar 3.43. Tampilan Formulir Pendaftaran — Langkah 7 (Unggah Bukti Bayar)]
+Gambar 3.93. Tampilan Halaman Jadwal Kelas Mentor
 
-Modul Kelas Anak menampilkan empat submodul dalam mode baca saja: Jadwal Kelas, Presensi, Catatan Perkembangan, dan Nilai.
+3. Halaman Buku Akademik digunakan untuk meninjau rekapitulasi data akademik seluruh murid yang diajar berdasarkan kegiatan pembelajaran yang telah dilaksanakan. Data ditampilkan dalam bentuk kartu (card) yang dilengkapi kolom pencarian nama murid. Setiap kartu menampilkan nama murid, nama orang tua, serta jadwal kelas yang diikuti oleh murid tersebut untuk mengakses rapor historisnya. Tampilan halaman Buku Akademik dapat dilihat pada Gambar 3.94, sedangkan listing program dapat dilihat secara lengkap pada bagian lampiran.
 
-[Gambar 3.44. Tampilan Modul Kelas Anak]
+Gambar 3.94. Tampilan Halaman Buku Akademik Mentor
 
-Modul Keuangan menampilkan sisa kuota sesi dalam angka besar beserta estimasi Hari-H, formulir unggah bukti bayar, dan riwayat transaksi beserta statusnya.
+4. Halaman Materi Belajar digunakan untuk mengakses repositori materi pembelajaran yang telah disediakan oleh admin. Halaman ini ditampilkan dalam bentuk kartu (card) yang dilengkapi filter pencarian berdasarkan kata kunci, jenjang kelas, mata pelajaran, dan tipe materi. Setiap kartu materi menampilkan tipe, judul, topik, deskripsi, jenjang dan mata pelajaran, serta tanggal unggah. Mentor juga dapat menggunakan tombol aksi Pratinjau dan Unduh untuk mengakses materi yang tersedia. Tampilan halaman Materi Belajar dapat dilihat pada Gambar 3.95, sedangkan listing program dapat dilihat secara lengkap pada bagian lampiran.
 
-[Gambar 3.45. Tampilan Modul Keuangan Orang Tua]
+Gambar 3.95. Tampilan Halaman Materi Belajar Mentor
 
-Modul Layanan memungkinkan orang tua mengirim tiket bantuan dengan nomor unik yang dibuat otomatis oleh sistem. Orang tua dapat memantau percakapan dan menutup tiket secara mandiri.
+5. Halaman Layanan digunakan untuk berkomunikasi melalui tiket yang diajukan kepada Admin. Seluruh daftar tiket ditampilkan dalam bentuk tabel yang dapat dipilah berdasarkan empat tab status, yaitu Semua, Menunggu Balasan, Sedang Ditangani, dan Selesai. Sistem menampilkan daftar tiket yang telah dibuat besertanomor tiket, waktu pembuatan, kategori, subjek, status penanganan, dan tombol Buka Chat. Mentor dapat membuat tiket baru melalui tombol Buat Tiket Baru pada bagian kanan atas. Tampilan halaman Layanan dapat dilihat pada Gambar 3.96, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-[Gambar 3.46. Tampilan Modul Layanan Orang Tua]
+Gambar 3.96. Tampilan Halaman Layanan Mentor
 
-Modul Repositori Materi menampilkan materi yang difilter otomatis sesuai jenjang kelas anak. Seluruh fungsi unduh hanya aktif apabila status pembayaran berstatus Aktif.
+Ketika Mentor membuka salah satu tiket, halaman beralih ke ruang obrolan tiket yang menampilkan percakapan antara Mentor dan Admin, dilengkapi area teks balasan serta tombol Kirim Balasan di bagian bawah, dan tombol Tutup Tiket (Selesai) pada bagian header untuk mengakhiri obrolan. Tampilan halaman Layanan dapat dilihat pada Gambar 3.97, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-[Gambar 3.47. Tampilan Repositori Materi Orang Tua]
+Gambar 3.97. Tampilan Ruang Obrolan Halaman Layanan Mentor
 
-Modul Notifikasi In-App menampilkan panel notifikasi melalui ikon lonceng pada header. Badge angka menunjukkan jumlah notifikasi belum terbaca. Klik pada notifikasi menandai notifikasi sebagai sudah dibaca dan mengarahkan pengguna ke halaman yang relevan.
+6. Halaman Profil Saya digunakan oleh Mentor untuk mengelola serta memperbarui informasi akun dan data pribadi. Tampilan ini terbagi menjadi tiga bagian, yaitu Informasi Akun, Biodata Diri, serta Profesi & Spesialisasi Mentor. Halaman ini dapat diakses melalui menu dropdown profil pada pojok kanan atas header. Tampilan halaman Profil Mentor dapat dilihat pada Gambar 3.98, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-[Gambar 3.48. Tampilan Panel Notifikasi In-App]
+Gambar 3.98. Tampilan Halaman Profil Mentor
 
-Tabel 3.6. Jenis dan Penerima Notifikasi In-App
+3.5.3.5. Pembuatan Halaman untuk Orang Tua
+Pembuatan halaman pada Portal Orang Tua terdiri dari sembilan (9) halaman fungsional yang dibangun secara khusus untuk memfasilitasi pemantauan perkembangan akademik anak serta administrasi keuangan secara transparan. Setiap halaman dilengkapi komponen global berupa sidebar navigasi di sisi kiri serta header yang terdiri dari breadcrumb, tanggal hari ini, fitur perpindahan pemantauan profil anak (Switch Student), dan menu profil pengguna. Berikut adalah hasil implementasi fungsional dari masing-masing halaman pada Portal Orang Tua:
 
-Jenis Notifikasi                                 | Penerima          | Pemicu
--------------------------------------------------|-------------------|----------------------------------------
-Pendaftaran akun berhasil                        | Orang Tua         | Setelah registrasi akun selesai
-Pendaftaran siswa baru masuk                     | Admin             | Setelah formulir langkah 7 diselesaikan
-Status pendaftaran diverifikasi                  | Orang Tua         | Setelah admin menekan tombol Verifikasi
-Pengingat catatan atau presensi belum lengkap    | Mentor            | Dipicu oleh admin via tombol Kirim Pengingat
-Presensi siswa telah diinput                     | Orang Tua         | Setelah mentor menyimpan data presensi
-Catatan perkembangan baru tersedia               | Orang Tua         | Setelah mentor menyimpan catatan perkembangan
-Pembayaran baru diterima                         | Admin             | Setelah orang tua mengunggah bukti bayar
-Pembayaran telah diverifikasi                    | Orang Tua         | Setelah admin memverifikasi pembayaran
-Kuota sesi habis (sama dengan 0)                 | Orang Tua         | Dipicu otomatis saat kuota mencapai nol
-Kuota sesi negatif (teguran tunggakan)           | Orang Tua         | Dipicu setiap kali presensi Hadir diinput saat kuota di bawah 0
-Tiket bantuan dijawab                            | Orang Tua         | Setelah admin membalas tiket
-Tiket bantuan diterima                           | Admin             | Setelah orang tua mengirimkan tiket
-Pengumuman baru                                  | Sesuai Target     | Setelah admin menerbitkan pengumuman
+1. Halaman Dashboard Orang Tua merupakan halaman utama yang muncul setelah orang tua berhasil melakukan autentikasi (login), dengan tampilan yang menyesuaikan secara dinamis berdasarkan status pendaftaran anak.
 
+a. Pada kondisi awal ketika orang tua belum sama sekali mendaftarkan anaknya di Ruang Les, dashboard menampilkan ucapan selamat datang beserta ajakan singkat untuk memulai, dilengkapi tombol "Isi Formulir Pendaftaran Anak", sementara seluruh menu Akademik dan Keuangan pada sidebar masih dalam kondisi terkunci (locked) karena belum ada data anak yang dapat diakses. Tampilan halaman Dashboard Orang Tua pada kondisi ini dapat dilihat pada Gambar 3.99, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-3.5.3. Implementasi Logika Inti Sistem
+Gambar 3.99. Tampilan Halaman Dashboard Orang Tua Kondisi Anak Belum Terdaftar
 
-Bagian ini membahas dua logika inti yang menjadi pembeda utama sistem Ruang Les dari sistem manajemen bimbingan belajar pada umumnya. Kedua logika ini diimplementasikan sebagai lapisan bisnis (business logic) di dalam controller dan model Laravel.
+b. Kondisi ketika orang tua telah mengisi formulir pendaftaran dan melakukan pembayaran, namun data tersebut belum diverifikasi oleh admin, dashboard menampilkan status "Pendaftaran Sedang Diverifikasi" beserta keterangan bahwa seluruh fitur akan terbuka secara otomatis setelah proses verifikasi selesai, dilengkapi label status "Menunggu Konfirmasi Admin". Pada state ini, nama anak yang telah didaftarkan sudah muncul pada dropdown pemilihan anak di bagian header, tetapi seluruh menu pada sidebar masih tetap terkunci. Tampilan halaman Dashboard Orang Tua pada kondisi ini dapat dilihat pada Gambar 3.100, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
+Gambar 3.100. Tampilan Halaman Dashboard Orang Tua Kondisi Menunggu Verifikasi Pendaftaran
 
-3.5.3.1. Logika Kalender Dinamis dan Pergeseran Hari-H
+c. Kondisi ketika data anak telah terverifikasi oleh admin, seluruh menu pada sidebar menjadi aktif dan dashboard menampilkan sapaan personal kepada orang tua beserta tiga kartu ringkasan, yaitu kartu profil anak yang menampilkan nama, kelas, dan asal sekolah; kartu sisa kuota sesi belajar anak dari total pertemuan program yang dipilih; serta kartu estimasi tanggal pembayaran berikutnya. Selain itu, terdapat kotak "Pengumuman" yang menampilkan seluruh informasi terbaru dari lembaga, kotak informasi "Paket Belajar Saat Ini" yang menampilkan jenis program, durasi per sesi, dan lokasi belajar anak, tabel "Jadwal Kelas Mingguan" yang menampilkan hari dan jam pertemuan, serta bagian "Statistik Akademik & Evaluasi" yang terdiri dari ringkasan kehadiran dan evaluasi terakhir anak. Tampilan halaman Dashboard Orang Tua pada kondisi ini dapat dilihat pada Gambar 3.101, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Logika kalender dinamis bekerja dalam dua momen berbeda: saat verifikasi pendaftaran untuk menghitung Hari-H awal, dan saat input presensi untuk menggeser Hari-H apabila diperlukan.
+Gambar 3.101. Tampilan Halaman Dashboard Orang Tua Kondisi Aktif
 
-Perhitungan Hari-H Awal: Ketika admin memverifikasi pendaftaran siswa, sistem membaca dua hari jadwal rutin yang dipilih siswa (misalnya Senin dan Kamis) serta tanggal verifikasi sebagai titik awal. Sistem kemudian menelusuri kalender ke depan secara berurutan, menghitung setiap hari yang sesuai dengan jadwal rutin hingga mencapai pertemuan ke-8, dan menetapkan tanggal pertemuan ke-8 tersebut sebagai Hari-H.
+2. Halaman Formulir Pendaftaran dibuat dalam bentuk formulir bertahap (multi-step form). Halaman ini memiliki tata letak terpusat dengan indikator progress bar di bagian atas untuk memandu pengguna melewati tujuh tahapan pendaftaran, mulai dari tahap Identitas Anak hingga Pembayaran dan Konfirmasi. Setiap tahapannya ditampilkan satu per satu, lengkap dengan berbagai kolom isian yang disesuaikan dengan kebutuhan tiap langkah. Di bagian bawah formulir, terdapat informasi posisi langkah saat ini beserta tombol navigasi seperti tombol "Kembali" dan tombol "Selanjutnya". Dengan alur bertahap ini, orang tua dapat menyelesaikan proses administrasi dengan lebih terstruktur dan tidak merasa kewalahan. Tampilan halaman Formulir Pendaftaran dapat dilihat pada Gambar 3.102, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Contoh perhitungan: Siswa dengan jadwal rutin Senin dan Kamis, diverifikasi pada 1 September 2025.
+Gambar 3.102. Tampilan Halaman Formulir Pendaftaran Murid Baru
 
-Tabel 3.7. Contoh Perhitungan Estimasi Hari-H
+3. Halaman Jadwal Kelas digunakan untuk menampilkan jadwal belajar rutin anak setiap minggunya yang dikelompokkan berdasarkan hari mulai dari Senin hingga Sabtu. Pada hari yang terdapat kelas ditampilkan kartu jadwal berisi kode kelas, jam belajar, jenis serta spesifikasi program, dan informasi mentor yang mengajar, sedangkan pada hari yang tidak memiliki jadwal ditampilkan keterangan "Jadwal Kosong". Tampilan halaman Jadwal Kelas dapat dilihat pada Gambar 3.103, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Pertemuan | Hari   | Tanggal
-----------|--------|------------------
-1         | Senin  | 1 September 2025
-2         | Kamis  | 4 September 2025
-3         | Senin  | 8 September 2025
-4         | Kamis  | 11 September 2025
-5         | Senin  | 15 September 2025
-6         | Kamis  | 18 September 2025
-7         | Senin  | 22 September 2025
-8         | Kamis  | 25 September 2025 (Hari-H awal)
+Gambar 3.103. Tampilan Halaman Jadwal Kelas Anak di Orang Tua
 
-Pergeseran Hari-H: Setiap kali presensi dengan status Tidak Hadir atau Kelas Diliburkan diinput untuk siswa tersebut, sistem menggeser Hari-H ke jadwal berikutnya. Mengacu pada contoh di atas, apabila pada pertemuan ke-3 (Senin, 8 September) siswa tercatat tidak hadir, maka Hari-H bergeser dari Kamis 25 September menjadi Senin 29 September 2025. Setiap tambahan ketidakhadiran menggeser Hari-H lebih jauh ke depan secara kumulatif.
+4. Halaman Buku Akademik digunakan untuk memantau riwayat akademik bimbel anak secara menyeluruh. Bagian atas halaman menampilkan profil anak yang terdiri dari nama, asal sekolah dan tingkat kelas saat ini, paket belajar, kelas belajar, jadwal belajar, serta informasi sisa pertemuan dan estimasi tanggal selesai kuota sesi. Data akademik ditampilkan dalam bentuk tab yang terdiri dari Presensi, Catatan Perkembangan, dan Nilai. Setiap tab dilengkapi lencana (badge) yang menampilkan jumlah akumulasi data historis, sehingga orang tua dapat beralih antar-tab dengan mulus untuk memantau detail rekapitulasi setiap pertemuannya. Tampilan halaman Buku Akademik dapat dilihat pada Gambar 3.104, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Logika ini memastikan estimasi tanggal penagihan selalu mencerminkan realisasi kehadiran aktual, bukan sekadar perhitungan kalender statis yang mengabaikan absensi.
+Gambar 3.104. Tampilan Halaman Buku Akademik Anak di Orang Tua
 
+5. Halaman Materi Belajar digunakan untuk mengakses semua materi pembelajaran sesuai dengan jenjang kelas anak. Halaman ini dilengkapi kolom Filter Pencarian berdasarkan kata kunci, mata pelajaran, dan tipe materi, beserta tombol "Reset Filter" dan "Terapkan Filter". Materi ditampilkan dalam bentuk kartu yang menampilkan tipe materi, judul, topik, deskripsi singkat, jenjang dan mata pelajaran, tanggal unggah, serta tombol aksi "Pratinjau" dan "Unduh". Tampilan halaman Materi Belajar dapat dilihat pada Gambar 3.105, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-3.5.3.2. Logika Sistem Kuota Sesi
+Gambar 3.105. Tampilan Halaman Materi Belajar Anak di Orang Tua
 
-Setiap siswa memiliki kolom quota_remaining pada tabel student_registrations yang diinisialisasi dengan nilai 8 pada saat pendaftaran diverifikasi. Logika kuota berjalan mengikuti empat kondisi berikut.
+6. Halaman Tagihan dan Pembayaran digunakan untuk melihat sisa kuota belajar anak sekaligus melakukan pembayaran tagihan. Bagian kiri halaman terdapat informasi Sisa Kuota Belajar yang dilengkapi peringatan khusus apabila kuota bernilai minus yang menandakan adanya tunggakan kelas. Tepat di bawahnya, ditampilkan daftar Tagihan Menunggu yang merincikan status, nomor invoice, nama paket, nama murid, dan total tagihan. Bagian kanan halaman menampilkan area pembayaran yang berisi informasi rekening tujuan transfer beserta tombol salin nomor rekening, kolom Kode Tagihan untuk memilih tagihan yang akan dibayar, serta kolom unggah Bukti Pembayaran. Tampilan halaman Tagihan dan Pembayaran dapat dilihat pada Gambar 3.106, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Tabel 3.8. Kondisi Logika Sistem Kuota Sesi
+Gambar 3.106. Tampilan Halaman Tagihan dan Pembayaran
 
-Kondisi | Pemicu                                       | Aksi Sistem
---------|----------------------------------------------|---------------------------------------------
-A       | Status presensi = Hadir                      | quota_remaining dikurangi 1
-B       | Status presensi = Tidak Hadir / Diliburkan   | quota_remaining tidak berubah
-C       | quota_remaining mencapai 0                   | Peringatan muncul di dashboard admin dan orang tua; presensi masih dapat diinput
-D       | quota_remaining sudah negatif dan presensi Hadir kembali diinput | Notifikasi teguran tunggakan dikirim otomatis ke orang tua; quota_remaining terus berkurang
+7. Halaman Riwayat Transaksi digunakan untuk melihat daftar lengkap seluruh pembayaran yang pernah dilakukan untuk anak. Data ditampilkan dalam bentuk tabel yang berisi kode transaksi, nama murid dan paket, nominal, status pembayaran, tombol "Lihat Bukti" pada transaksi yang telah diverifikasi, serta tanggal pembaruan status. Tampilan halaman Riwayat Transaksi dapat dilihat pada Gambar 3.107, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
 
-Sistem tidak memblokir input presensi ketika saldo kuota mencapai nol. Kebijakan ini memberikan fleksibilitas operasional kepada lembaga tanpa harus memutus proses belajar siswa di tengah jalan. Pengelola tetap dapat mencatat kehadiran, dan sistem secara otomatis menangani komunikasi penagihan melalui notifikasi teguran setiap kali kuota bertambah minus.
+Gambar 3.107. Tampilan Halaman Riwayat Transaksi
 
-Pemulihan kuota terjadi setiap kali orang tua mengunggah bukti pembayaran dan admin memverifikasinya. Saat verifikasi berhasil, sistem menambahkan 8 sesi ke kolom quota_remaining dan menghitung ulang estimasi Hari-H berdasarkan kuota baru tersebut.
+8. Halaman Layanan digunakan untuk berkomunikasi kepada pihak Ruang Les melalui sistem tiket. Seluruh daftar tiket ditampilkan dalam bentuk tabel yang dapat dipilah berdasarkan empat tab status, yaitu Semua, Menunggu Balasan, Sedang Ditangani, dan Selesai, dengan kolom nomor tiket beserta waktu pembuatan, kategori, subjek, status penanganan, dan tombol "Buka Chat". Orang tua dapat membuat tiket baru melalui tombol "Buat Tiket Baru" pada bagian kanan atas. Tampilan halaman Layanan dan Bantuan dapat dilihat pada Gambar 3.108, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
+
+
+Gambar 3.108. Tampilan Halaman Layanan Orang Tua
+
+Ketika orang tua membuka salah satu tiket, halaman beralih ke ruang obrolan tiket yang menampilkan judul, nomor tiket, waktu pembuatan, label status dan kategori, riwayat percakapan antara orang tua dan admin, area teks balasan, serta tombol "Tutup Tiket (Selesai)" pada bagian header untuk mengakhiri obrolan. Tampilan ruang obrolan halaman Layanan dan Bantuan dapat dilihat pada Gambar 3.109, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
+
+Gambar 3.109. Tampilan Ruang Obrolan Halaman Layanan Orang Tua
+
+9. Halaman Profil Saya digunakan oleh orang tua untuk mengelola dan memperbarui informasi akun pribadi. Tampilan ini terbagi menjadi dua bagian, yaitu Informasi Akun yang mencakup foto profil, nama lengkap, alamat email, serta kata sandi beserta konfirmasinya, dan Informasi Kontak & Domisili yang mencakup nomor telepon/WhatsApp aktif, status hubungan dengan anak, serta alamat lengkap. Halaman ini dapat diakses melalui menu dropdown profil pada pojok kanan atas header. Tampilan halaman Profil Saya dapat dilihat pada Gambar 3.110, sedangkan listing program dapat dilihat secara lengkap pada bagian Lampiran.
+
+Gambar 3.110. Tampilan Halaman Profil Orang Tua
+
+3.5.4. Pembuatan Logika Inti Sistem
+Pembuatan logika inti sistem Ruang Les dibangun untuk menangani proses operasional utama yang menjadi pembeda dari sistem manajemen bimbingan belajar konvensional. Logika ini diimplementasikan sebagai lapisan bisnis (business logic) di dalam arsitektur MVC Laravel, khususnya diletakkan pada bagian Model dan Controller, agar sistem dapat mengambil alih fungsi kalkulasi manual secara otomatis. Untuk memudahkan pembahasan mengenai algoritma dan aturan bisnis yang berjalan di belakang layar (back-end), pembuatan logika inti ini dibagi menjadi dua bagian, yaitu Logika Kalender Dinamis dan Pergeseran Hari-H, serta Logika Sistem Kuota Sesi. Berikut adalah penjelasan untuk setiap pembuatan logika inti tersebut:
+
+3.5.4.1. Logika Kalender Dinamis dan Pergeseran Hari-H
+Logika kalender dinamis dirancang untuk memastikan tanggal jatuh tempo pembayaran (Hari-H) dapat menyesuaikan dengan kehadiran aktual murid. Dengan demikian, perhitungan Hari-H tidak hanya berdasarkan tanggal kalender, tetapi juga mempertimbangkan sesi pembelajaran yang benar-benar digunakan oleh murid. Logika ini diimplementasikan di dalam file app/Models/Murid.php , sehingga tanggal Hari-H dapat diperbarui secara otomatis ketika data murid ditampilkan. 
+Secara alur kerja, logika ini beroperasi pada dua kondisi utama, yaitu penetapan Hari-H awal dan melakukan pergeseran apabila terdapat sesi yang tidak digunakan. Pada saat Admin memverifikasi pendaftaran, sistem membaca hari rutin belajar yang dipilih murid. Kemudian, sistem akan melakukan looping menelusuri penanggalan ke depan, menghitung setiap hari yang cocok dengan jadwal tersebut hingga menyentuh pertemuan ke-8. Tanggal pada pertemuan ke-8 itulah yang ditetapkan sebagai estimasi Hari-H. Sebagai contoh, apabila murid diverifikasi pada 1 September 2026 dengan jadwal belajar setiap Senin dan Kamis, maka perhitungannya dapat dilihat pada Tabel 3.22.
+
+Tabel 3.22. Simulasi Perhitungan Estimasi Hari-H
+
+Berdasarkan perhitungan pada tabel 3.22 tersebut, tanggal Hari-H dapat berubah apabila terdapat sesi yang tidak digunakan. Ketika presensi dicatat dengan status “Tidak Hadir” atau “Kelas Diliburkan” sesi tersebut tidak mengurangi kuota pembelajaran murid. Oleh karena itu, sistem akan mencari tanggal pembelajaran berikutnya untuk memenuhi jumlah sesi yang seharusnya dijalani. Sebagai contoh, apabila pada pertemuan ke-3 pada Senin, 8 September 2026 murid tidak hadir, maka sesi tersebut tidak dihitung sebagai sesi yang digunakan. Sistem kemudian akan melanjutkan perhitungan ke jadwal berikutnya sehingga pertemuan ke-8 bergeser menjadi Senin, 29 September 2026. Dengan adanya mekanisme tersebut, tanggal penagihan yang ditampilkan pada dashboard Orang Tua dapat menyesuaikan dengan riwayat kehadiran murid. Hal ini membantu memastikan bahwa murid tidak kehilangan hak atas sesi pembelajaran akibat ketidakhadiran atau kelas yang diliburkan. Listing program untuk algoritma perhitungan kalender dinamis ini dapat dilihat secara lengkap pada bagian Lampiran.
+
+3.5.4.2. Logika Sistem Kuota Sesi
+Sistem kuota sesi digunakan agar Mentor tetap dapat mencatat kehadiran murid meskipun kuota sesi pada paket belajar sudah habis. Dengan cara ini, sistem tetap dapat mencatat sesi pembelajaran yang dilakukan dan secara otomatis memberikan informasi ketika murid sudah memasuki masa jatuh tempo atau memiliki tunggakan pembayaran. Nilai kuota sesi disimpan pada basis data tabel murid, tepatnya pada kolom kuota_belajar. Proses pengurangan kuota dilakukan pada file app/Http/Controllers/Mentor/PresensiMentorController.php, sedangkan proses penambahan kembali kuota dilakukan pada file app/Http/Controllers/Admin/TransaksiController.php. Pengelolaan kuota berjalan secara otomatis berdasarkan kondisi presensi yang dicatat oleh Mentor. Kondisi tersebut dapat dilihat pada Tabel 3.23.
+
+Tabel 3.23. Kondisi Logika Pengelolaan Kuota Sesi
+
+Berdasarkan Tabel 3.23, sistem tidak langsung memblokir proses pencatatan presensi ketika kuota murid sudah mencapai 0. Mentor tetap dapat mencatat kehadiran murid pada pertemuan berikutnya. Jika murid tetap hadir, nilai kuota_belajar akan berkurang menjadi nilai negatif, seperti -1, -2, dan seterusnya. Kondisi tersebut digunakan sebagai penanda bahwa murid telah menggunakan sesi pembelajaran melebihi kuota yang tersedia. Ketika kuota mencapai 0, sistem akan menampilkan status “Jatuh Tempo” pada dashboard. Apabila presensi “Hadir” kembali dicatat sehingga nilai kuota menjadi negatif, status tersebut akan berubah menjadi “Tunggakan” dan ditampilkan dengan penanda berwarna merah. Dengan demikian, Admin dan Orang Tua dapat mengetahui bahwa pembayaran untuk sesi berikutnya perlu dilakukan.
+Kuota akan dikembalikan setelah Orang Tua melakukan pembayaran dan pembayaran tersebut diverifikasi oleh Admin. Setelah verifikasi berhasil, sistem akan menambahkan kembali kuota murid hingga menjadi 8 sesi. Dengan mekanisme tersebut, kuota pembelajaran dapat digunakan kembali seperti pada awal paket belajar. Listing program untuk eksekusi pengurangan dan pemulihan kuota sesi ini dapat dilihat secara lengkap pada bagian Lampiran.
+
+3.6. Proses Hosting dan Publikasi Website
+
+
+3.7. Tahap Uji Coba
+
+
+3.7.1. Uji Coba Black Box
+
+
+3.7.2. Uji Coba Kompatibilitas Browser
+
+
+3.7.3. Uji Coba Kompatibilitas Perangkat
+
+
+3.7.4. Uji Coba UAT
+
 
 
 3.6. Publikasi Website
