@@ -13,27 +13,26 @@
 <div class="space-y-4 w-full">
 
     <!-- Header Actions -->
-    <div class="flex justify-between items-center mb-4">
-        <div class="flex-1">
-            <x-admin.tajuk-halaman
-                title="Detail Profil Mentor"
-                backUrl="{{ route('admin.mentor.index') }}"
-            />
-        </div>
-        <div class="flex space-x-3">
-            <a href="{{ route('admin.mentor.edit', ['mentor' => $mentor->id, 'from' => 'detail']) }}" class="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-gray-700 transition-all duration-100 bg-white border border-gray-300 rounded-xl hover:bg-primary-50 hover:text-primary-700 hover:border-primary-300 shadow-sm hover:-translate-y-0.5">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                Edit Data
-            </a>
-            <form action="{{ route('admin.mentor.destroy', $mentor->id) }}" method="POST" id="deleteForm">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-red-600 transition-all duration-100 bg-white border border-red-200 rounded-xl hover:bg-red-50 hover:border-red-300 shadow-sm hover:-translate-y-0.5">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-                    Hapus
-                </button>
-            </form>
-        </div>
+    <div class="mb-4">
+        <x-admin.tajuk-halaman
+            title="Detail Profil Mentor"
+            backUrl="{{ route('admin.mentor.index') }}"
+        >
+            <x-slot name="rightActions">
+                <a href="{{ route('admin.mentor.edit', ['mentor' => $mentor->id, 'from' => 'detail']) }}" class="w-full sm:w-auto px-4 py-2.5 bg-white border border-gray-300 text-gray-700 rounded-xl font-bold text-sm hover:bg-primary-50 hover:text-primary-700 hover:border-primary-300 transition-colors shadow-sm flex items-center justify-center">
+                    <svg class="w-4 h-4 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                    Edit Data
+                </a>
+                <form action="{{ route('admin.mentor.destroy', $mentor->id) }}" method="POST" id="deleteForm" class="w-full sm:w-auto">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="w-full sm:w-auto px-4 py-2.5 bg-white border border-red-200 text-red-600 rounded-xl font-bold text-sm hover:bg-red-50 hover:border-red-300 transition-colors shadow-sm flex items-center justify-center">
+                        <svg class="w-4 h-4 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                        Hapus
+                    </button>
+                </form>
+            </x-slot>
+        </x-admin.tajuk-halaman>
     </div>
 
     <!-- Top Banner: Hero Card -->
@@ -148,18 +147,18 @@
                                     </td>
                                     <td class="px-6 py-5">
                                         <p class="text-sm font-semibold text-gray-900 mb-1">{{ optional($jadwal->package)->nama_program ?? 'Program Belajar Ruang Les' }}</p>
-                                        <x-antarmuka.lencana color="primary" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border">
+                                        <x-antarmuka.lencana color="primary" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border whitespace-nowrap">
                                             {{ optional($jadwal->package)->tipe_program ?? '-' }}
                                         </x-antarmuka.lencana>
                                     </td>
                                     <td class="px-6 py-5">
                                         <div class="text-sm text-gray-900 font-semibold flex items-center mb-1">
-                                            <svg class="w-4 h-4 mr-1.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                            {{ $jadwal->hari }}, {{ $jadwal->formatted_time_range }}
+                                            <svg class="w-4 h-4 mr-1.5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            <span class="whitespace-nowrap">{{ $jadwal->hari }}, {{ $jadwal->formatted_time_range }}</span>
                                         </div>
                                         <div class="text-xs font-medium text-gray-500 flex items-center">
-                                            <svg class="w-4 h-4 mr-1.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                                            Lokasi: {{ optional($jadwal->package)->lokasi_belajar ?? 'Online' }}
+                                            <svg class="w-4 h-4 mr-1.5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                                            <span class="whitespace-nowrap">Lokasi: {{ optional($jadwal->package)->lokasi_belajar ?? 'Online' }}</span>
                                         </div>
                                     </td>
                                     <td class="px-6 py-5 text-center font-semibold text-gray-900">

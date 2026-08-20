@@ -10,12 +10,12 @@
                 <span class="inline-flex items-center flex-wrap">Halo, {{ Auth::user()->name }}! <span class="ml-2 text-3xl sm:text-4xl inline-block animate-bounce" style="animation-duration: 2s;">👋</span></span>
             </x-slot>
             <x-slot name="rightActions">
-                <a href="{{ route('admin.settings.index') }}" class="px-4 py-2 bg-white border border-gray-200 text-gray-600 rounded-xl font-bold text-sm hover:bg-gray-50 transition-colors shadow-sm flex items-center">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                <a href="{{ route('admin.settings.index') }}" class="w-full sm:w-auto px-4 py-2.5 bg-white border border-gray-200 text-gray-600 rounded-xl font-bold text-sm hover:bg-gray-50 transition-colors shadow-sm flex items-center justify-center">
+                    <svg class="w-4 h-4 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                     Kelola Halaman Depan (CMS)
                 </a>
-                <a href="{{ url('/') }}" target="_blank" class="px-4 py-2 bg-primary-600 text-white rounded-xl font-bold text-sm hover:bg-primary-700 transition-colors shadow-sm shadow-primary-500/30 flex items-center">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                <a href="{{ url('/') }}" target="_blank" class="w-full sm:w-auto px-4 py-2.5 bg-primary-600 text-white rounded-xl font-bold text-sm hover:bg-primary-700 transition-colors shadow-sm shadow-primary-500/30 flex items-center justify-center">
+                    <svg class="w-4 h-4 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
                     Lihat Website
                 </a>
             </x-slot>
@@ -91,8 +91,8 @@
         <div class="p-6 border-b border-gray-100 flex items-center justify-between bg-yellow-50/30">
             <div>
                 <h3 class="text-lg font-bold text-yellow-500 font-heading flex items-center">
-                    <svg class="w-5 h-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    Pembayaran Belum Diverifikasi
+                    <svg class="w-5 h-5 text-yellow-500 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>Pembayaran Belum Diverifikasi</span>
                 </h3>
                 <p class="text-sm text-gray-700 mt-1">Daftar transaksi yang menunggu pengecekan Admin</p>
             </div>
@@ -162,9 +162,9 @@
                 <ul class="divide-y divide-gray-100">
                     @forelse($incompleteTritunggal as $schedule)
                         <li class="p-4 hover:bg-red-50/10 transition-colors">
-                            <div class="flex items-center justify-between">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                                 <div class="flex items-center">
-                                    <div class="mr-3">
+                                    <div class="mr-3 shrink-0">
                                         <x-admin.avatar :name="$schedule->mentor->name ?? 'M'" :avatar-url="$schedule->mentor->avatar ?? null" size="8" textSize="text-xs" />
                                     </div>
                                     <div>
@@ -173,7 +173,7 @@
                                     </div>
                                 </div>
                                 @if(!empty($schedule->missing_tasks))
-                                    <span class="text-[10px] font-bold text-red-500 bg-red-50 px-2.5 py-1 rounded-md border border-red-100 whitespace-nowrap">
+                                    <span class="text-[10px] font-bold text-red-500 bg-red-50 px-2.5 py-1 rounded-md border border-red-100 self-start sm:self-auto leading-relaxed">
                                         Belum Lengkap: {{ implode(', ', $schedule->missing_tasks) }}
                                     </span>
                                 @endif
@@ -200,21 +200,21 @@
             <div class="p-6 border-b border-gray-100 bg-primary-50/30 flex items-center justify-between">
                 <div>
                     <h3 class="text-lg font-bold text-primary-800 font-heading flex items-center">
-                        <svg class="w-5 h-5 text-primary-700 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                        Jadwal Kelas Hari Ini
+                        <svg class="w-5 h-5 text-primary-700 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <span>Jadwal Kelas Hari Ini</span>
                     </h3>
                     <p class="text-sm text-gray-700 mt-1">Daftar kelas yang sedang dan akan berlangsung</p>
                 </div>
-                <a href="{{ route('admin.class-schedules.index') }}" class="text-sm font-bold text-primary-600 hover:text-primary-700">Lihat</a>
+                <a href="{{ route('admin.class-schedules.index') }}" class="text-sm font-bold text-primary-600 hover:text-primary-700">Lihat Semua</a>
             </div>
 
             <div class="flex-1 overflow-y-auto">
                 <ul class="divide-y divide-gray-100">
                     @forelse($todaySchedules->take(5) as $schedule)
                         <li class="p-4 hover:bg-primary-50/10 transition-colors">
-                            <div class="flex items-start justify-between">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                                 <div class="flex items-center">
-                                    <div class="mr-3">
+                                    <div class="mr-3 shrink-0">
                                         <x-admin.avatar :name="$schedule->mentor->name ?? 'M'" :avatar-url="$schedule->mentor->avatar ?? null" size="8" textSize="text-xs" />
                                     </div>
                                     <div>
@@ -222,8 +222,8 @@
                                         <p class="text-xs text-gray-500 mt-0.5">Mentor: {{ $schedule->mentor->name ?? 'Belum Ditentukan' }}</p>
                                     </div>
                                 </div>
-                                <div class="text-right">
-                                    <x-antarmuka.lencana color="primary" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold">
+                                <div class="text-left sm:text-right self-start sm:self-auto">
+                                    <x-antarmuka.lencana color="primary" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold whitespace-nowrap">
                                         {{ $schedule->formatted_time_range ?? substr($schedule->waktu_belajar, 0, 5) }}
                                     </x-antarmuka.lencana>
                                 </div>

@@ -1,21 +1,35 @@
-@extends('layouts.admin')
+<?php $__env->startSection('title', 'Detail Perkembangan Murid'); ?>
 
-@section('title', 'Detail Perkembangan Murid')
-
-@section('breadcrumbs')
+<?php $__env->startSection('breadcrumbs'); ?>
     <svg class="w-3 h-3 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-    <a href="{{ route('admin.progress-notes.index') }}" class="hover:text-primary-600 transition-colors font-medium text-gray-500">Catatan Perkembangan</a>
+    <a href="<?php echo e(route('admin.progress-notes.index')); ?>" class="hover:text-primary-600 transition-colors font-medium text-gray-500">Catatan Perkembangan</a>
     <svg class="w-3 h-3 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
     <span class="text-gray-800 font-bold">Detail Catatan Perkembangan</span>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="space-y-6">
     <div class="mb-6">
-        <x-admin.tajuk-halaman
-            title="Detail Perkembangan Murid"
-            backUrl="{{ route('admin.progress-notes.index') }}"
-        />
+        <?php if (isset($component)) { $__componentOriginalbab0e3efdab257546d29c6a1a8dc50ce = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalbab0e3efdab257546d29c6a1a8dc50ce = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.tajuk-halaman','data' => ['title' => 'Detail Perkembangan Murid','backUrl' => ''.e(route('admin.progress-notes.index')).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.tajuk-halaman'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['title' => 'Detail Perkembangan Murid','backUrl' => ''.e(route('admin.progress-notes.index')).'']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalbab0e3efdab257546d29c6a1a8dc50ce)): ?>
+<?php $attributes = $__attributesOriginalbab0e3efdab257546d29c6a1a8dc50ce; ?>
+<?php unset($__attributesOriginalbab0e3efdab257546d29c6a1a8dc50ce); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalbab0e3efdab257546d29c6a1a8dc50ce)): ?>
+<?php $component = $__componentOriginalbab0e3efdab257546d29c6a1a8dc50ce; ?>
+<?php unset($__componentOriginalbab0e3efdab257546d29c6a1a8dc50ce); ?>
+<?php endif; ?>
     </div>
 
     <!-- Top Banner: Hero Card -->
@@ -34,8 +48,8 @@
 
                     <!-- 2. Teks -->
                     <div>
-                        <h2 class="text-2xl md:text-3xl font-extrabold text-primary-600">{{ $student->nama_murid }}</h2>
-                        <p class="text-gray-900 font-semibold text-base mt-1">{{ $student->sekolah ?? 'Sekolah Tidak Diketahui' }}</p>
+                        <h2 class="text-2xl md:text-3xl font-extrabold text-primary-600"><?php echo e($student->nama_murid); ?></h2>
+                        <p class="text-gray-900 font-semibold text-base mt-1"><?php echo e($student->sekolah ?? 'Sekolah Tidak Diketahui'); ?></p>
                     </div>
                 </div>
 
@@ -43,9 +57,27 @@
                 <div class="mt-4 flex flex-col justify-center md:justify-start gap-2 border-t border-gray-100 pt-4">
                     <div class="inline-flex items-center justify-center md:justify-start text-sm font-medium text-gray-600 w-full md:w-auto">
                         <span class="text-sm font-semibold text-gray-600 mr-2">Tingkat Kelas:</span>
-                        <x-antarmuka.lencana color="gray" class="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold border tracking-wide uppercase">
-                            KELAS {{ $student->kelas ?? '-' }} SD
-                        </x-antarmuka.lencana>
+                        <?php if (isset($component)) { $__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.antarmuka.lencana','data' => ['color' => 'gray','class' => 'inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold border tracking-wide uppercase']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('antarmuka.lencana'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['color' => 'gray','class' => 'inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold border tracking-wide uppercase']); ?>
+                            KELAS <?php echo e($student->kelas ?? '-'); ?> SD
+                         <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b)): ?>
+<?php $attributes = $__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b; ?>
+<?php unset($__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b)): ?>
+<?php $component = $__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b; ?>
+<?php unset($__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b); ?>
+<?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -53,27 +85,27 @@
     </div>
 
     <!-- Feed Timeline per Program -->
-    @forelse($notes->groupBy(function($q) { return $q->schedule->package->nama_program ?? 'Tanpa Paket'; }) as $package => $packageNotes)
+    <?php $__empty_1 = true; $__currentLoopData = $notes->groupBy(function($q) { return $q->schedule->package->nama_program ?? 'Tanpa Paket'; }); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $package => $packageNotes): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
         <div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4">{{ $package }}</h3>
+            <h3 class="text-xl font-bold text-gray-800 mb-4"><?php echo e($package); ?></h3>
 
             <div class="grid grid-cols-1 gap-6">
-                @foreach($packageNotes->groupBy('jadwal_id') as $scheduleId => $scheduleNotes)
-                    @php $schedule = $scheduleNotes->first()->schedule; @endphp
+                <?php $__currentLoopData = $packageNotes->groupBy('jadwal_id'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $scheduleId => $scheduleNotes): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $schedule = $scheduleNotes->first()->schedule; ?>
                     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
 
                         <!-- Header Kelas -->
                         <div class="p-4 border-b border-gray-100 bg-gray-50/50 flex flex-col gap-1">
-                            <h4 class="font-bold text-gray-800">{{ $schedule->nama_kelas ?? 'Kelas Terhapus' }}</h4>
-                            <p class="text-xs text-gray-500 font-semibold">{{ $schedule->hari ?? '-' }}, {{ $schedule->formatted_time_range ?? '-' }}</p>
-                            <p class="text-xs text-gray-500 font-medium mt-1">Mentor: <span class="font-bold text-gray-700">{{ $schedule->mentor->name ?? '-' }}</span></p>
+                            <h4 class="font-bold text-gray-800"><?php echo e($schedule->nama_kelas ?? 'Kelas Terhapus'); ?></h4>
+                            <p class="text-xs text-gray-500 font-semibold"><?php echo e($schedule->hari ?? '-'); ?>, <?php echo e($schedule->formatted_time_range ?? '-'); ?></p>
+                            <p class="text-xs text-gray-500 font-medium mt-1">Mentor: <span class="font-bold text-gray-700"><?php echo e($schedule->mentor->name ?? '-'); ?></span></p>
                         </div>
 
                         <!-- Timeline Feed -->
                         <div class="p-6">
                             <div class="relative border-l-2 border-gray-200 ml-2 space-y-6">
-                                @foreach($scheduleNotes as $note)
-                                    @php
+                                <?php $__currentLoopData = $scheduleNotes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $note): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php
                                         // Tentukan warna badge fokus
                                         $fokusColor = '';
                                         $fokusText = '';
@@ -95,12 +127,12 @@
                                             $fokusText = 'Tidak Fokus';
                                             $fokusDotColor = 'bg-red-500';
                                         }
-                                    @endphp
+                                    ?>
 
                                     <div x-data="{
-                                        showEditModal: {{ $errors->any() && old('note_id') == $note->id ? 'true' : 'false' }},
-                                        materi: @js((string) old('materi', $note->materi)),
-                                        catatan_perkembangan: @js((string) old('catatan_perkembangan', $note->catatan_perkembangan)),
+                                        showEditModal: <?php echo e($errors->any() && old('note_id') == $note->id ? 'true' : 'false'); ?>,
+                                        materi: <?php echo \Illuminate\Support\Js::from((string) old('materi', $note->materi))->toHtml() ?>,
+                                        catatan_perkembangan: <?php echo \Illuminate\Support\Js::from((string) old('catatan_perkembangan', $note->catatan_perkembangan))->toHtml() ?>,
                                         touched: { materi: false, catatan_perkembangan: false },
                                         submitForm(e) {
                                             this.touched.materi = true;
@@ -110,13 +142,13 @@
                                             }
                                         },
                                         resetForm() {
-                                            this.materi = @js((string) $note->materi);
-                                            this.catatan_perkembangan = @js((string) $note->catatan_perkembangan);
+                                            this.materi = <?php echo \Illuminate\Support\Js::from((string) $note->materi)->toHtml() ?>;
+                                            this.catatan_perkembangan = <?php echo \Illuminate\Support\Js::from((string) $note->catatan_perkembangan)->toHtml() ?>;
                                             this.touched = { materi: false, catatan_perkembangan: false };
                                         }
                                     }" class="relative pl-6">
                                         <!-- Timeline Dot -->
-                                        <div class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full ring-4 ring-white {{ $fokusDotColor }}">
+                                        <div class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full ring-4 ring-white <?php echo e($fokusDotColor); ?>">
                                         </div>
 
 
@@ -126,20 +158,21 @@
                                             <!-- Card Header -->
                                             <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 border-b border-gray-50 bg-gray-50/30 gap-4">
                                                 <div>
-                                                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">{{ \Carbon\Carbon::parse($note->tanggal_catatan)->format('d M Y') }}</p>
-                                                    <h5 class="text-base font-bold text-gray-900">{{ $note->materi }}</h5>
+                                                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1"><?php echo e(\Carbon\Carbon::parse($note->tanggal_catatan)->format('d M Y')); ?></p>
+                                                    <h5 class="text-base font-bold text-gray-900"><?php echo e($note->materi); ?></h5>
                                                 </div>
 
                                                 <!-- Badges -->
                                                 <div class="flex items-center gap-2">
-                                                    @if($note->skor_pemahaman !== null)
+                                                    <?php if($note->skor_pemahaman !== null): ?>
                                                         <div class="flex flex-col items-center justify-center bg-white border border-gray-200 rounded-lg px-3 py-1 shadow-sm">
                                                             <span class="text-[10px] text-gray-500 font-bold uppercase">Skor</span>
-                                                            <span class="text-sm font-black text-gray-900">{{ $note->skor_pemahaman }}</span>
+                                                            <span class="text-sm font-black text-gray-900"><?php echo e($note->skor_pemahaman); ?></span>
                                                         </div>
-                                                    @endif
-                                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold border whitespace-nowrap {{ $fokusColor }}">
-                                                        {{ $fokusText }}
+                                                    <?php endif; ?>
+                                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold border <?php echo e($fokusColor); ?>">
+                                                        <?php echo e($fokusText); ?>
+
                                                     </span>
 
                                                     <!-- Edit Button -->
@@ -150,23 +183,41 @@
                                                     </button>
 
                                                     <!-- Delete Button -->
-                                                    <x-admin.formulir-hapus
-                                                        :route="route('admin.progress-notes.destroy', $note->id)"
-                                                    />
+                                                    <?php if (isset($component)) { $__componentOriginalcf42a78d44931673e004c6a791c8bc65 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalcf42a78d44931673e004c6a791c8bc65 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.formulir-hapus','data' => ['route' => route('admin.progress-notes.destroy', $note->id)]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.formulir-hapus'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['route' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('admin.progress-notes.destroy', $note->id))]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalcf42a78d44931673e004c6a791c8bc65)): ?>
+<?php $attributes = $__attributesOriginalcf42a78d44931673e004c6a791c8bc65; ?>
+<?php unset($__attributesOriginalcf42a78d44931673e004c6a791c8bc65); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalcf42a78d44931673e004c6a791c8bc65)): ?>
+<?php $component = $__componentOriginalcf42a78d44931673e004c6a791c8bc65; ?>
+<?php unset($__componentOriginalcf42a78d44931673e004c6a791c8bc65); ?>
+<?php endif; ?>
                                                 </div>
                                             </div>
 
                                             <!-- Card Body -->
                                             <div class="p-4">
-                                                <p class="text-sm text-gray-700 leading-relaxed whitespace-pre-line">{{ $note->catatan_perkembangan }}</p>
+                                                <p class="text-sm text-gray-700 leading-relaxed whitespace-pre-line"><?php echo e($note->catatan_perkembangan); ?></p>
 
                                                 <div class="mt-4 pt-3 border-t border-gray-50 flex items-center justify-between">
                                                     <div class="flex items-center text-[10px] font-bold text-gray-400 uppercase">
                                                         <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                                                        Mentor: {{ $note->mentor->name ?? '-' }}
+                                                        Mentor: <?php echo e($note->mentor->name ?? '-'); ?>
+
                                                     </div>
                                                     <div class="text-[10px] font-bold text-gray-400 uppercase">
-                                                        Diinput: {{ $note->created_at->format('d/m/y H:i') }} WIB
+                                                        Diinput: <?php echo e($note->created_at->format('d/m/y H:i')); ?> WIB
                                                     </div>
                                                 </div>
                                             </div>
@@ -189,11 +240,11 @@
                                                         x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
                                                         class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full relative z-10">
 
-                                                        <form action="{{ route('admin.progress-notes.update', $note->id) }}" method="POST" @submit="submitForm" novalidate>
+                                                        <form action="<?php echo e(route('admin.progress-notes.update', $note->id)); ?>" method="POST" @submit="submitForm" novalidate>
                                                             <!-- Input hidden to identify which form has errors -->
-                                                            <input type="hidden" name="note_id" value="{{ $note->id }}">
-                                                            @csrf
-                                                            @method('PUT')
+                                                            <input type="hidden" name="note_id" value="<?php echo e($note->id); ?>">
+                                                            <?php echo csrf_field(); ?>
+                                                            <?php echo method_field('PUT'); ?>
                                                             <div class="bg-white px-4 pt-5 pb-4 sm:p-6">
                                                                 <h3 class="text-xl leading-6 font-bold text-gray-900 mb-2 flex items-center">
                                                                     <svg class="w-6 h-6 mr-2 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
@@ -203,9 +254,9 @@
 
                                                                 <div class="bg-primary-50/50 p-4 rounded-xl border border-primary-100/50 mb-5">
                                                                     <p class="text-[10px] text-primary-600 font-bold mb-1 uppercase tracking-wider">Data Murid</p>
-                                                                    <p class="font-bold text-gray-900">{{ $note->student->nama_murid }}</p>
+                                                                    <p class="font-bold text-gray-900"><?php echo e($note->student->nama_murid); ?></p>
                                                                     <!-- Tambah validasi bawaan fungsi old() agar aman saat gagal submit -->
-                                                                    <input type="date" name="date" value="{{ old('date', $note->tanggal_catatan) }}" max="{{ date('Y-m-d') }}" required class="mt-2 block w-full rounded-2xl p-3 border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary-400 transition-colors duration-100 text-sm font-medium text-gray-800">
+                                                                    <input type="date" name="date" value="<?php echo e(old('date', $note->tanggal_catatan)); ?>" max="<?php echo e(date('Y-m-d')); ?>" required class="mt-2 block w-full rounded-2xl p-3 border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary-400 transition-colors duration-100 text-sm font-medium text-gray-800">
                                                                 </div>
 
                                                                 <div class="space-y-4">
@@ -222,15 +273,15 @@
                                                                         <div>
                                                                             <label class="block text-sm font-semibold text-gray-600 mb-2">Status Fokus <span class="text-red-500">*</span></label>
                                                                             <select name="status_fokus" required class="block w-full appearance-none rounded-2xl p-3 pr-10 border border-gray-200 shadow-sm focus:outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-200 transition-colors duration-100 text-sm font-medium text-gray-800 bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%234b5563%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-[length:1.25rem_1.25rem] bg-[position:right_1rem_center] bg-no-repeat cursor-pointer">
-                                                                                <option value="sangat_fokus" {{ old('status_fokus', $note->status_fokus) == 'sangat_fokus' ? 'selected' : '' }}>Sangat Fokus</option>
-                                                                                <option value="fokus" {{ old('status_fokus', $note->status_fokus) == 'fokus' ? 'selected' : '' }}>Fokus</option>
-                                                                                <option value="kurang_fokus" {{ old('status_fokus', $note->status_fokus) == 'kurang_fokus' ? 'selected' : '' }}>Kurang Fokus</option>
-                                                                                <option value="tidak_fokus" {{ old('status_fokus', $note->status_fokus) == 'tidak_fokus' ? 'selected' : '' }}>Tidak Fokus</option>
+                                                                                <option value="sangat_fokus" <?php echo e(old('status_fokus', $note->status_fokus) == 'sangat_fokus' ? 'selected' : ''); ?>>Sangat Fokus</option>
+                                                                                <option value="fokus" <?php echo e(old('status_fokus', $note->status_fokus) == 'fokus' ? 'selected' : ''); ?>>Fokus</option>
+                                                                                <option value="kurang_fokus" <?php echo e(old('status_fokus', $note->status_fokus) == 'kurang_fokus' ? 'selected' : ''); ?>>Kurang Fokus</option>
+                                                                                <option value="tidak_fokus" <?php echo e(old('status_fokus', $note->status_fokus) == 'tidak_fokus' ? 'selected' : ''); ?>>Tidak Fokus</option>
                                                                             </select>
                                                                         </div>
                                                                         <div>
                                                                             <label class="block text-sm font-semibold text-gray-600 mb-2">Skor Pemahaman (0-100)</label>
-                                                                            <input type="number" name="skor_pemahaman" min="0" max="100" value="{{ old('skor_pemahaman', $note->skor_pemahaman) }}" class="block w-full rounded-2xl p-3 border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary-400 transition-colors duration-100 text-sm font-medium text-gray-800">
+                                                                            <input type="number" name="skor_pemahaman" min="0" max="100" value="<?php echo e(old('skor_pemahaman', $note->skor_pemahaman)); ?>" class="block w-full rounded-2xl p-3 border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary-400 transition-colors duration-100 text-sm font-medium text-gray-800">
                                                                         </div>
                                                                     </div>
 
@@ -258,21 +309,38 @@
                                             </div>
                                         </template>
                                     </div>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
-    @empty
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-12">
-            <x-admin.keadaan-kosong
-                icon="document-text"
-                title="Belum ada Catatan Perkembangan"
-                message="Murid ini belum memiliki catatan perkembangan akademik."
-            />
+            <?php if (isset($component)) { $__componentOriginala248761445578b3580e6fcec2c0db260 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginala248761445578b3580e6fcec2c0db260 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.keadaan-kosong','data' => ['icon' => 'document-text','title' => 'Belum ada Catatan Perkembangan','message' => 'Murid ini belum memiliki catatan perkembangan akademik.']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.keadaan-kosong'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['icon' => 'document-text','title' => 'Belum ada Catatan Perkembangan','message' => 'Murid ini belum memiliki catatan perkembangan akademik.']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginala248761445578b3580e6fcec2c0db260)): ?>
+<?php $attributes = $__attributesOriginala248761445578b3580e6fcec2c0db260; ?>
+<?php unset($__attributesOriginala248761445578b3580e6fcec2c0db260); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginala248761445578b3580e6fcec2c0db260)): ?>
+<?php $component = $__componentOriginala248761445578b3580e6fcec2c0db260; ?>
+<?php unset($__componentOriginala248761445578b3580e6fcec2c0db260); ?>
+<?php endif; ?>
         </div>
-    @endforelse
+    <?php endif; ?>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.admin', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\ruang-les\resources\views/admin/catatan-perkembangan/detail.blade.php ENDPATH**/ ?>

@@ -1,34 +1,48 @@
-@extends('layouts.admin')
+<?php $__env->startSection('title', isset($user) ? 'Edit Pengguna' : 'Tambah Pengguna'); ?>
 
-@section('title', isset($user) ? 'Edit Pengguna' : 'Tambah Pengguna')
-
-@section('breadcrumbs')
+<?php $__env->startSection('breadcrumbs'); ?>
     <svg class="w-3 h-3 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-    <a href="{{ route('admin.users.index') }}" class="hover:text-primary-600 transition-colors">Pengguna</a>
+    <a href="<?php echo e(route('admin.users.index')); ?>" class="hover:text-primary-600 transition-colors">Pengguna</a>
     <svg class="w-3 h-3 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-    <span class="text-gray-800 font-bold">@yield('title')</span>
-@endsection
+    <span class="text-gray-800 font-bold"><?php echo $__env->yieldContent('title'); ?></span>
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="w-full space-y-6">
 
-    <x-admin.tajuk-halaman
-        title="{{ isset($user) ? 'Edit Data Pengguna' : 'Tambah Pengguna Baru' }}" 
-        backUrl="{{ route('admin.users.index') }}"
-    />
+    <?php if (isset($component)) { $__componentOriginalbab0e3efdab257546d29c6a1a8dc50ce = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalbab0e3efdab257546d29c6a1a8dc50ce = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.admin.tajuk-halaman','data' => ['title' => ''.e(isset($user) ? 'Edit Data Pengguna' : 'Tambah Pengguna Baru').'','backUrl' => ''.e(route('admin.users.index')).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('admin.tajuk-halaman'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['title' => ''.e(isset($user) ? 'Edit Data Pengguna' : 'Tambah Pengguna Baru').'','backUrl' => ''.e(route('admin.users.index')).'']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalbab0e3efdab257546d29c6a1a8dc50ce)): ?>
+<?php $attributes = $__attributesOriginalbab0e3efdab257546d29c6a1a8dc50ce; ?>
+<?php unset($__attributesOriginalbab0e3efdab257546d29c6a1a8dc50ce); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalbab0e3efdab257546d29c6a1a8dc50ce)): ?>
+<?php $component = $__componentOriginalbab0e3efdab257546d29c6a1a8dc50ce; ?>
+<?php unset($__componentOriginalbab0e3efdab257546d29c6a1a8dc50ce); ?>
+<?php endif; ?>
 
     <!-- Form -->
-    <form action="{{ isset($user) ? route('admin.users.update', $user->id) : route('admin.users.store') }}" method="POST" enctype="multipart/form-data"
+    <form action="<?php echo e(isset($user) ? route('admin.users.update', $user->id) : route('admin.users.store')); ?>" method="POST" enctype="multipart/form-data"
           x-data="{
-              isEditMode: @js(isset($user)),
+              isEditMode: <?php echo \Illuminate\Support\Js::from(isset($user))->toHtml() ?>,
               originalData: {
-                  name: @js((string) old('name', $user->name ?? '')),
-                  email: @js((string) old('email', $user->email ?? '')),
-                  role: @js((string) old('role', $user->role ?? ''))
+                  name: <?php echo \Illuminate\Support\Js::from((string) old('name', $user->name ?? ''))->toHtml() ?>,
+                  email: <?php echo \Illuminate\Support\Js::from((string) old('email', $user->email ?? ''))->toHtml() ?>,
+                  role: <?php echo \Illuminate\Support\Js::from((string) old('role', $user->role ?? ''))->toHtml() ?>
               },
-              name: @js((string) old('name', $user->name ?? '')),
-              email: @js((string) old('email', $user->email ?? '')),
-              role: @js((string) old('role', $user->role ?? '')),
+              name: <?php echo \Illuminate\Support\Js::from((string) old('name', $user->name ?? ''))->toHtml() ?>,
+              email: <?php echo \Illuminate\Support\Js::from((string) old('email', $user->email ?? ''))->toHtml() ?>,
+              role: <?php echo \Illuminate\Support\Js::from((string) old('role', $user->role ?? ''))->toHtml() ?>,
               showPassword: false,
               showPasswordConfirm: false,
               password: '',
@@ -72,19 +86,19 @@
                   if (String(this.name).trim() === '') isValid = false;
                   if (String(this.email).trim() === '') isValid = false;
                   if (String(this.role).trim() === '') isValid = false;
-                  @if(!isset($user))
+                  <?php if(!isset($user)): ?>
                   if (this.password === '') isValid = false;
-                  @endif
+                  <?php endif; ?>
 
                   if (!isValid) {
                       e.preventDefault();
                   }
               }
           }" @submit="submitForm" novalidate>
-        @csrf
-        @if(isset($user))
-            @method('PUT')
-        @endif
+        <?php echo csrf_field(); ?>
+        <?php if(isset($user)): ?>
+            <?php echo method_field('PUT'); ?>
+        <?php endif; ?>
 
         <div class="bg-white rounded-2xl shadow-sm border border-primary-100/50 p-6 md:p-8">
 
@@ -99,7 +113,26 @@
                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         Nama Lengkap wajib diisi.
                     </p>
-                    <x-antarmuka.galat-sebaris name="name" />
+                    <?php if (isset($component)) { $__componentOriginale4392c51ccef42726141b9bd03684153 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginale4392c51ccef42726141b9bd03684153 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.antarmuka.galat-sebaris','data' => ['name' => 'name']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('antarmuka.galat-sebaris'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['name' => 'name']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginale4392c51ccef42726141b9bd03684153)): ?>
+<?php $attributes = $__attributesOriginale4392c51ccef42726141b9bd03684153; ?>
+<?php unset($__attributesOriginale4392c51ccef42726141b9bd03684153); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginale4392c51ccef42726141b9bd03684153)): ?>
+<?php $component = $__componentOriginale4392c51ccef42726141b9bd03684153; ?>
+<?php unset($__componentOriginale4392c51ccef42726141b9bd03684153); ?>
+<?php endif; ?>
                 </div>
 
                 <div>
@@ -112,11 +145,30 @@
                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         Email wajib diisi.
                     </p>
-                    <x-antarmuka.galat-sebaris name="email" />
+                    <?php if (isset($component)) { $__componentOriginale4392c51ccef42726141b9bd03684153 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginale4392c51ccef42726141b9bd03684153 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.antarmuka.galat-sebaris','data' => ['name' => 'email']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('antarmuka.galat-sebaris'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['name' => 'email']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginale4392c51ccef42726141b9bd03684153)): ?>
+<?php $attributes = $__attributesOriginale4392c51ccef42726141b9bd03684153; ?>
+<?php unset($__attributesOriginale4392c51ccef42726141b9bd03684153); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginale4392c51ccef42726141b9bd03684153)): ?>
+<?php $component = $__componentOriginale4392c51ccef42726141b9bd03684153; ?>
+<?php unset($__componentOriginale4392c51ccef42726141b9bd03684153); ?>
+<?php endif; ?>
                 </div>
 
                 <div>
-                    <label class="block text-sm text-gray-600 font-semibold mb-2">Password @if(!isset($user))<span class="text-red-500">*</span>@else<span class="text-gray-400 font-normal">(Kosongkan jika tidak diubah)</span>@endif</label>
+                    <label class="block text-sm text-gray-600 font-semibold mb-2">Password <?php if(!isset($user)): ?><span class="text-red-500">*</span><?php else: ?><span class="text-gray-400 font-normal">(Kosongkan jika tidak diubah)</span><?php endif; ?></label>
                     <div class="relative">
                         <input name="password" x-model="password" :type="showPassword ? 'text' : 'password'" @blur="touched.password = true"
                             :class="touched.password && password === '' && !isEditMode ? 'border-red-500 focus:ring-red-500 bg-red-50/30' : 'border-gray-200 focus:border-primary-400 bg-gray-50'"
@@ -132,17 +184,36 @@
                             </svg>
                         </button>
                     </div>
-                    @if(!isset($user))
+                    <?php if(!isset($user)): ?>
                     <p x-show="touched.password && password === ''" x-transition style="display: none;" class="text-red-500 text-xs mt-2 font-medium flex items-center">
                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         Password wajib diisi.
                     </p>
-                    @endif
-                    <x-antarmuka.galat-sebaris name="password" />
+                    <?php endif; ?>
+                    <?php if (isset($component)) { $__componentOriginale4392c51ccef42726141b9bd03684153 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginale4392c51ccef42726141b9bd03684153 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.antarmuka.galat-sebaris','data' => ['name' => 'password']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('antarmuka.galat-sebaris'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['name' => 'password']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginale4392c51ccef42726141b9bd03684153)): ?>
+<?php $attributes = $__attributesOriginale4392c51ccef42726141b9bd03684153; ?>
+<?php unset($__attributesOriginale4392c51ccef42726141b9bd03684153); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginale4392c51ccef42726141b9bd03684153)): ?>
+<?php $component = $__componentOriginale4392c51ccef42726141b9bd03684153; ?>
+<?php unset($__componentOriginale4392c51ccef42726141b9bd03684153); ?>
+<?php endif; ?>
                 </div>
 
                 <div>
-                    <label class="block text-sm text-gray-600 font-semibold mb-2">Konfirmasi Password @if(!isset($user)) @endif</label>
+                    <label class="block text-sm text-gray-600 font-semibold mb-2">Konfirmasi Password <?php if(!isset($user)): ?> <?php endif; ?></label>
                     <div class="relative">
                         <input name="password_confirmation" x-model="passwordConfirm" :type="showPasswordConfirm ? 'text' : 'password'"
                             class="block w-full rounded-xl p-3 pr-12 border border-gray-200 focus:border-primary-400 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-200 transition-colors duration-100 text-sm font-medium text-gray-800"
@@ -175,7 +246,26 @@
                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         Role wajib dipilih.
                     </p>
-                    <x-antarmuka.galat-sebaris name="role" />
+                    <?php if (isset($component)) { $__componentOriginale4392c51ccef42726141b9bd03684153 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginale4392c51ccef42726141b9bd03684153 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.antarmuka.galat-sebaris','data' => ['name' => 'role']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('antarmuka.galat-sebaris'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['name' => 'role']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginale4392c51ccef42726141b9bd03684153)): ?>
+<?php $attributes = $__attributesOriginale4392c51ccef42726141b9bd03684153; ?>
+<?php unset($__attributesOriginale4392c51ccef42726141b9bd03684153); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginale4392c51ccef42726141b9bd03684153)): ?>
+<?php $component = $__componentOriginale4392c51ccef42726141b9bd03684153; ?>
+<?php unset($__componentOriginale4392c51ccef42726141b9bd03684153); ?>
+<?php endif; ?>
                 </div>
             </div>
 
@@ -187,7 +277,7 @@
                 </button>
                 <button type="submit" class="w-full md:w-2/3 flex items-center justify-center px-6 md:px-8 py-4 text-base font-extrabold text-white transition-all duration-100 bg-primary-600 rounded-2xl hover:bg-primary-700 shadow-lg shadow-primary-500/30 transform hover:-translate-y-1 text-center">
                     <svg class="w-5 h-5 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path></svg>
-                    <span>{{ isset($user) ? 'Simpan Perubahan Data Pengguna' : 'Simpan Data Pengguna Baru' }}</span>
+                    <span><?php echo e(isset($user) ? 'Simpan Perubahan Data Pengguna' : 'Simpan Data Pengguna Baru'); ?></span>
                 </button>
             </div>
         </div>
@@ -196,4 +286,6 @@
 </div>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.admin', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\ruang-les\resources\views/admin/pengguna/formulir.blade.php ENDPATH**/ ?>

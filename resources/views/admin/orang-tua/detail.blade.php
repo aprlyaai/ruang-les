@@ -13,27 +13,26 @@
 <div class="space-y-4 w-full">
 
     <!-- Action Bar -->
-    <div class="flex justify-between items-center mb-4">
-        <div class="flex-1">
-            <x-admin.tajuk-halaman
-                title="Detail Profil Wali Murid"
-                backUrl="{{ route('admin.parents.index') }}"
-            />
-        </div>
-        <div class="flex space-x-3">
-            <a href="{{ route('admin.parents.edit', ['parent' => $parent->id, 'from' => 'detail']) }}" class="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-gray-700 transition-all duration-100 bg-white border border-gray-300 rounded-xl hover:bg-primary-50 hover:text-primary-700 hover:border-primary-300 shadow-sm hover:-translate-y-0.5">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                Edit Data
-            </a>
-            <form action="{{ route('admin.parents.destroy', $parent->id) }}" method="POST" id="deleteForm">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-red-600 transition-all duration-100 bg-white border border-red-200 rounded-xl hover:bg-red-50 hover:border-red-300 shadow-sm hover:-translate-y-0.5">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-                    Hapus
-                </button>
-            </form>
-        </div>
+    <div class="mb-4">
+        <x-admin.tajuk-halaman
+            title="Detail Profil Wali Murid"
+            backUrl="{{ route('admin.parents.index') }}"
+        >
+            <x-slot name="rightActions">
+                <a href="{{ route('admin.parents.edit', ['parent' => $parent->id, 'from' => 'detail']) }}" class="w-full sm:w-auto px-4 py-2.5 bg-white border border-gray-300 text-gray-700 rounded-xl font-bold text-sm hover:bg-primary-50 hover:text-primary-700 hover:border-primary-300 transition-colors shadow-sm flex items-center justify-center">
+                    <svg class="w-4 h-4 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                    Edit Data
+                </a>
+                <form action="{{ route('admin.parents.destroy', $parent->id) }}" method="POST" id="deleteForm" class="w-full sm:w-auto">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="w-full sm:w-auto px-4 py-2.5 bg-white border border-red-200 text-red-600 rounded-xl font-bold text-sm hover:bg-red-50 hover:border-red-300 transition-colors shadow-sm flex items-center justify-center">
+                        <svg class="w-4 h-4 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                        Hapus
+                    </button>
+                </form>
+            </x-slot>
+        </x-admin.tajuk-halaman>
     </div>
 
     <!-- Top Banner: Hero Card -->
@@ -103,18 +102,18 @@
                                                 <div class="text-sm font-semibold text-gray-900">{{ $student->sekolah }}</div>
                                                 <div class="text-xs text-gray-500 mt-1">Kelas {{ $student->kelas }}</div>
                                             </td>
-                                            <td class="px-6 py-4 align-middle text-center font-bold">
-                                                <x-antarmuka.lencana :color="$student->kuota_belajar <= 0 ? 'danger' : 'primary'" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border">
+                                             <td class="px-6 py-4 align-middle text-center font-bold">
+                                                <x-antarmuka.lencana :color="$student->kuota_belajar <= 0 ? 'danger' : 'primary'" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border whitespace-nowrap">
                                                     {{ $student->kuota_belajar ?? 0 }} Sesi
                                                 </x-antarmuka.lencana>
                                             </td>
                                             <td class="px-6 py-4 align-middle text-center">
                                                 @if($student->status_murid === 'active')
-                                                    <x-antarmuka.lencana color="primary" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border w-fit">
+                                                    <x-antarmuka.lencana color="primary" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border w-fit whitespace-nowrap">
                                                         <span class="w-1.5 h-1.5 rounded-full bg-primary-500 mr-1.5"></span> Aktif
                                                     </x-antarmuka.lencana>
                                                 @else
-                                                    <x-antarmuka.lencana color="gray" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border w-fit">
+                                                    <x-antarmuka.lencana color="gray" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border w-fit whitespace-nowrap">
                                                         <span class="w-1.5 h-1.5 rounded-full bg-gray-400 mr-1.5"></span> Nonaktif
                                                     </x-antarmuka.lencana>
                                                 @endif

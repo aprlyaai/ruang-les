@@ -56,11 +56,11 @@
 class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
     <div class="p-5 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
         <h2 class="text-lg font-bold text-gray-800">Semua Catatan Perkembangan</h2>
-        <x-antarmuka.lencana color="primary">{{ $notes->total() }} Data Tersedia</x-antarmuka.lencana>
+        <x-antarmuka.lencana color="primary" class="whitespace-nowrap">{{ $notes->total() }} Data Tersedia</x-antarmuka.lencana>
     </div>
 
     <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse text-sm">
+        <table class="w-full text-left border-collapse text-sm min-w-[700px]">
             <thead>
                 <tr class="bg-gray-50/50 border-b border-primary-100/50">
                     <th class="px-4 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider">Paket Program</th>
@@ -88,20 +88,20 @@ class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                     </td>
                     <td class="px-4 py-3 align-middle">
                         <div class="flex flex-col gap-1">
-                            <p class="text-sm font-semibold text-gray-900" title="Tanggal Pertemuan Kelas">
+                            <p class="text-sm font-semibold text-gray-900 whitespace-nowrap" title="Tanggal Pertemuan Kelas">
                                 <span class="text-[10px] uppercase text-gray-500 font-bold block mb-0.5">Pertemuan:</span>
                                 {{ \Carbon\Carbon::parse($note->tanggal_catatan)->format('d M Y') }}
                             </p>
-                            <p class="text-xs text-gray-500" title="Waktu Input Data oleh Mentor">
+                            <p class="text-xs text-gray-500 whitespace-nowrap" title="Waktu Input Data oleh Mentor">
                                 <span class="text-[10px] uppercase text-gray-500 font-bold">Input:</span>
                                 {{ $note->created_at->format('d M, H:i') }}
                             </p>
                         </div>
                     </td>
                     <td class="px-4 py-3 align-middle">
-                        <p class="text-sm font-bold text-gray-900">{{ $note->student->nama_murid ?? 'Murid Terhapus' }}</p>
-                        <a href="{{ route('admin.progress-notes.show', $note->murid_id) }}" class="inline-flex items-center mt-1.5 text-[11px] font-bold text-primary-600 hover:text-primary-800 bg-primary-50 hover:bg-primary-100 border border-primary-100 px-2 py-0.5 rounded transition-colors">
-                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        <p class="text-sm font-bold text-gray-900 whitespace-nowrap">{{ $note->student->nama_murid ?? 'Murid Terhapus' }}</p>
+                        <a href="{{ route('admin.progress-notes.show', $note->murid_id) }}" class="inline-flex items-center mt-1.5 text-[11px] font-bold text-primary-600 hover:text-primary-800 bg-primary-50 hover:bg-primary-100 border border-primary-100 px-2 py-0.5 rounded transition-colors whitespace-nowrap">
+                            <svg class="w-3 h-3 mr-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                             Buku Perkembangan
                         </a>
                     </td>
@@ -109,16 +109,16 @@ class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                         <p class="text-sm font-semibold text-gray-900" title="{{ $note->materi }}">{{ $note->materi }}</p>
                         <div class="mt-1 flex items-center gap-2">
                             @if($note->status_fokus === 'sangat_fokus')
-                                <x-antarmuka.lencana color="primary" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border w-fit">Sangat Fokus</x-antarmuka.lencana>
+                                <x-antarmuka.lencana color="primary" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border w-fit whitespace-nowrap">Sangat Fokus</x-antarmuka.lencana>
                             @elseif($note->status_fokus === 'fokus')
-                                <x-antarmuka.lencana color="primary" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border w-fit">Fokus</x-antarmuka.lencana>
+                                <x-antarmuka.lencana color="primary" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border w-fit whitespace-nowrap">Fokus</x-antarmuka.lencana>
                             @elseif($note->status_fokus === 'kurang_fokus')
-                                <x-antarmuka.lencana color="warning" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border w-fit">Kurang Fokus</x-antarmuka.lencana>
+                                <x-antarmuka.lencana color="warning" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border w-fit whitespace-nowrap">Kurang Fokus</x-antarmuka.lencana>
                             @elseif($note->status_fokus === 'tidak_fokus')
-                                <x-antarmuka.lencana color="danger" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border w-fit">Tidak Fokus</x-antarmuka.lencana>
+                                <x-antarmuka.lencana color="danger" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border w-fit whitespace-nowrap">Tidak Fokus</x-antarmuka.lencana>
                             @endif
                             @if($note->skor_pemahaman !== null)
-                                <span class="text-xs text-gray-500">Skor: {{ $note->skor_pemahaman }}% paham</span>
+                                <span class="text-xs text-gray-500 whitespace-nowrap">Skor: {{ $note->skor_pemahaman }}% paham</span>
                             @endif
                         </div>
                     </td>

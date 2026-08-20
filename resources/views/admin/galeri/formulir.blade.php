@@ -61,7 +61,7 @@
                             </div>
 
                             <div>
-                                <input id="gambar-upload" name="gambar" type="file" accept="gambar/jpeg,gambar/png,gambar/webp,gambar/gif" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100 transition-colors cursor-pointer border rounded-xl" :class="touched.gambar && !isEditMode && !imagePreview ? 'border-red-500 bg-red-50/50' : 'border-gray-200 bg-white'" @change="handleFileChange; touched.gambar = true;">
+                                <input id="gambar-upload" name="gambar" type="file" accept="image/jpeg,image/jpg,image/png,image/webp,image/gif" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100 transition-colors cursor-pointer border rounded-xl" :class="touched.gambar && !isEditMode && !imagePreview ? 'border-red-500 bg-red-50/50' : 'border-gray-200 bg-white'" @change="handleFileChange; touched.gambar = true;">
 
                                 <p x-show="touched.gambar && !isEditMode && !imagePreview" x-transition style="display: none;" class="text-red-500 text-xs mt-2 font-medium flex items-center">
                                     <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -197,9 +197,34 @@
                 const file = event.target.files[0];
                 if (!file) return;
 
-                // Simple validation for preview
-                if (!file.type.match('gambar.*')) {
-                    alert('Harap unggah file gambar (JPG, PNG, dll).');
+                const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif'];
+                if (!validTypes.includes(file.type) && !file.type.startsWith('image/')) {
+                    if (typeof Swal !== 'undefined') {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Format File Tidak Sesuai',
+                            text: 'Harap unggah file gambar dengan format JPEG, JPG, PNG, atau WEBP.',
+                            confirmColor: '#059669'
+                        });
+                    } else {
+                        alert('Harap unggah file gambar dengan format JPEG, JPG, PNG, atau WEBP.');
+                    }
+                    event.target.value = '';
+                    return;
+                }
+
+                if (file.size > 2 * 1024 * 1024) {
+                    if (typeof Swal !== 'undefined') {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Ukuran File Terlalu Besar',
+                            text: 'Ukuran foto maksimal adalah 2MB.',
+                            confirmColor: '#059669'
+                        });
+                    } else {
+                        alert('Ukuran foto maksimal adalah 2MB.');
+                    }
+                    event.target.value = '';
                     return;
                 }
 

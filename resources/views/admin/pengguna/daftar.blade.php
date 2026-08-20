@@ -44,7 +44,7 @@
         </div>
 
         <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse text-sm">
+            <table class="w-full text-left border-collapse text-sm min-w-[650px]">
                 <thead>
                     <tr class="bg-gray-50/50 border-b border-primary-100/50">
                         <th class="px-4 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider">Nama</th>
@@ -68,17 +68,17 @@
                             </td>
                             <td class="px-4 py-3 align-middle">
                                 <div class="text-sm text-gray-900 flex items-center">
-                                    <svg class="w-4 h-4 text-primary-600 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                    {{ $user->email }}
+                                    <svg class="w-4 h-4 text-primary-600 mr-1.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                    <span class="truncate">{{ $user->email }}</span>
                                 </div>
                             </td>
                             <td class="px-4 py-3 align-middle">
                                 @if($user->role === 'admin')
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary-100 text-primary-700 border border-primary-200 w-fit">Admin</span>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary-100 text-primary-700 border border-primary-200 w-fit whitespace-nowrap">Admin</span>
                                 @elseif($user->role === 'mentor')
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-sky-100 text-sky-700 border border-sky-200 w-fit">Mentor</span>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-sky-100 text-sky-700 border border-sky-200 w-fit whitespace-nowrap">Mentor</span>
                                 @else
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-pink-100 text-pink-500 border border-pink-200 w-fit">Orang Tua</span>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-pink-100 text-pink-500 border border-pink-200 w-fit whitespace-nowrap">Orang Tua</span>
                                 @endif
                             </td>
                             <td class="px-4 py-3 align-middle">

@@ -18,26 +18,26 @@
 
     <!-- Tab Navigation -->
     <div class="bg-white/80 backdrop-blur-md rounded-t-2xl shadow-sm border border-primary-100/50 border-b-0 overflow-hidden mt-6">
-        <nav class="flex flex-wrap overflow-x-auto" aria-label="Tabs">
-            <button @click="tab = 'Semua'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': tab === 'Semua', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': tab !== 'Semua'}" class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none flex items-center justify-center gap-2">
+        <nav class="flex flex-nowrap overflow-x-auto border-b border-gray-100 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" aria-label="Tabs">
+            <button @click="tab = 'Semua'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': tab === 'Semua', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': tab !== 'Semua'}" class="flex-1 shrink-0 whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none flex items-center justify-center gap-2">
                 Semua
                 <x-antarmuka.lencana color="primary" class="tab === 'Semua' ? ' ' : ' '">{{ $tickets->count() }}</x-antarmuka.lencana>
             </button>
-            <button @click="tab = 'Open'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': tab === 'Open', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': tab !== 'Open'}" class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none flex items-center justify-center gap-2">
+            <button @click="tab = 'Open'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': tab === 'Open', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': tab !== 'Open'}" class="flex-1 shrink-0 whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none flex items-center justify-center gap-2">
                 Baru
                 @php $countOpen = $tickets->where('status_layanan', 'Open')->count(); @endphp
                 @if($countOpen > 0)
                     <x-antarmuka.lencana color="danger" class="tab === 'Open' ? ' ' : ' '">{{ $countOpen }}</x-antarmuka.lencana>
                 @endif
             </button>
-            <button @click="tab = 'In Progress'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': tab === 'In Progress', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': tab !== 'In Progress'}" class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none flex items-center justify-center gap-2">
+            <button @click="tab = 'In Progress'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': tab === 'In Progress', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': tab !== 'In Progress'}" class="flex-1 shrink-0 whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none flex items-center justify-center gap-2">
                 Dalam Penanganan
                 @php $countProgress = $tickets->where('status_layanan', 'In Progress')->count(); @endphp
                 @if($countProgress > 0)
                     <x-antarmuka.lencana color="warning" class="tab === 'In Progress' ? ' ' : ' '">{{ $countProgress }}</x-antarmuka.lencana>
                 @endif
             </button>
-            <button @click="tab = 'Closed'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': tab === 'Closed', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': tab !== 'Closed'}" class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none flex items-center justify-center gap-2">
+            <button @click="tab = 'Closed'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': tab === 'Closed', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': tab !== 'Closed'}" class="flex-1 shrink-0 whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none flex items-center justify-center gap-2">
                 Selesai
             </button>
         </nav>
@@ -46,7 +46,7 @@
     <!-- Table Section -->
     <div class="bg-white rounded-b-2xl shadow-sm border border-primary-100/50 overflow-hidden">
         <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse text-sm">
+            <table class="w-full text-left border-collapse text-sm min-w-[650px]">
                 <thead>
                     <tr class="bg-gray-50/50 border-b border-primary-100/50">
                         <th class="px-4 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider">Tiket & Waktu</th>
@@ -81,24 +81,24 @@
                             <td class="px-4 py-3 align-middle">
                                 <div class="text-sm font-semibold text-gray-900">{{ $ticket->subject_layanan }}</div>
                                 <div class="text-xs mt-1">
-                                    <x-antarmuka.lencana color="gray" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border w-fit">
+                                    <x-antarmuka.lencana color="gray" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border w-fit whitespace-nowrap">
                                     {{ $ticket->kategori_layanan }}
                                     </x-antarmuka.lencana>
                                 </div>
                             </td>
                             <td class="px-4 py-3 align-middle">
                             @if($ticket->status_layanan == 'Open')
-                                <x-antarmuka.lencana color="danger" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border w-fit">
+                                <x-antarmuka.lencana color="danger" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border w-fit whitespace-nowrap">
                                     <span class="w-1.5 h-1.5 bg-red-500 rounded-full mr-1.5 animate-pulse"></x-antarmuka.lencana>
                                     Baru
                                 </span>
                             @elseif($ticket->status_layanan == 'In Progress')
-                                <x-antarmuka.lencana color="warning" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border w-fit">
+                                <x-antarmuka.lencana color="warning" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border w-fit whitespace-nowrap">
                                     <span class="w-1.5 h-1.5 bg-amber-500 rounded-full mr-1.5"></x-antarmuka.lencana>
                                     Dalam Penanganan
                                 </span>
                             @else
-                                <x-antarmuka.lencana color="gray" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border w-fit">
+                                <x-antarmuka.lencana color="gray" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border w-fit whitespace-nowrap">
                                     <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mr-1.5"></x-antarmuka.lencana>
                                     Selesai
                                 </span>

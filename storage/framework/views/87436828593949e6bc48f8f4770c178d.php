@@ -88,32 +88,32 @@
 
     <!-- Tabs Navigation -->
     <div class="bg-white/80 backdrop-blur-md rounded-t-2xl shadow-sm border border-primary-100/50 border-b-0 overflow-hidden">
-        <nav class="flex flex-wrap overflow-x-auto" aria-label="Tabs">
-            <button @click="activeTab = 'hero'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'hero', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'hero'}" class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+        <nav class="flex flex-nowrap overflow-x-auto border-b border-gray-100 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" aria-label="Tabs">
+            <button @click="activeTab = 'hero'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'hero', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'hero'}" class="flex-1 shrink-0 whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                 Header & Hero
             </button>
-            <button @click="activeTab = 'fitur'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'fitur', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'fitur'}" class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+            <button @click="activeTab = 'fitur'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'fitur', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'fitur'}" class="flex-1 shrink-0 whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                 Fitur Unggulan
             </button>
-            <button @click="activeTab = 'program'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'program', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'program'}" class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+            <button @click="activeTab = 'program'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'program', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'program'}" class="flex-1 shrink-0 whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                 Program Belajar
             </button>
-            <button @click="activeTab = 'testimoni'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'testimoni', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'testimoni'}" class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+            <button @click="activeTab = 'testimoni'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'testimoni', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'testimoni'}" class="flex-1 shrink-0 whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                 Testimoni
             </button>
-            <button @click="activeTab = 'faq'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'faq', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'faq'}" class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+            <button @click="activeTab = 'faq'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'faq', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'faq'}" class="flex-1 shrink-0 whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                 Tanya Jawab (FAQ)
             </button>
-            <button @click="activeTab = 'profil'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'profil', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'profil'}" class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+            <button @click="activeTab = 'profil'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'profil', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'profil'}" class="flex-1 shrink-0 whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                 Tentang Kami
             </button>
-            <button @click="activeTab = 'galeri'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'galeri', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'galeri'}" class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+            <button @click="activeTab = 'galeri'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'galeri', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'galeri'}" class="flex-1 shrink-0 whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                 Galeri
             </button>
-            <button @click="activeTab = 'footer'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'footer', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'footer'}" class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+            <button @click="activeTab = 'footer'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'footer', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'footer'}" class="flex-1 shrink-0 whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                 Footer
             </button>
-            <button @click="activeTab = 'pendaftaran'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'pendaftaran', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'pendaftaran'}" class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+            <button @click="activeTab = 'pendaftaran'" :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'pendaftaran', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'pendaftaran'}" class="flex-1 shrink-0 whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                 Pendaftaran
             </button>
         </nav>

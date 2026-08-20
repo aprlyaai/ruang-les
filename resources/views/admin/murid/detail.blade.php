@@ -13,27 +13,26 @@
 <div class="space-y-6 w-full" x-data="{ activeTab: 'profil' }">
 
     <!-- Header Actions -->
-    <div class="flex justify-between items-center mb-4">
-        <div class="flex-1">
-            <x-admin.tajuk-halaman
-                title="Detail Profil Murid"
-                backUrl="{{ route('admin.students.index') }}"
-            />
-        </div>
-        <div class="flex space-x-3">
-            <a href="{{ route('admin.students.edit', ['student' => $student->id, 'from' => 'detail']) }}" class="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-gray-700 transition-all duration-100 bg-white border border-gray-300 rounded-xl hover:bg-primary-50 hover:text-primary-700 hover:border-primary-300 shadow-sm hover:-translate-y-0.5">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                Edit Data
-            </a>
-            <form action="{{ route('admin.students.destroy', $student->id) }}" method="POST" id="deleteForm">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-red-600 transition-all duration-100 bg-white border border-red-200 rounded-xl hover:bg-red-50 hover:border-red-300 shadow-sm hover:-translate-y-0.5">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-                    Hapus
-                </button>
-            </form>
-        </div>
+    <div class="mb-4">
+        <x-admin.tajuk-halaman
+            title="Detail Profil Murid"
+            backUrl="{{ route('admin.students.index') }}"
+        >
+            <x-slot name="rightActions">
+                <a href="{{ route('admin.students.edit', ['student' => $student->id, 'from' => 'detail']) }}" class="w-full sm:w-auto px-4 py-2.5 bg-white border border-gray-300 text-gray-700 rounded-xl font-bold text-sm hover:bg-primary-50 hover:text-primary-700 hover:border-primary-300 transition-colors shadow-sm flex items-center justify-center">
+                    <svg class="w-4 h-4 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                    Edit Data
+                </a>
+                <form action="{{ route('admin.students.destroy', $student->id) }}" method="POST" id="deleteForm" class="w-full sm:w-auto">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="w-full sm:w-auto px-4 py-2.5 bg-white border border-red-200 text-red-600 rounded-xl font-bold text-sm hover:bg-red-50 hover:border-red-300 transition-colors shadow-sm flex items-center justify-center">
+                        <svg class="w-4 h-4 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                        Hapus
+                    </button>
+                </form>
+            </x-slot>
+        </x-admin.tajuk-halaman>
     </div>
 
     <!-- Top Banner: Hero Card -->
@@ -77,49 +76,47 @@
     </div>
 
     <div class="flex flex-col">
-        <!-- Tabs Navigation -->
+        <!-- Tabs Navigation (Desktop Underline Style without Scrollbar Slider) -->
         <div class="bg-white/80 backdrop-blur-md rounded-t-2xl border border-primary-100/50 border-b-0 overflow-hidden">
-            <nav class="flex flex-wrap overflow-x-auto" aria-label="Tabs">
+            <nav class="flex flex-nowrap overflow-x-auto border-b border-gray-100 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" aria-label="Tabs">
                 <button @click="activeTab = 'profil'"
                         :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'profil', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'profil'}"
-                        class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+                        class="flex-1 shrink-0 whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                     <div class="flex items-center justify-center gap-1.5">
-                        <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                        <svg class="w-5 h-5 mr-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                         Profil & Jadwal
                     </div>
                 </button>
 
                 <button @click="activeTab = 'presensi'"
                         :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'presensi', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'presensi'}"
-                        class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+                        class="flex-1 shrink-0 whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                     <div class="flex items-center justify-center gap-1.5">
-                        <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-5 h-5 mr-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         Presensi
-                        <x-antarmuka.lencana color="primary" class="activeTab === 'presensi' ? ' ' : ' '">{{ $attendances->count() }}</x-antarmuka.lencana>
+                        <x-antarmuka.lencana color="primary" class="ml-1">{{ $attendances->count() }}</x-antarmuka.lencana>
                     </div>
                 </button>
 
                 <button @click="activeTab = 'catatan'"
                         :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'catatan', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'catatan'}"
-                        class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+                        class="flex-1 shrink-0 whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                     <div class="flex items-center justify-center gap-1.5">
-                        <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                        <svg class="w-5 h-5 mr-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
                         Catatan Perkembangan
-                        <x-antarmuka.lencana color="primary" class="activeTab === 'catatan' ? ' ' : ' '">{{ $notes->count() }}</x-antarmuka.lencana>
+                        <x-antarmuka.lencana color="primary" class="ml-1">{{ $notes->count() }}</x-antarmuka.lencana>
                     </div>
                 </button>
 
                 <button @click="activeTab = 'nilai'"
                         :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'nilai', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'nilai'}"
-                        class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+                        class="flex-1 shrink-0 whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                     <div class="flex items-center justify-center gap-1.5">
-                        <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                        <svg class="w-5 h-5 mr-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                         Nilai
-                        <x-antarmuka.lencana color="primary" class="activeTab === 'nilai' ? ' ' : ' '">{{ $scores->count() }}</x-antarmuka.lencana>
+                        <x-antarmuka.lencana color="primary" class="ml-1">{{ $scores->count() }}</x-antarmuka.lencana>
                     </div>
                 </button>
-
-
             </nav>
         </div>
 
@@ -167,7 +164,7 @@
 
                 @if($student->classes->count() > 0)
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
+                        <table class="w-full text-left border-collapse min-w-[500px]">
                             <thead>
                                 <tr class="bg-gray-50 border-b border-gray-100 text-xs font-extrabold text-gray-500 uppercase tracking-wider">
                                     <th class="py-3 px-6">Nama Kelas & Paket</th>
@@ -184,14 +181,14 @@
                                     </td>
                                     <td class="py-4 px-6">
                                         <div class="font-semibold text-gray-900 text-sm flex items-center">
-                                            <svg class="w-4 h-4 mr-1.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                            {{ $kelas->hari }}, {{ $kelas->formatted_time_range }}
+                                            <svg class="w-4 h-4 mr-1.5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            <span class="whitespace-nowrap">{{ $kelas->hari }}, {{ $kelas->formatted_time_range }}</span>
                                         </div>
                                     </td>
                                     <td class="py-4 px-6">
                                         <div class="flex items-center">
                                             <x-admin.avatar :name="optional($kelas->mentor)->name ?? 'M'" size="7" textSize="text-[10px]" />
-                                            <span class="font-semibold text-gray-900 text-sm ml-2.5">{{ optional($kelas->mentor)->name ?? 'Belum ada mentor' }}</span>
+                                            <span class="font-semibold text-gray-900 text-sm ml-2.5 whitespace-nowrap">{{ optional($kelas->mentor)->name ?? 'Belum ada mentor' }}</span>
                                         </div>
                                     </td>
                                 </tr>
@@ -326,7 +323,7 @@
                     </x-admin.keadaan-kosong>
                 @else
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
+                        <table class="w-full text-left border-collapse min-w-[600px]">
                             <thead>
                                 <tr class="bg-gray-50 border-b border-gray-200">
                                     <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Tanggal</th>
@@ -340,27 +337,27 @@
                                 @foreach($attendances as $att)
                                     <tr class="hover:bg-gray-50/50 transition-colors">
                                         <td class="px-6 py-4">
-                                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Pertemuan Ke-{{ $loop->count - $loop->index }}</p>
-                                            <p class="text-sm font-extrabold text-gray-900 mt-0.5">{{ \Carbon\Carbon::parse($att->tanggal_presensi)->translatedFormat('l, d F Y') }}</p>
+                                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-wider whitespace-nowrap">Pertemuan Ke-{{ $loop->count - $loop->index }}</p>
+                                            <p class="text-sm font-extrabold text-gray-900 mt-0.5 whitespace-nowrap">{{ \Carbon\Carbon::parse($att->tanggal_presensi)->translatedFormat('l, d F Y') }}</p>
                                         </td>
                                         <td class="px-6 py-4">
                                             <p class="text-sm font-semibold text-gray-900">{{ $att->schedule?->nama_kelas ?? 'Tanpa Kelas' }}</p>
                                             <p class="text-xs text-gray-500 mt-0.5">{{ $att->schedule?->package?->nama_program ?? 'Paket' }}</p>
                                         </td>
                                         <td class="px-6 py-4 align-middle">
-                                            <span class="text-sm font-bold text-gray-800">{{ $att->schedule?->mentor?->nama_murid ?? 'Tidak diketahui' }}</span>
+                                            <span class="text-sm font-bold text-gray-800 whitespace-nowrap">{{ $att->schedule?->mentor?->nama_murid ?? 'Tidak diketahui' }}</span>
                                         </td>
                                         <td class="px-4 py-3 align-middle">
                                             @if($att->status_presensi === 'hadir')
-                                                <x-antarmuka.lencana color="primary" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit">
+                                                <x-antarmuka.lencana color="primary" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit whitespace-nowrap">
                                                     Hadir
                                                 </x-antarmuka.lencana>
                                             @elseif($att->status_presensi === 'tidak_hadir')
-                                                <x-antarmuka.lencana color="danger" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit">
+                                                <x-antarmuka.lencana color="danger" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit whitespace-nowrap">
                                                     Tidak Hadir
                                                 </x-antarmuka.lencana>
                                             @else
-                                                <x-antarmuka.lencana color="warning" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit">
+                                                <x-antarmuka.lencana color="warning" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit whitespace-nowrap">
                                                     Libur
                                                 </x-antarmuka.lencana>
                                             @endif
@@ -391,7 +388,7 @@
                     </x-admin.keadaan-kosong>
                 @else
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
+                        <table class="w-full text-left border-collapse min-w-[650px]">
                             <thead>
                                 <tr class="bg-gray-50 border-b border-gray-200">
                                     <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Tanggal & Materi</th>
@@ -404,7 +401,7 @@
                                 @foreach($notes as $note)
                                     <tr class="hover:bg-gray-50/50 transition-colors">
                                         <td class="px-6 py-4 align-top w-1/4">
-                                            <p class="text-sm font-semibold text-gray-900">{{ \Carbon\Carbon::parse($note->tanggal_catatan)->translatedFormat('l, d F Y') }}</p>
+                                            <p class="text-sm font-semibold text-gray-900 whitespace-nowrap">{{ \Carbon\Carbon::parse($note->tanggal_catatan)->translatedFormat('l, d F Y') }}</p>
                                             <p class="text-sm font-semibold text-primary-700 mt-1">{{ $note->materi }}</p>
                                         </td>
                                         <td class="px-6 py-4 align-top">
@@ -412,7 +409,7 @@
                                             <p class="text-xs text-gray-500 mt-1">{{ $note->schedule?->package?->nama_program ?? 'Paket' }}</p>
                                         </td>
                                         <td class="px-6 py-4 align-top w-1/6">
-                                            <x-antarmuka.lencana color="primary" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border {{ $note->skor_pemahaman >= 80 ? ' ' : ($note->skor_pemahaman >= 60 ? ' ' : ' ') }}">
+                                            <x-antarmuka.lencana color="primary" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border whitespace-nowrap">
                                                 Paham: {{ $note->skor_pemahaman ?? 0 }}%
                                             </x-antarmuka.lencana>
                                         </td>
@@ -442,13 +439,13 @@
                     </x-admin.keadaan-kosong>
                 @else
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
+                        <table class="w-full text-left border-collapse min-w-[650px]">
                             <thead>
                                 <tr class="bg-gray-50 border-b border-gray-200">
                                     <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Tanggal & Tipe Penilaian</th>
                                     <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Kelas & Paket</th>
                                     <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Materi / Topik</th>
-                                    <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Skor Penilaian</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider text-center">Skor Penilaian</th>
                                     <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Keterangan</th>
                                 </tr>
                             </thead>
@@ -456,7 +453,7 @@
                                 @foreach($scores as $score)
                                     <tr class="hover:bg-gray-50/50 transition-colors">
                                         <td class="px-6 py-4 align-top">
-                                            <p class="text-sm font-semibold text-gray-900">{{ \Carbon\Carbon::parse($score->tanggal_penilaian)->translatedFormat('l, d F Y') }}</p>
+                                            <p class="text-sm font-semibold text-gray-900 whitespace-nowrap">{{ \Carbon\Carbon::parse($score->tanggal_penilaian)->translatedFormat('l, d F Y') }}</p>
                                             <p class="text-sm font-semibold text-primary-700 mt-1">{{ $score->tipe_nilai }}</p>
                                         </td>
                                         <td class="px-6 py-4 align-top">
@@ -467,7 +464,7 @@
                                             <p class="text-sm font-semibold text-gray-900">{{ $score->materi_nilai }}</p>
                                         </td>
                                         <td class="px-4 py-3 align-middle text-center">
-                                            <div class="inline-flex items-center justify-center w-10 h-10 rounded-full {{ $score->score >= 80 ? 'bg-primary-50 text-primary-600' : ($score->score >= 60 ? 'bg-yellow-50 text-yellow-600' : 'bg-red-50 text-red-600') }}">
+                                            <div class="inline-flex items-center justify-center w-10 h-10 rounded-full shrink-0 {{ $score->score >= 80 ? 'bg-primary-50 text-primary-600' : ($score->score >= 60 ? 'bg-yellow-50 text-yellow-600' : 'bg-red-50 text-red-600') }}">
                                                 <span class="text-base font-black leading-none">{{ $score->score }}</span>
                                             </div>
                                         </td>
