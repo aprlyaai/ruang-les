@@ -1,4 +1,13 @@
-<x-tata-letak-tamu>
+<?php if (isset($component)) { $__componentOriginalcd7eb8639108f2f802be8be93b4351fe = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalcd7eb8639108f2f802be8be93b4351fe = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.tata-letak-tamu','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('tata-letak-tamu'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
     <div class="min-h-screen relative flex items-center justify-center bg-primary-50 overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
         
         <!-- Background Decorations (SVG Waves like Beranda) -->
@@ -20,13 +29,13 @@
         <div class="relative z-10 w-full max-w-[32rem] flex flex-col items-center">
             
             <!-- Centered Branding -->
-            <a href="{{ url('/') }}" class="flex-shrink-0 flex items-center space-x-3 group cursor-pointer mb-8">
+            <a href="<?php echo e(url('/')); ?>" class="flex-shrink-0 flex items-center space-x-3 group cursor-pointer mb-8">
                 <div class="w-10 h-10 overflow-hidden rounded-xl border border-gray-200 shadow-sm flex-shrink-0 bg-white transition-transform group-hover:scale-105">
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo Ruang Les" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=RL&background=e5f2e2&color=426c3c&rounded=true'">
+                    <img src="<?php echo e(asset('images/logo.png')); ?>" alt="Logo Ruang Les" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=RL&background=e5f2e2&color=426c3c&rounded=true'">
                 </div>
                 <div class="flex flex-col justify-center text-left">
-                    <span class="font-heading text-2xl font-extrabold text-gray-900 leading-none tracking-tight group-hover:text-primary-700 transition-colors">{{ $settings['site_name'] ?? 'Ruang Les' }}</span>
-                    <span class="text-sm font-medium text-primary-700">{{ $settings['site_tagline'] ?? 'by Ismaturrohmah' }}</span>
+                    <span class="font-heading text-2xl font-extrabold text-gray-900 leading-none tracking-tight group-hover:text-primary-700 transition-colors"><?php echo e($settings['site_name'] ?? 'Ruang Les'); ?></span>
+                    <span class="text-sm font-medium text-primary-700"><?php echo e($settings['site_tagline'] ?? 'by Ismaturrohmah'); ?></span>
                 </div>
             </a>
 
@@ -35,37 +44,74 @@
                 
                 <!-- Form Header -->
                 <div class="mb-8 text-center">
-                    <x-antarmuka.lencana color="primary" class="inline-block py-1 px-3 rounded-full text-[10px] font-bold uppercase tracking-widest mb-3 border">
+                    <?php if (isset($component)) { $__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.antarmuka.lencana','data' => ['color' => 'primary','class' => 'inline-block py-1 px-3 rounded-full text-[10px] font-bold uppercase tracking-widest mb-3 border']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('antarmuka.lencana'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['color' => 'primary','class' => 'inline-block py-1 px-3 rounded-full text-[10px] font-bold uppercase tracking-widest mb-3 border']); ?>
                         Masuk Portal
-                    </x-antarmuka.lencana>
+                     <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b)): ?>
+<?php $attributes = $__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b; ?>
+<?php unset($__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b)): ?>
+<?php $component = $__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b; ?>
+<?php unset($__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b); ?>
+<?php endif; ?>
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 font-heading mb-2 tracking-tight">Selamat Datang!</h2>
                     <p class="text-sm text-gray-500">Silakan masuk ke portal Anda.</p>
                 </div>
 
                 <!-- Form -->
-                <form method="POST" action="{{ route('login') }}" class="space-y-5" novalidate>
-                    @csrf
+                <form method="POST" action="<?php echo e(route('login')); ?>" class="space-y-5" novalidate>
+                    <?php echo csrf_field(); ?>
 
                     <!-- Email -->
-                    <div x-data="{ errorEmail: {{ $errors->has('email') ? 'true' : 'false' }} }">
+                    <div x-data="{ errorEmail: <?php echo e($errors->has('email') ? 'true' : 'false'); ?> }">
                         <label for="email" class="block text-sm font-bold text-gray-700 mb-1.5">Alamat Email <span class="text-red-500">*</span></label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                 <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                             </div>
-                            <input id="email" name="email" type="email" autocomplete="email" autofocus required value="{{ old('email') }}"
+                            <input id="email" name="email" type="email" autocomplete="email" autofocus required value="<?php echo e(old('email')); ?>"
                                 @input="errorEmail = false"
                                 placeholder="contoh@email.com"
                                 class="w-full pl-11 pr-4 py-3.5 bg-white/50 border border-gray-200 rounded-2xl shadow-sm placeholder-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary-400 transition-all duration-200"
                                 :class="errorEmail ? 'border-red-300 ring-1 ring-red-300 bg-red-50' : ''">
                         </div>
                         <div x-show="errorEmail">
-                            <x-antarmuka.galat-sebaris name="email" />
+                            <?php if (isset($component)) { $__componentOriginale4392c51ccef42726141b9bd03684153 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginale4392c51ccef42726141b9bd03684153 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.antarmuka.galat-sebaris','data' => ['name' => 'email']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('antarmuka.galat-sebaris'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['name' => 'email']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginale4392c51ccef42726141b9bd03684153)): ?>
+<?php $attributes = $__attributesOriginale4392c51ccef42726141b9bd03684153; ?>
+<?php unset($__attributesOriginale4392c51ccef42726141b9bd03684153); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginale4392c51ccef42726141b9bd03684153)): ?>
+<?php $component = $__componentOriginale4392c51ccef42726141b9bd03684153; ?>
+<?php unset($__componentOriginale4392c51ccef42726141b9bd03684153); ?>
+<?php endif; ?>
                         </div>
                     </div>
 
                     <!-- Password -->
-                    <div x-data="{ showPassword: false, errorPass: {{ $errors->has('password') ? 'true' : 'false' }} }">
+                    <div x-data="{ showPassword: false, errorPass: <?php echo e($errors->has('password') ? 'true' : 'false'); ?> }">
                         <label for="password" class="block text-sm font-bold text-gray-700 mb-1.5">Kata Sandi <span class="text-red-500">*</span></label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -82,7 +128,26 @@
                             </button>
                         </div>
                         <div x-show="errorPass">
-                            <x-antarmuka.galat-sebaris name="password" />
+                            <?php if (isset($component)) { $__componentOriginale4392c51ccef42726141b9bd03684153 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginale4392c51ccef42726141b9bd03684153 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.antarmuka.galat-sebaris','data' => ['name' => 'password']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('antarmuka.galat-sebaris'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['name' => 'password']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginale4392c51ccef42726141b9bd03684153)): ?>
+<?php $attributes = $__attributesOriginale4392c51ccef42726141b9bd03684153; ?>
+<?php unset($__attributesOriginale4392c51ccef42726141b9bd03684153); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginale4392c51ccef42726141b9bd03684153)): ?>
+<?php $component = $__componentOriginale4392c51ccef42726141b9bd03684153; ?>
+<?php unset($__componentOriginale4392c51ccef42726141b9bd03684153); ?>
+<?php endif; ?>
                         </div>
                     </div>
 
@@ -101,7 +166,7 @@
                 <div class="mt-10 pt-6 border-t border-gray-200 text-center">
                     <p class="text-sm text-gray-600">
                         Belum memiliki akun? 
-                        <a href="{{ route('register') }}" class="font-bold text-primary-700 hover:text-primary-800 transition-colors ml-1 hover:underline">Daftar di sini</a>
+                        <a href="<?php echo e(route('register')); ?>" class="font-bold text-primary-700 hover:text-primary-800 transition-colors ml-1 hover:underline">Daftar di sini</a>
                     </p>
                 </div>
 
@@ -109,8 +174,18 @@
             
             <!-- Footer Note -->
             <div class="mt-8 text-center text-xs text-gray-500 relative z-20">
-                &copy; {{ date('Y') }} Ruang Les by Ismaturrohmah. Dilindungi hak cipta.
+                &copy; <?php echo e(date('Y')); ?> Ruang Les by Ismaturrohmah. Dilindungi hak cipta.
             </div>
         </div>
     </div>
-</x-tata-letak-tamu>
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalcd7eb8639108f2f802be8be93b4351fe)): ?>
+<?php $attributes = $__attributesOriginalcd7eb8639108f2f802be8be93b4351fe; ?>
+<?php unset($__attributesOriginalcd7eb8639108f2f802be8be93b4351fe); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalcd7eb8639108f2f802be8be93b4351fe)): ?>
+<?php $component = $__componentOriginalcd7eb8639108f2f802be8be93b4351fe; ?>
+<?php unset($__componentOriginalcd7eb8639108f2f802be8be93b4351fe); ?>
+<?php endif; ?>
+<?php /**PATH C:\laragon\www\ruang-les\resources\views/autentikasi/masuk.blade.php ENDPATH**/ ?>

@@ -1,4 +1,4 @@
-<header class="fixed w-full top-0 z-50 bg-primary-500/80 backdrop-blur-lg shadow-sm border-b border-primary-600/20 transition-all duration-300" x-data="{ scrolled: false, mobileMenuOpen: false }" @scroll.window="scrolled = (window.pageYOffset > 20)">
+<header class="fixed w-full top-0 z-50 bg-primary-500/80 backdrop-blur-lg shadow-sm border-b border-primary-600/20 transition-all duration-300" x-data="{ scrolled: false, mobileMenuOpen: false }" @scroll.window="scrolled = (window.pageYOffset > 20)" @click.away="mobileMenuOpen = false">
     <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center transition-all duration-300" :class="scrolled ? 'h-16' : 'h-20'">
             
@@ -85,11 +85,20 @@
                     <a href="{{ route('login') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-700 hover:bg-gray-50">Masuk</a>
                     <a href="{{ route('register') }}" class="block px-3 py-2 mt-2 rounded-2xl text-base font-bold text-white bg-primary-700 hover:bg-primary-800 text-center">Registrasi</a>
                 @else
-                    <div class="px-3 py-2">
-                        <p class="text-sm font-medium text-gray-500">Halo,</p>
+                    <div class="px-3 py-2 border-b border-gray-100 mb-2">
+                        <p class="text-xs font-medium text-gray-500">Halo,</p>
                         <p class="text-base font-bold text-gray-900">{{ Auth::user()->name }}</p>
                     </div>
-                    <form method="POST" action="{{ route('logout') }}" class="mt-2">
+
+                    @if(Auth::user()->role === 'admin')
+                        <a href="{{ url('/admin/dashboard') }}" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-bold text-primary-700 hover:bg-primary-50">Dashboard Admin</a>
+                    @elseif(Auth::user()->role === 'mentor')
+                        <a href="{{ url('/mentor/dashboard') }}" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-bold text-primary-700 hover:bg-primary-50">Dashboard Mentor</a>
+                    @else
+                        <a href="{{ url('/dashboard') }}" @click="mobileMenuOpen = false" class="block px-3 py-2 rounded-md text-base font-bold text-primary-700 hover:bg-primary-50">Dashboard Orang Tua</a>
+                    @endif
+
+                    <form method="POST" action="{{ route('logout') }}" class="mt-1">
                         @csrf
                         <button type="submit" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-red-600 hover:bg-red-50">
                             Logout

@@ -40,12 +40,12 @@
 
         <!-- Hero Image / Visual -->
         <div class="w-full lg:w-[40%] mt-16 lg:mt-0 relative">
-            <div class="relative w-[80%] sm:w-[70%] lg:w-full max-w-[280px] sm:max-w-sm lg:max-w-md mx-auto transform transition-all duration-500 group">
+            <div class="relative w-[80%] sm:w-[70%] lg:w-full max-w-[280px] sm:max-w-sm lg:max-w-md mx-auto transform transition-all duration-500 group cursor-pointer focus:outline-none" tabindex="0">
                 <!-- Animated Background Shape -->
-                <div class="absolute inset-0 bg-gradient-to-tr from-primary-400 to-primary-200 rounded-3xl transform transition-all duration-500 group-hover:rotate-6 group-hover:scale-105 shadow-xl opacity-70"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-primary-400 to-primary-200 rounded-3xl transform rotate-3 scale-102 transition-all duration-500 group-hover:rotate-6 group-focus-within:rotate-6 group-hover:scale-105 group-focus-within:scale-105 shadow-xl opacity-70"></div>
                 
                 <!-- Main Image -->
-                <div class="relative bg-white rounded-3xl shadow-2xl p-2 border border-gray-100 overflow-hidden z-10 transition-transform duration-500 group-hover:-translate-y-2">
+                <div class="relative bg-white rounded-3xl shadow-2xl p-2 border border-gray-100 overflow-hidden z-10 transition-transform duration-500 group-hover:-translate-y-2 group-focus-within:-translate-y-2">
                     <img src="{{ asset($settings['hero_image'] ?? 'images/logo.png') }}" alt="Logo Ruang Les Besar" class="w-full h-auto object-cover rounded-2xl aspect-square object-center shadow-inner" onerror="this.src='https://placehold.co/800x800/e5f2e2/426c3c?text=Logo+Ruang+Les'">
                 </div>
                 

@@ -1,22 +1,70 @@
-@props(['settings', 'galleries'])
+<?php $attributes ??= new \Illuminate\View\ComponentAttributeBag;
+
+$__newAttributes = [];
+$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames((['settings', 'galleries']));
+
+foreach ($attributes->all() as $__key => $__value) {
+    if (in_array($__key, $__propNames)) {
+        $$__key = $$__key ?? $__value;
+    } else {
+        $__newAttributes[$__key] = $__value;
+    }
+}
+
+$attributes = new \Illuminate\View\ComponentAttributeBag($__newAttributes);
+
+unset($__propNames);
+unset($__newAttributes);
+
+foreach (array_filter((['settings', 'galleries']), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
+    $$__key = $$__key ?? $__value;
+}
+
+$__defined_vars = get_defined_vars();
+
+foreach ($attributes->all() as $__key => $__value) {
+    if (array_key_exists($__key, $__defined_vars)) unset($$__key);
+}
+
+unset($__defined_vars, $__key, $__value); ?>
 
 <section class="py-16 lg:py-24 relative overflow-hidden">
     <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <x-antarmuka.lencana color="primary" class="inline-block py-1.5 px-4 rounded-full text-xs font-bold uppercase tracking-widest mb-4 border">
-                {{ $settings['gallery_label'] ?? 'Galeri Dokumentasi' }}
-            </x-antarmuka.lencana>
-            <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">{!! nl2br(e($settings['gallery_headline'] ?? 'Momen Berharga di Ruang Les')) !!}</h2>
+            <?php if (isset($component)) { $__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.antarmuka.lencana','data' => ['color' => 'primary','class' => 'inline-block py-1.5 px-4 rounded-full text-xs font-bold uppercase tracking-widest mb-4 border']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('antarmuka.lencana'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['color' => 'primary','class' => 'inline-block py-1.5 px-4 rounded-full text-xs font-bold uppercase tracking-widest mb-4 border']); ?>
+                <?php echo e($settings['gallery_label'] ?? 'Galeri Dokumentasi'); ?>
+
+             <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b)): ?>
+<?php $attributes = $__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b; ?>
+<?php unset($__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b)): ?>
+<?php $component = $__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b; ?>
+<?php unset($__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b); ?>
+<?php endif; ?>
+            <h2 class="font-heading text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-4"><?php echo nl2br(e($settings['gallery_headline'] ?? 'Momen Berharga di Ruang Les')); ?></h2>
             <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-                {{ $settings['gallery_description'] ?? 'Sekilas gambaran suasana belajar yang interaktif, hangat, dan menyenangkan.' }}
+                <?php echo e($settings['gallery_description'] ?? 'Sekilas gambaran suasana belajar yang interaktif, hangat, dan menyenangkan.'); ?>
+
             </p>
         </div>
 
-        @if(isset($galleries) && $galleries->count() > 0)
+        <?php if(isset($galleries) && $galleries->count() > 0): ?>
         <!-- Carousel Layout (Alpine.js) -->
         <div x-data="{
                 activeSlide: 0,
-                totalSlides: {{ $galleries->count() }},
+                totalSlides: <?php echo e($galleries->count()); ?>,
                 slidesToShow: 3,
                 autoplayTimer: null,
                 updateSlidesToShow() {
@@ -96,19 +144,19 @@
                      class="flex w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8 space-x-4 md:space-x-6"
                      style="-ms-overflow-style: none; scrollbar-width: none;">
 
-                    @foreach($galleries as $gallery)
+                    <?php $__currentLoopData = $galleries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $gallery): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="w-[85%] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex-shrink-0 snap-center">
                         <div class="relative rounded-3xl overflow-hidden group shadow-md hover:shadow-2xl border border-gray-100 transition-all duration-500 aspect-[4/3] transform hover:-translate-y-2">
-                            <img src="{{ str_starts_with($gallery->gambar, 'images/') ? asset($gallery->gambar) : asset('storage/' . $gallery->gambar) }}" alt="{{ $gallery->nama_gambar }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <img src="<?php echo e(str_starts_with($gallery->gambar, 'images/') ? asset($gallery->gambar) : asset('storage/' . $gallery->gambar)); ?>" alt="<?php echo e($gallery->nama_gambar); ?>" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                             <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                                @if($gallery->kategori)
-                                    <p class="text-primary-300 font-bold text-xs tracking-widest uppercase mb-1">{{ $gallery->kategori }}</p>
-                                @endif
-                                <p class="text-white font-bold text-xl font-heading">{{ $gallery->nama_gambar }}</p>
+                                <?php if($gallery->kategori): ?>
+                                    <p class="text-primary-300 font-bold text-xs tracking-widest uppercase mb-1"><?php echo e($gallery->kategori); ?></p>
+                                <?php endif; ?>
+                                <p class="text-white font-bold text-xl font-heading"><?php echo e($gallery->nama_gambar); ?></p>
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                 </div>
             </div>
@@ -121,11 +169,12 @@
                 </template>
             </div>
         </div>
-        @else
+        <?php else: ?>
         <div class="text-center py-10 bg-white rounded-3xl border border-gray-100 shadow-sm max-w-4xl mx-auto">
             <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
             <p class="text-gray-500 font-medium">Belum ada foto yang ditambahkan ke galeri.</p>
         </div>
-        @endif
+        <?php endif; ?>
     </div>
 </section>
+<?php /**PATH C:\laragon\www\ruang-les\resources\views/components/publik/galeri-tentang.blade.php ENDPATH**/ ?>

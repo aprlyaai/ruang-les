@@ -24,7 +24,7 @@ class MasukController extends Controller
             'password.required' => 'Kata sandi wajib diisi.',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
             // Redirect logic based on role

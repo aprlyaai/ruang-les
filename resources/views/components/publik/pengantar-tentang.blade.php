@@ -27,12 +27,12 @@
 
             <!-- Founder Photo Container -->
             <div class="w-full lg:w-1/2 relative flex justify-center lg:justify-end">
-                <div class="relative w-[80%] sm:w-[70%] lg:w-full max-w-[280px] sm:max-w-sm lg:max-w-md mx-auto transform transition-all duration-500 hover:-translate-y-2">
+                <div class="relative w-[80%] sm:w-[70%] lg:w-full max-w-[280px] sm:max-w-sm lg:max-w-md mx-auto transform transition-all duration-500 group cursor-pointer focus:outline-none" tabindex="0">
                     <!-- Decorative background frame -->
-                    <div class="absolute inset-0 bg-gradient-to-tr from-primary-400 to-primary-100 rounded-3xl transform rotate-3 scale-102 opacity-60 shadow-lg -z-10"></div>
+                    <div class="absolute inset-0 bg-gradient-to-tr from-primary-400 to-primary-100 rounded-3xl transform rotate-3 scale-102 transition-all duration-500 group-hover:rotate-6 group-focus-within:rotate-6 group-hover:scale-105 group-focus-within:scale-105 opacity-60 shadow-lg"></div>
                     
                     <!-- Main Photo wrapper -->
-                    <div class="relative bg-white rounded-3xl shadow-xl p-2 border border-gray-100 overflow-hidden z-10">
+                    <div class="relative bg-white rounded-3xl shadow-xl p-2 border border-gray-100 overflow-hidden z-10 transition-transform duration-500 group-hover:-translate-y-2 group-focus-within:-translate-y-2">
                         <img src="{{ isset($settings['founder_image']) ? asset($settings['founder_image']) : asset('images/founder.png') }}" alt="Founder Ruang Les" loading="lazy" class="w-full h-auto object-cover rounded-2xl aspect-[4/5] object-center">
                     </div>
 

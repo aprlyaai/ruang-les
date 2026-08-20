@@ -1,19 +1,67 @@
-@props(['settings', 'groupedPackages'])
+<?php $attributes ??= new \Illuminate\View\ComponentAttributeBag;
+
+$__newAttributes = [];
+$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames((['settings', 'groupedPackages']));
+
+foreach ($attributes->all() as $__key => $__value) {
+    if (in_array($__key, $__propNames)) {
+        $$__key = $$__key ?? $__value;
+    } else {
+        $__newAttributes[$__key] = $__value;
+    }
+}
+
+$attributes = new \Illuminate\View\ComponentAttributeBag($__newAttributes);
+
+unset($__propNames);
+unset($__newAttributes);
+
+foreach (array_filter((['settings', 'groupedPackages']), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
+    $$__key = $$__key ?? $__value;
+}
+
+$__defined_vars = get_defined_vars();
+
+foreach ($attributes->all() as $__key => $__value) {
+    if (array_key_exists($__key, $__defined_vars)) unset($$__key);
+}
+
+unset($__defined_vars, $__key, $__value); ?>
 
 <section id="program" class="py-16 lg:py-20 relative">
     <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <x-antarmuka.lencana color="primary" class="inline-block py-1 px-3 rounded-full text-[11px] font-bold uppercase tracking-widest mb-4 border">
-            {{ $settings['program_label'] ?? 'Program Unggulan' }}
-        </x-antarmuka.lencana>
-        <h2 class="font-heading text-2xl md:text-3xl font-extrabold text-gray-900 mb-6">{!! nl2br(e($settings['program_headline'] ?? 'Pilihan Program Belajar')) !!}</h2>
+        <?php if (isset($component)) { $__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.antarmuka.lencana','data' => ['color' => 'primary','class' => 'inline-block py-1 px-3 rounded-full text-[11px] font-bold uppercase tracking-widest mb-4 border']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('antarmuka.lencana'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['color' => 'primary','class' => 'inline-block py-1 px-3 rounded-full text-[11px] font-bold uppercase tracking-widest mb-4 border']); ?>
+            <?php echo e($settings['program_label'] ?? 'Program Unggulan'); ?>
+
+         <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b)): ?>
+<?php $attributes = $__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b; ?>
+<?php unset($__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b)): ?>
+<?php $component = $__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b; ?>
+<?php unset($__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b); ?>
+<?php endif; ?>
+        <h2 class="font-heading text-2xl md:text-3xl font-extrabold text-gray-900 mb-6"><?php echo nl2br(e($settings['program_headline'] ?? 'Pilihan Program Belajar')); ?></h2>
         <p class="text-base text-gray-600 max-w-4xl mx-auto mb-12">
-            {{ $settings['program_description'] ?? 'Kami menyediakan program yang disesuaikan dengan kebutuhan fokus dan gaya belajar anak Anda.' }}
+            <?php echo e($settings['program_description'] ?? 'Kami menyediakan program yang disesuaikan dengan kebutuhan fokus dan gaya belajar anak Anda.'); ?>
+
         </p>
 
 
         <div x-data="{
                 activeSlide: 0,
-                totalSlides: {{ $groupedPackages->count() }},
+                totalSlides: <?php echo e($groupedPackages->count()); ?>,
                 slidesToShow: 3,
                 autoplayTimer: null,
                 updateSlidesToShow() {
@@ -106,8 +154,8 @@
                      class="flex w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 pt-8 -mt-8"
                      style="-ms-overflow-style: none; scrollbar-width: none;">
 
-                    @forelse ($groupedPackages as $groupKey => $group)
-                    @php
+                    <?php $__empty_1 = true; $__currentLoopData = $groupedPackages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $groupKey => $group): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                    <?php
                         $first = $group->first();
                         $kategori = strtolower($first->tipe_program);
 
@@ -121,50 +169,72 @@
                             // Reguler/Group - Classroom (Academic/Building Icon)
                             $iconSvg = '<svg class="w-6 h-6 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>';
                         }
-                    @endphp
+                    ?>
 
                     <!-- Slide Card -->
                     <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-6 flex snap-start relative pt-5 pb-5">
-                        @php
+                        <?php
                             $isPopular = $first->direkomendasikan;
-                        @endphp
+                        ?>
 
                         <!-- Card Container -->
-                        <div class="w-full h-full bg-white/70 backdrop-blur-md rounded-2xl border {{ $isPopular ? 'border-yellow-300 shadow-[0_20px_40px_-15px_rgba(250,204,21,0.3)] z-10' : 'border-gray-200 hover:border-primary-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)]' }} p-6 transition-all duration-500 relative flex flex-col group hover:-translate-y-2 hover:shadow-xl">
+                        <div class="w-full h-full bg-white/70 backdrop-blur-md rounded-2xl border <?php echo e($isPopular ? 'border-yellow-300 shadow-[0_20px_40px_-15px_rgba(250,204,21,0.3)] z-10' : 'border-gray-200 hover:border-primary-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)]'); ?> p-6 transition-all duration-500 relative flex flex-col group hover:-translate-y-2 hover:shadow-xl">
 
-                            @if($isPopular)
+                            <?php if($isPopular): ?>
                             <!-- Popular Badge -->
                             <div class="absolute -top-4 left-0 right-0 flex justify-center z-20">
                                 <div class="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-[10px] font-bold uppercase tracking-widest py-1.5 px-6 rounded-full shadow-lg border border-yellow-300 animate-pulse">
-                                    {{ $settings['program_popular_badge'] ?? 'Paling Diminati' }}
+                                    <?php echo e($settings['program_popular_badge'] ?? 'Paling Diminati'); ?>
+
                                 </div>
                             </div>
-                            @endif
+                            <?php endif; ?>
                             <!-- Header Section -->
                             <div class="flex items-center mb-6">
                                 <!-- Icon -->
                                 <div class="w-14 h-14 flex-shrink-0 bg-primary-50 rounded-[1.25rem] flex items-center justify-center text-primary-600 mr-5 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 shadow-sm border border-primary-100/50">
-                                    {!! $iconSvg !!}
+                                    <?php echo $iconSvg; ?>
+
                                 </div>
 
                                 <div class="flex flex-col text-left items-start">
                                     <h3 class="font-heading text-[19px] font-extrabold text-gray-900 uppercase tracking-wide leading-tight mb-2">
-                                        {{ $first->nama_program }}
+                                        <?php echo e($first->nama_program); ?>
+
                                     </h3>
-                                    <x-antarmuka.lencana color="primary" class="!rounded-md uppercase tracking-wider shadow-sm !text-[11px]">
-                                        {{ $first->kelas_program }}
-                                    </x-antarmuka.lencana>
+                                    <?php if (isset($component)) { $__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.antarmuka.lencana','data' => ['color' => 'primary','class' => '!rounded-md uppercase tracking-wider shadow-sm !text-[11px]']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('antarmuka.lencana'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['color' => 'primary','class' => '!rounded-md uppercase tracking-wider shadow-sm !text-[11px]']); ?>
+                                        <?php echo e($first->kelas_program); ?>
+
+                                     <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b)): ?>
+<?php $attributes = $__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b; ?>
+<?php unset($__attributesOriginal9e0c80b3c4e03c7346eb73cf95f43f4b); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b)): ?>
+<?php $component = $__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b; ?>
+<?php unset($__componentOriginal9e0c80b3c4e03c7346eb73cf95f43f4b); ?>
+<?php endif; ?>
                                 </div>
                             </div>
 
                             <!-- Description -->
                             <div class="border-l-[3px] border-primary-300 pl-4 mb-6">
                                 <div class="text-gray-500 text-[13px] leading-relaxed italic text-justify space-y-1">
-                                    @foreach(explode("\n", $first->deskripsi_program) as $desc_line)
-                                        @if(trim($desc_line) !== '')
-                                            <p>{{ ltrim(trim($desc_line), '- ') }}</p>
-                                        @endif
-                                    @endforeach
+                                    <?php $__currentLoopData = explode("\n", $first->deskripsi_program); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $desc_line): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php if(trim($desc_line) !== ''): ?>
+                                            <p><?php echo e(ltrim(trim($desc_line), '- ')); ?></p>
+                                        <?php endif; ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
                             </div>
 
@@ -176,7 +246,8 @@
                                         <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                                     </div>
                                     <span class="text-gray-600 text-sm text-justify">
-                                        {{ $first->student_capacity_label }}
+                                        <?php echo e($first->student_capacity_label); ?>
+
                                     </span>
                                 </li>
                                 <!-- Keunggulan 2 -->
@@ -184,14 +255,14 @@
                                     <div class="w-5 h-5 rounded-full bg-primary-50 flex items-center justify-center flex-shrink-0 mt-0.5 mr-3">
                                         <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                                     </div>
-                                    <span class="text-gray-600 text-sm text-justify">{{ $first->pertemuan }}× pertemuan</span>
+                                    <span class="text-gray-600 text-sm text-justify"><?php echo e($first->pertemuan); ?>× pertemuan</span>
                                 </li>
                                 <!-- Keunggulan 3 -->
                                 <li class="flex items-start">
                                     <div class="w-5 h-5 rounded-full bg-primary-50 flex items-center justify-center flex-shrink-0 mt-0.5 mr-3">
                                         <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                                     </div>
-                                    <span class="text-gray-600 text-sm text-justify">Waktu belajar {{ $first->durasi_belajar }} menit per pertemuan</span>
+                                    <span class="text-gray-600 text-sm text-justify">Waktu belajar <?php echo e($first->durasi_belajar); ?> menit per pertemuan</span>
                                 </li>
                                 <!-- Keunggulan 4 -->
                                 <li class="flex items-start">
@@ -199,7 +270,7 @@
                                         <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                                     </div>
                                     <span class="text-gray-600 text-sm text-justify">
-                                        @if ($group->count() > 1) Pilihan lokasi fleksibel @else Sesi belajar dilakukan di {{ strtolower($first->lokasi_belajar) }} @endif
+                                        <?php if($group->count() > 1): ?> Pilihan lokasi fleksibel <?php else: ?> Sesi belajar dilakukan di <?php echo e(strtolower($first->lokasi_belajar)); ?> <?php endif; ?>
                                     </span>
                                 </li>
                             </ul>
@@ -209,44 +280,44 @@
                                 <div class="mb-4 bg-gray-50 rounded-[14px] p-3.5 border border-gray-100 flex flex-col justify-start min-h-[100px] harga-box">
                                     <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-3 text-left w-full">BIAYA PROGRAM:</p>
                                     <div class="space-y-3 flex-1 flex flex-col justify-center w-full">
-                                        @foreach($group as $item)
+                                        <?php $__currentLoopData = $group; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="flex justify-between items-end">
                                             <div class="flex flex-col">
-                                                <span class="text-gray-900 font-medium text-sm">{{ $item->lokasi_belajar }}</span>
+                                                <span class="text-gray-900 font-medium text-sm"><?php echo e($item->lokasi_belajar); ?></span>
                                             </div>
                                             <div class="flex items-start">
                                                 <span class="text-xs font-medium text-primary-600 mt-0.5 mr-0.5">Rp</span>
-                                                <span class="text-lg font-extrabold text-gray-900">{{ number_format($item->harga, 0, ',', '.') }}</span>
+                                                <span class="text-lg font-extrabold text-gray-900"><?php echo e(number_format($item->harga, 0, ',', '.')); ?></span>
                                             </div>
                                         </div>
-                                        @if(!$loop->last)
+                                        <?php if(!$loop->last): ?>
                                         <div class="w-full border-t border-dashed border-gray-200"></div>
-                                        @endif
-                                        @endforeach
+                                        <?php endif; ?>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
                                 </div>
 
-                                @guest
-                                    <a href="{{ route('register') }}" class="flex items-center justify-center w-full py-3 px-4 bg-primary-600 hover:bg-primary-700 text-white font-bold text-sm rounded-2xl transition-all duration-300 shadow-[0_8px_20px_-6px_rgba(183,217,177,0.6)] hover:shadow-[0_12px_25px_-6px_rgba(183,217,177,0.8)] hover:-translate-y-0.5 group-hover:bg-primary-700">
+                                <?php if(auth()->guard()->guest()): ?>
+                                    <a href="<?php echo e(route('register')); ?>" class="flex items-center justify-center w-full py-3 px-4 bg-primary-600 hover:bg-primary-700 text-white font-bold text-sm rounded-2xl transition-all duration-300 shadow-[0_8px_20px_-6px_rgba(183,217,177,0.6)] hover:shadow-[0_12px_25px_-6px_rgba(183,217,177,0.8)] hover:-translate-y-0.5 group-hover:bg-primary-700">
                                         Pilih Program
                                         <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                     </a>
-                                @else
-                                    <a href="{{ route('pendaftaran.form', ['paket' => $first->id]) }}" class="flex items-center justify-center w-full py-3 px-4 bg-primary-600 hover:bg-primary-700 text-white font-bold text-sm rounded-2xl transition-all duration-300 shadow-[0_8px_20px_-6px_rgba(183,217,177,0.6)] hover:shadow-[0_12px_25px_-6px_rgba(183,217,177,0.8)] hover:-translate-y-0.5 group-hover:bg-primary-700">
+                                <?php else: ?>
+                                    <a href="<?php echo e(route('pendaftaran.form', ['paket' => $first->id])); ?>" class="flex items-center justify-center w-full py-3 px-4 bg-primary-600 hover:bg-primary-700 text-white font-bold text-sm rounded-2xl transition-all duration-300 shadow-[0_8px_20px_-6px_rgba(183,217,177,0.6)] hover:shadow-[0_12px_25px_-6px_rgba(183,217,177,0.8)] hover:-translate-y-0.5 group-hover:bg-primary-700">
                                         Pilih Program
                                         <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                     </a>
-                                @endguest
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
-                    @empty
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                 <div class="w-full py-12 text-center bg-white/50 rounded-2xl border border-dashed border-primary-200">
                     <svg class="w-16 h-16 mx-auto text-primary-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">{{ $settings['empty_program_title'] ?? 'Belum Ada Program Belajar' }}</h3>
-                    <p class="text-gray-600">{{ $settings['empty_program_desc'] ?? 'Silakan kembali lagi nanti untuk melihat program terbaru kami.' }}</p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2"><?php echo e($settings['empty_program_title'] ?? 'Belum Ada Program Belajar'); ?></h3>
+                    <p class="text-gray-600"><?php echo e($settings['empty_program_desc'] ?? 'Silakan kembali lagi nanti untuk melihat program terbaru kami.'); ?></p>
                 </div>
-                    @endforelse
+                    <?php endif; ?>
                 </div>
             </div>
 
@@ -261,3 +332,4 @@
         </div>
     </div>
 </section>
+<?php /**PATH C:\laragon\www\ruang-les\resources\views/components/publik/program.blade.php ENDPATH**/ ?>
