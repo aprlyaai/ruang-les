@@ -76,20 +76,20 @@
         </h3>
         <ul class="space-y-3">
             @foreach($detailTugas as $tugas)
-                <li class="flex items-center justify-between bg-white p-4 rounded-xl shadow-sm border border-orange-100">
+                <li class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 rounded-xl shadow-sm border border-orange-100">
                     <div>
                         <p class="font-semibold text-gray-900">{{ $tugas['siswa'] }}</p>
                         <p class="text-sm text-gray-600">Jadwal: {{ $tugas['jadwal'] }}</p>
                     </div>
-                    <div class="flex gap-2">
+                    <div class="flex flex-wrap gap-1.5">
                             @if($tugas['belum_presensi'])
-                                <x-antarmuka.lencana color="danger" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold">Belum Presensi</x-antarmuka.lencana>
+                                <x-antarmuka.lencana color="danger" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold whitespace-nowrap">Belum Presensi</x-antarmuka.lencana>
                             @endif
                             @if($tugas['belum_catatan'])
-                                <x-antarmuka.lencana color="danger" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold">Belum Catatan</x-antarmuka.lencana>
+                                <x-antarmuka.lencana color="danger" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold whitespace-nowrap">Belum Catatan</x-antarmuka.lencana>
                             @endif
                             @if($tugas['belum_nilai'])
-                                <x-antarmuka.lencana color="danger" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold">Belum Nilai</x-antarmuka.lencana>
+                                <x-antarmuka.lencana color="danger" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold whitespace-nowrap">Belum Nilai</x-antarmuka.lencana>
                             @endif
                     </div>
                 </li>
@@ -143,10 +143,10 @@
                                         <p class="font-bold text-gray-900 text-sm">{{ $schedule->nama_kelas }}</p>
                                         <p class="text-xs text-gray-500 mt-0.5">{{ $schedule->package->nama_program ?? 'Paket' }}</p>
                                     </td>
-                                    <td class="px-6 py-4 align-top">
-                                        <div class="font-semibold text-gray-900 text-sm flex items-center mt-1">
-                                            <svg class="w-4 h-4 mr-1.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                            {{ $schedule->formatted_time_range }}
+                                    <td class="px-6 py-4 align-top whitespace-nowrap">
+                                        <div class="font-semibold text-gray-900 text-sm flex items-center mt-1 whitespace-nowrap">
+                                            <svg class="w-4 h-4 mr-1.5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            <span class="whitespace-nowrap">{{ $schedule->formatted_time_range }}</span>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 align-top">
@@ -203,17 +203,17 @@
             <div class="divide-y divide-gray-100 max-h-96 overflow-y-auto">
                 @foreach($pengumumans as $pengumuman)
                 <div class="p-6 {{ $pengumuman->diprioritaskan ? 'bg-amber-50/30' : 'hover:bg-gray-50 transition-colors' }}">
-                    <div class="flex items-start justify-between mb-2">
-                        <div class="flex items-center gap-2">
+                    <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-2">
+                        <div class="flex items-start gap-2 flex-1 min-w-0">
                             @if($pengumuman->diprioritaskan)
-                            <x-antarmuka.lencana color="warning" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold">
-                                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path></svg>
+                            <x-antarmuka.lencana color="warning" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold shrink-0 mt-0.5">
+                                <svg class="w-3 h-3 mr-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path></svg>
                                 Pinned
                             </x-antarmuka.lencana>
                             @endif
-                            <h4 class="font-bold text-gray-900">{{ $pengumuman->judul_pengumuman }}</h4>
+                            <h4 class="font-bold text-gray-900 leading-snug flex-1 break-words">{{ $pengumuman->judul_pengumuman }}</h4>
                         </div>
-                        <span class="text-xs text-gray-400 whitespace-nowrap ml-4">{{ $pengumuman->created_at->format('d M Y') }}</span>
+                        <span class="text-xs text-gray-400 whitespace-nowrap shrink-0 sm:ml-4">{{ $pengumuman->created_at->format('d M Y') }}</span>
                     </div>
                     <div class="text-sm text-gray-600 prose prose-sm max-w-none text-justify">
                         {!! $pengumuman->isi_pengumuman !!}

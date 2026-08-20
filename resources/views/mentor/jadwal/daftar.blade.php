@@ -76,28 +76,28 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td class="px-5 py-3 text-right">
-                                                        <div class="flex justify-end space-x-2">
-                                                            <!-- Tombol Presensi -->
-                                                            <a href="{{ route('mentor.presensi.create', ['jadwal_id' => $schedule->id, 'siswa_id' => $student->id]) }}"
-                                                               class="inline-flex items-center px-2 py-1.5 bg-green-50 text-green-700 hover:bg-green-100 hover:text-green-800 rounded-lg text-xs font-bold transition-colors group" title="Isi Presensi">
-                                                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
-                                                                Presensi
-                                                            </a>
-                                                            <!-- Tombol Jurnal -->
-                                                            <a href="{{ route('mentor.catatan.create', ['jadwal_id' => $schedule->id, 'siswa_id' => $student->id]) }}"
-                                                               class="inline-flex items-center px-2 py-1.5 bg-blue-50 text-blue-700 hover:bg-blue-100 hover:text-blue-800 rounded-lg text-xs font-bold transition-colors group" title="Beri Catatan Perkembangan">
-                                                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                                                                Catatan
-                                                            </a>
-                                                            <!-- Tombol Nilai -->
-                                                            <a href="{{ route('mentor.nilai.create', ['jadwal_id' => $schedule->id, 'siswa_id' => $student->id]) }}"
-                                                               class="inline-flex items-center px-2 py-1.5 bg-purple-50 text-purple-700 hover:bg-purple-100 hover:text-purple-800 rounded-lg text-xs font-bold transition-colors group" title="Input Nilai">
-                                                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                                                                Nilai
-                                                            </a>
-                                                        </div>
-                                                    </td>
+                                                    <td class="px-3 sm:px-5 py-3 text-right align-middle">
+                                                         <div class="flex flex-wrap justify-end gap-1.5">
+                                                             <!-- Tombol Presensi -->
+                                                             <a href="{{ route('mentor.presensi.create', ['jadwal_id' => $schedule->id, 'siswa_id' => $student->id]) }}"
+                                                                class="inline-flex items-center px-2 py-1.5 bg-green-50 text-green-700 hover:bg-green-100 hover:text-green-800 rounded-lg text-xs font-bold transition-colors whitespace-nowrap group" title="Isi Presensi">
+                                                                 <svg class="w-3.5 h-3.5 mr-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                                                                 Presensi
+                                                             </a>
+                                                             <!-- Tombol Jurnal -->
+                                                             <a href="{{ route('mentor.catatan.create', ['jadwal_id' => $schedule->id, 'siswa_id' => $student->id]) }}"
+                                                                class="inline-flex items-center px-2 py-1.5 bg-blue-50 text-blue-700 hover:bg-blue-100 hover:text-blue-800 rounded-lg text-xs font-bold transition-colors whitespace-nowrap group" title="Beri Catatan Perkembangan">
+                                                                 <svg class="w-3.5 h-3.5 mr-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                                                                 Catatan
+                                                             </a>
+                                                             <!-- Tombol Nilai -->
+                                                             <a href="{{ route('mentor.nilai.create', ['jadwal_id' => $schedule->id, 'siswa_id' => $student->id]) }}"
+                                                                class="inline-flex items-center px-2 py-1.5 bg-purple-50 text-purple-700 hover:bg-purple-100 hover:text-purple-800 rounded-lg text-xs font-bold transition-colors whitespace-nowrap group" title="Input Nilai">
+                                                                 <svg class="w-3.5 h-3.5 mr-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                                                                 Nilai
+                                                             </a>
+                                                         </div>
+                                                     </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

@@ -1,6 +1,6 @@
 @props(['isLocked' => false])
 
-<aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'" class="absolute inset-y-0 left-0 z-50 w-64 lg:w-[16rem] h-full transition-transform duration-150 ease-in-out lg:relative lg:translate-x-0 bg-primary-500/80 backdrop-blur-md border border-primary-100/50 shadow-sm rounded-r-2xl lg:rounded-2xl flex flex-col overflow-hidden">
+<aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'" class="fixed inset-y-0 left-0 z-[10000] w-64 lg:w-[16rem] h-full transition-transform duration-150 ease-in-out lg:relative lg:translate-x-0 bg-primary-500/80 backdrop-blur-md border border-primary-100/50 shadow-sm rounded-r-2xl lg:rounded-2xl flex flex-col overflow-hidden">
     <!-- Logo Area -->
     <div class="flex items-center justify-start h-20 border-b border-primary-100/50 bg-white/40 px-6">
         <div class="flex items-center space-x-3">

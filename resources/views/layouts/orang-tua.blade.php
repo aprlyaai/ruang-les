@@ -136,7 +136,7 @@
              x-show="sidebarOpen"
              x-transition.opacity
              @click="sidebarOpen = false"
-             class="fixed inset-0 bg-primary-900/20 backdrop-blur-sm z-40 lg:hidden"
+             class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm z-[9999] lg:hidden"
              style="display: none;">
         </div>
     </div>

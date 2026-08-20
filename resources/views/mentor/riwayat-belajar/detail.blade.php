@@ -24,10 +24,10 @@
     <div class="flex flex-col">
     <!-- Tabs Navigation -->
     <div class="bg-white/80 backdrop-blur-md rounded-t-2xl border border-primary-100/50 border-b-0 overflow-hidden">
-        <nav class="flex flex-wrap overflow-x-auto" aria-label="Tabs">
+        <nav class="flex overflow-x-auto whitespace-nowrap no-scrollbar" style="-ms-overflow-style: none; scrollbar-width: none;" aria-label="Tabs">
             <button @click="activeTab = 'presensi'"
                     :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'presensi', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'presensi'}"
-                    class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+                    class="flex-1 min-w-max whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                 <div class="flex items-center justify-center gap-1.5">
                     <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Presensi
@@ -37,7 +37,7 @@
 
             <button @click="activeTab = 'catatan'"
                     :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'catatan', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'catatan'}"
-                    class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+                    class="flex-1 min-w-max whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                 <div class="flex items-center justify-center gap-1.5">
                     <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
                     Catatan Perkembangan
@@ -47,7 +47,7 @@
 
             <button @click="activeTab = 'nilai'"
                     :class="{'border-primary-500 text-primary-700 bg-primary-50/50': activeTab === 'nilai', 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300': activeTab !== 'nilai'}"
-                    class="flex-1 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
+                    class="flex-1 min-w-max whitespace-nowrap py-4 px-4 border-b-2 font-medium text-sm text-center transition-all focus:outline-none">
                 <div class="flex items-center justify-center gap-1.5">
                     <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                     Nilai
@@ -89,15 +89,15 @@
                                         </td>
                                         <td class="px-4 py-3 align-middle">
                                             @if($att->status_presensi === 'hadir')
-                                                <x-antarmuka.lencana color="primary" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit">
+                                                <x-antarmuka.lencana color="primary" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit whitespace-nowrap">
                                                     Hadir
                                                 </x-antarmuka.lencana>
                                             @elseif($att->status_presensi === 'tidak_hadir')
-                                                <x-antarmuka.lencana color="danger" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit">
+                                                <x-antarmuka.lencana color="danger" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit whitespace-nowrap">
                                                     Tidak Hadir
                                                 </x-antarmuka.lencana>
                                             @else
-                                                <x-antarmuka.lencana color="warning" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit">
+                                                <x-antarmuka.lencana color="warning" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border w-fit whitespace-nowrap">
                                                     Libur
                                                 </x-antarmuka.lencana>
                                             @endif
