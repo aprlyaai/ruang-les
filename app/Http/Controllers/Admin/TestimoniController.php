@@ -10,7 +10,7 @@ class TestimoniController extends Controller
 {
     public function index()
     {
-        $testimonials = Testimoni::orderBy('created_at', 'asc')->get();
+        $testimonials = Testimoni::orderBy('urutan', 'asc')->orderBy('created_at', 'asc')->get();
         return view('admin.testimoni.daftar', compact('testimonials'));
     }
 
@@ -30,9 +30,10 @@ class TestimoniController extends Controller
 
         $data = $request->only(['nama_pemberi', 'peran_pemberi', 'testimoni', 'rating']);
         $data['status_testimoni'] = $request->boolean('status_testimoni');
-        $data['urutan'] = $data['urutan'] ?? 0;
+        $data['urutan'] = Testimoni::max('urutan') + 1;
 
         Testimoni::create($data);
+        \Illuminate\Support\Facades\Cache::forget('public.testimonials');
 
         return redirect()->route('admin.testimonials.index')->with('success', 'Testimoni berhasil ditambahkan.');
     }
@@ -71,17 +72,22 @@ class TestimoniController extends Controller
         foreach ($orders as $index => $id) {
             Testimoni::where('testimoni_id', $id)->update(['urutan' => $index + 1]);
         }
+        \Illuminate\Support\Facades\Cache::forget('public.testimonials');
         return response()->json(['success' => true]);
     }
 
     public function toggleStatus(Request $request, $id)
     {
         $testimonial = Testimoni::findOrFail($id);
-        $field = $request->input('field', 'status_testimoni');
+        $field = $request->input('field');
+        if (!$field || $field === 'is_active') {
+            $field = 'status_testimoni';
+        }
 
         if ($field === 'status_testimoni') {
             $testimonial->$field = !$testimonial->$field;
             $testimonial->save();
+            \Illuminate\Support\Facades\Cache::forget('public.testimonials');
             return response()->json(['success' => true, 'newValue' => $testimonial->$field]);
         }
 

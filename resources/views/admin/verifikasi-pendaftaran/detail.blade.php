@@ -160,14 +160,14 @@
             <p class="text-sm text-gray-500">Pastikan semua data dan bukti transfer sudah valid sebelum mengambil keputusan.</p>
         </div>
 
-        <div class="flex space-x-3 w-full md:w-auto">
+        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
             <!-- Tombol Tolak memicu Reject Modal -->
-            <button @click="showRejectModal = true" type="button" class="flex-1 md:flex-none px-6 py-3 bg-white border border-red-200 text-red-600 font-bold rounded-xl hover:bg-red-50 focus:ring-4 focus:ring-red-100 transition-all text-center">
+            <button @click="showRejectModal = true" type="button" class="w-full sm:w-auto px-5 py-2.5 sm:px-6 sm:py-3 bg-white border border-red-200 text-red-600 font-bold rounded-xl hover:bg-red-50 focus:ring-4 focus:ring-red-100 transition-all text-center whitespace-nowrap text-xs sm:text-sm">
                 Tolak Pendaftaran
             </button>
 
             <!-- Tombol Terima memicu Approve Modal -->
-            <button @click="showApproveModal = true" type="button" class="flex-1 md:flex-none px-8 py-3 bg-primary-600 text-white font-bold rounded-xl hover:bg-primary-700 shadow-md shadow-primary-500/30 hover:shadow-lg focus:ring-4 focus:ring-primary-200 transition-all text-center">
+            <button @click="showApproveModal = true" type="button" class="w-full sm:w-auto px-6 py-2.5 sm:px-8 sm:py-3 bg-primary-600 text-white font-bold rounded-xl hover:bg-primary-700 shadow-md shadow-primary-500/30 hover:shadow-lg focus:ring-4 focus:ring-primary-200 transition-all text-center whitespace-nowrap text-xs sm:text-sm">
                 Terima Pendaftaran
             </button>
         </div>
@@ -175,9 +175,9 @@
 
         <!-- Approve Modal (Penempatan Murid) -->
         <template x-teleport="body">
-            <div x-show="showApproveModal" class="fixed inset-0 z-50 overflow-y-auto" style="display: none;">
+            <div x-cloak x-show="showApproveModal" class="fixed inset-0 z-50 overflow-y-auto" style="display: none;">
                 <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                    <div x-show="showApproveModal" x-transition.opacity class="fixed inset-0 transition-opacity" aria-hidden="true">
+                    <div x-show="showApproveModal" x-transition.opacity class="fixed inset-0 transition-opacity" aria-hidden="true" style="display: none;">
                         <div class="absolute inset-0 bg-gray-900/50 backdrop-blur-sm z-0"></div>
                     </div>
 
@@ -266,9 +266,9 @@
 
             <!-- Reject Modal -->
             <template x-teleport="body">
-                <div x-data="{ alasan: $persist(''), touched: false }" x-show="showRejectModal" class="fixed inset-0 z-50 overflow-y-auto" style="display: none;">
+                <div x-cloak x-data="{ alasan: '', touched: false }" x-show="showRejectModal" class="fixed inset-0 z-50 overflow-y-auto" style="display: none;">
                     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                        <div x-show="showRejectModal" x-transition.opacity class="fixed inset-0 transition-opacity" aria-hidden="true">
+                        <div x-show="showRejectModal" x-transition.opacity class="fixed inset-0 transition-opacity" aria-hidden="true" style="display: none;">
                             <div class="absolute inset-0 bg-gray-900/50 backdrop-blur-sm z-0"></div>
                         </div>
 

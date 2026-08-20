@@ -35,8 +35,8 @@
                 <tbody id="sortable-table" class="divide-y divide-gray-100">
                     @forelse($galleries as $item)
                         <tr class="bg-white hover:bg-gray-50 transition-colors" data-id="{{ $item->id }}">
-                            <td class="px-4 py-3 align-middle text-center drag-handle cursor-move text-gray-400 hover:text-gray-600">
-                                <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                            <td class="px-4 py-3 align-middle text-center drag-handle cursor-grab active:cursor-grabbing select-none text-gray-400 hover:text-gray-600" style="touch-action: none;">
+                                <svg class="w-5 h-5 mx-auto pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                             </td>
                             <td class="px-4 py-4 align-middle">
                                 <img src="{{ str_starts_with($item->gambar, 'images/') ? asset($item->gambar) : asset('storage/' . $item->gambar) }}" alt="{{ $item->nama_gambar }}" class="w-20 h-16 object-cover rounded-lg shadow-sm border border-gray-100">
@@ -58,6 +58,7 @@
                                     <x-admin.sakelar-status
                                         :route="route('admin.galleries.toggle-status', $item->id)"
                                         :is-active="$item->status_galeri"
+                                        field="status_galeri"
                                     />
                                 </div>
                             </td>
@@ -87,49 +88,58 @@
 </div>
 
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+function initSortableGallery() {
     var el = document.getElementById('sortable-table');
-    if (el) {
-        var sortable = Sortable.create(el, {
-            handle: '.drag-handle',
-            animation: 150,
-            ghostClass: 'bg-primary-50',
-            forceFallback: true,
-            fallbackClass: 'bg-white shadow-2xl opacity-100 ring-2 ring-primary-400',
-            onEnd: function(evt) {
-                var items = el.querySelectorAll('tr');
-                var orders = [];
-                items.forEach(function(item) {
-                    var id = item.getAttribute('data-id');
-                    if(id) {
-                        orders.push(id);
-                    }
-                });
+    if (!el || typeof Sortable === 'undefined') return;
+    if (el._sortable) return;
 
-                if(orders.length > 0) {
-                    fetch('{{ route('admin.galleries.reorder') }}', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        },
-                        body: JSON.stringify({ orders: orders })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if(!data.success) {
-                            alert('Gagal mengurutkan data');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
+    el._sortable = Sortable.create(el, {
+        handle: '.drag-handle',
+        animation: 150,
+        forceFallback: true,
+        fallbackOnBody: true,
+        fallbackTolerance: 3,
+        ghostClass: 'opacity-40',
+        chosenClass: 'bg-primary-50',
+        onEnd: function(evt) {
+            var items = el.querySelectorAll('tr[data-id]');
+            var orders = [];
+            items.forEach(function(item) {
+                var id = item.getAttribute('data-id');
+                if(id) {
+                    orders.push(id);
                 }
+            });
+
+            if(orders.length > 0) {
+                fetch('{{ route('admin.galleries.reorder') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({ orders: orders })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.success && typeof window.dispatchEvent === 'function') {
+                        window.dispatchEvent(new CustomEvent('notify', {
+                            detail: { type: 'success', title: 'Berhasil', text: 'Urutan foto galeri berhasil diperbarui', duration: 3000 }
+                        }));
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
             }
-        });
-    }
+        }
+    });
+}
+
+initSortableGallery();
+document.addEventListener('DOMContentLoaded', initSortableGallery);
+window.addEventListener('load', initSortableGallery);
 
     // SweetAlert2 untuk Konfirmasi Hapus
     document.querySelectorAll('.delete-form').forEach(form => {

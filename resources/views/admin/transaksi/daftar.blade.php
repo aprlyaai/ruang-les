@@ -168,7 +168,7 @@
 </div>
 <!-- Add Manual Payment Modal -->
 <template x-teleport="body">
-<div x-data="{ open: false, total_pembayaran: 0, program_id: '' }"
+<div x-cloak x-data="{ open: false, total_pembayaran: 0, program_id: '' }"
      @open-modal.window="if ($event.detail === 'addManualPayment') open = true"
      @keydown.escape.window="open = false"
      x-show="open"
@@ -184,6 +184,7 @@
          x-transition:leave-start="opacity-100"
          x-transition:leave-end="opacity-0"
          class="fixed inset-0 bg-gray-900/50 backdrop-blur-sm transition-opacity"
+         style="display: none;"
          @click="open = false"></div>
 
     <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">

@@ -81,6 +81,7 @@
                                     <x-admin.sakelar-status
                                         :route="route('admin.announcements.toggle-status', $announcement->id)"
                                         :is-active="$announcement->status_pengumuman"
+                                        field="status_pengumuman"
                                         label-active="Ditayangkan"
                                         label-inactive="Diarsipkan"
                                     />

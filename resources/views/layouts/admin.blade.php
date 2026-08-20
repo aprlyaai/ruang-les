@@ -23,6 +23,9 @@
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
+    <!-- SortableJS -->
+    <script src="{{ asset('js/sortable.min.js') }}"></script>
+    
     @stack('styles')
 
     <style>
@@ -71,6 +74,7 @@
         .animate-blob {
             animation: blob 15s infinite alternate ease-in-out;
         }
+        [x-cloak] { display: none !important; }
     </style>
 </head>
 <body class="bg-primary-50 text-gray-600 font-sans antialiased text-sm overflow-hidden relative leading-relaxed">
@@ -103,10 +107,12 @@
         </div>
         
         <!-- Mobile Sidebar Overlay -->
-        <div x-show="sidebarOpen" 
+        <div x-cloak
+             x-show="sidebarOpen" 
              x-transition.opacity
              @click="sidebarOpen = false"
-             class="fixed inset-0 bg-primary-900/20 backdrop-blur-sm z-40 lg:hidden">
+             class="fixed inset-0 bg-primary-900/20 backdrop-blur-sm z-40 lg:hidden"
+             style="display: none;">
         </div>
     </div>
 

@@ -10,7 +10,7 @@ class KeunggulanController extends Controller
 {
     public function index()
     {
-        $features = Keunggulan::orderBy('created_at', 'asc')->get();
+        $features = Keunggulan::orderBy('urutan', 'asc')->orderBy('created_at', 'asc')->get();
         return view('admin.keunggulan.daftar', compact('features'));
     }
 
@@ -24,11 +24,16 @@ class KeunggulanController extends Controller
         $request->validate([
             'nama_keunggulan' => 'required|string|max:255',
             'deskripsi_keunggulan' => 'required|string',
-            'urutan' => 'required|integer',
             'status_keunggulan' => 'required|boolean',
         ]);
 
-        Keunggulan::create($request->all());
+        $data = $request->all();
+        if (!isset($data['urutan'])) {
+            $data['urutan'] = Keunggulan::max('urutan') + 1;
+        }
+
+        Keunggulan::create($data);
+        \Illuminate\Support\Facades\Cache::forget('public.features');
 
         return redirect()->route('admin.features.index')->with('success', 'Fitur unggulan berhasil ditambahkan.');
     }
@@ -64,16 +69,21 @@ class KeunggulanController extends Controller
         foreach ($orders as $index => $id) {
             Keunggulan::where('keunggulan_id', $id)->update(['urutan' => $index + 1]);
         }
+        \Illuminate\Support\Facades\Cache::forget('public.features');
         return response()->json(['success' => true]);
     }
     public function toggleStatus(Request $request, $id)
     {
         $feature = Keunggulan::findOrFail($id);
-        $field = $request->input('field', 'status_keunggulan');
+        $field = $request->input('field');
+        if (!$field || $field === 'is_active') {
+            $field = 'status_keunggulan';
+        }
 
         if ($field === 'status_keunggulan') {
             $feature->status_keunggulan = !$feature->status_keunggulan;
             $feature->save();
+            \Illuminate\Support\Facades\Cache::forget('public.features');
             return response()->json(['success' => true, 'newValue' => $feature->status_keunggulan]);
         }
 

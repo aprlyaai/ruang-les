@@ -29,10 +29,18 @@
                     this.isActive = data.newValue;
                     if(typeof window.dispatchEvent === 'function') {
                         window.dispatchEvent(new CustomEvent('notify', {
-                            detail: { type: 'success', title: 'Berhasil', text: 'Status berhasil diubah', duration: 3000 }
+                            detail: { type: 'success', title: 'Berhasil', text: data.message || 'Status berhasil diubah', duration: 3000 }
                         }));
                     }
+                } else {
+                    this.isActive = !this.isActive;
+                    if (data.message && typeof Swal !== 'undefined') {
+                        Swal.fire({ icon: 'error', title: 'Gagal', text: data.message, confirmColor: '#ef4444' });
+                    }
                 }
+            })
+            .catch(err => {
+                this.isActive = !this.isActive;
             });
         };
 

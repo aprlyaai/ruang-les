@@ -38,7 +38,7 @@
             @else
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach($daySchedules as $schedule)
-                        <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border {{ $schedule->status_jadwal === 'active' ? 'border-primary-100/50 hover:border-primary-300' : 'border-red-300 opacity-60 grayscale-[30%] hover:opacity-100 hover:grayscale-0' }} overflow-hidden flex flex-col transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                        <div class="bg-white/95 rounded-2xl shadow-sm border {{ $schedule->status_jadwal === 'active' ? 'border-primary-100/50 hover:border-primary-300' : 'border-red-300 opacity-60 grayscale-[30%] hover:opacity-100 hover:grayscale-0' }} overflow-hidden flex flex-col transition-all duration-300 hover:shadow-md hover:-translate-y-1">
                             <div class="{{ $schedule->status_jadwal === 'active' ? 'bg-gray-50/50 border-primary-100/50' : 'bg-red-100/80 border-red-200' }} p-5 border-b flex justify-between items-start">
                                 <div>
                                     <h1 class="text-xl font-extrabold {{ $schedule->status_jadwal === 'active' ? 'text-primary-600' : 'text-red-700' }} mb-1">{{ $schedule->nama_kelas }}</h1>

@@ -66,7 +66,10 @@ class PengumumanController extends Controller
     {
         $announcement = \App\Models\Pengumuman::findOrFail($id);
 
-        $field = $request->input('field', 'status_pengumuman');
+        $field = $request->input('field');
+        if (!$field || $field === 'is_active') {
+            $field = 'status_pengumuman';
+        }
 
         if (in_array($field, ['status_pengumuman', 'diprioritaskan'])) {
             $announcement->$field = !$announcement->$field;

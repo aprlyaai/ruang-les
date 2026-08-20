@@ -10,7 +10,7 @@ class FaqController extends Controller
 {
     public function index()
     {
-        $faqs = Faq::orderBy('created_at', 'asc')->get();
+        $faqs = Faq::orderBy('urutan', 'asc')->orderBy('created_at', 'asc')->get();
         return view('admin.faq.daftar', compact('faqs'));
     }
 
@@ -24,11 +24,16 @@ class FaqController extends Controller
         $request->validate([
             'pertanyaan' => 'required|string|max:255',
             'jawaban' => 'required|string',
-            'urutan' => 'required|integer',
             'status_faq' => 'required|boolean',
         ]);
 
-        Faq::create($request->all());
+        $data = $request->all();
+        if (!isset($data['urutan'])) {
+            $data['urutan'] = Faq::max('urutan') + 1;
+        }
+
+        Faq::create($data);
+        \Illuminate\Support\Facades\Cache::forget('public.faqs');
 
         return redirect()->route('admin.faqs.index')->with('success', 'FAQ berhasil ditambahkan.');
     }
@@ -64,17 +69,22 @@ class FaqController extends Controller
         foreach ($orders as $index => $id) {
             Faq::where('faq_id', $id)->update(['urutan' => $index + 1]);
         }
+        \Illuminate\Support\Facades\Cache::forget('public.faqs');
         return response()->json(['success' => true]);
     }
 
     public function toggleStatus(Request $request, $id)
     {
         $faq = Faq::findOrFail($id);
-        $field = $request->input('field', 'status_faq');
+        $field = $request->input('field');
+        if (!$field || $field === 'is_active') {
+            $field = 'status_faq';
+        }
 
         if ($field === 'status_faq') {
             $faq->status_faq = !$faq->status_faq;
             $faq->save();
+            \Illuminate\Support\Facades\Cache::forget('public.faqs');
             return response()->json(['success' => true, 'newValue' => $faq->status_faq]);
         }
 

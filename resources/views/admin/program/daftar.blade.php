@@ -34,8 +34,8 @@
                 <tbody id="sortable-table" class="divide-y divide-gray-100">
                     @forelse($packages as $package)
                         <tr class="bg-white hover:bg-gray-50 transition-colors" data-id="{{ $package->id }}">
-                            <td class="px-4 py-3 align-middle text-center drag-handle cursor-move text-gray-400 hover:text-gray-600">
-                                <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                            <td class="px-4 py-3 align-middle text-center drag-handle cursor-grab active:cursor-grabbing select-none text-gray-400 hover:text-gray-600" style="touch-action: none;">
+                                <svg class="w-5 h-5 mx-auto pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                             </td>
                             <td class="px-4 py-3 align-middle">
                                 <div class="text-sm font-bold text-gray-900">{{ $package->nama_program }}</div>
@@ -74,7 +74,7 @@
                                     <x-admin.sakelar-status
                                         :route="route('admin.packages.toggle-status', $package->id)"
                                         :is-active="$package->status_program"
-
+                                        field="status_program"
                                     />
                                     <x-admin.sakelar-status
                                         :route="route('admin.packages.toggle-status', $package->id)"
@@ -120,44 +120,54 @@
 </div>
 
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+function initSortableProgram() {
     var el = document.getElementById('sortable-table');
-    if (el) {
-        var sortable = Sortable.create(el, {
-            handle: '.drag-handle',
-            animation: 150,
-            ghostClass: 'bg-primary-50',
-            forceFallback: true,
-            fallbackClass: 'bg-white shadow-2xl opacity-100 ring-2 ring-primary-400',
-            onEnd: function(evt) {
-                var items = el.querySelectorAll('tr');
-                var orders = [];
-                items.forEach(function(item) {
-                    orders.push(item.getAttribute('data-id'));
-                });
+    if (!el || typeof Sortable === 'undefined') return;
+    if (el._sortable) return;
 
-                fetch('{{ route('admin.packages.reorder') }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({ orders: orders })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if(!data.success) {
-                        alert('Gagal mengurutkan data');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            }
-        });
-    }
+    el._sortable = Sortable.create(el, {
+        handle: '.drag-handle',
+        animation: 150,
+        forceFallback: true,
+        fallbackOnBody: true,
+        fallbackTolerance: 3,
+        ghostClass: 'opacity-40',
+        chosenClass: 'bg-primary-50',
+        onEnd: function(evt) {
+            var items = el.querySelectorAll('tr[data-id]');
+            var orders = [];
+            items.forEach(function(item) {
+                var id = item.getAttribute('data-id');
+                if (id) orders.push(id);
+            });
+
+            fetch('{{ route('admin.packages.reorder') }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ orders: orders })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success && typeof window.dispatchEvent === 'function') {
+                    window.dispatchEvent(new CustomEvent('notify', {
+                        detail: { type: 'success', title: 'Berhasil', text: 'Urutan paket berhasil diperbarui', duration: 3000 }
+                    }));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    });
+}
+
+initSortableProgram();
+document.addEventListener('DOMContentLoaded', initSortableProgram);
+window.addEventListener('load', initSortableProgram);
 
     // SweetAlert2 untuk Konfirmasi Hapus
     document.querySelectorAll('.delete-form').forEach(form => {

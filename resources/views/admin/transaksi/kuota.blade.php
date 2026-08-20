@@ -189,7 +189,7 @@
 
     <!-- Teguran Modal -->
     <template x-teleport="body">
-        <div x-show="showModal" class="fixed inset-0 z-50 overflow-y-auto" style="display: none;">
+        <div x-cloak x-show="showModal" class="fixed inset-0 z-50 overflow-y-auto" style="display: none;">
             <!-- Backdrop -->
             <div x-show="showModal"
                  x-transition:enter="ease-out duration-300"
@@ -199,6 +199,7 @@
                  x-transition:leave-start="opacity-100"
                  x-transition:leave-end="opacity-0"
                  class="fixed inset-0 bg-gray-900/50 backdrop-blur-sm transition-opacity"
+                 style="display: none;"
                  @click="showModal = false"></div>
 
             <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">

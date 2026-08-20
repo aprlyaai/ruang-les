@@ -13,7 +13,7 @@ class GaleriController extends Controller
      */
     public function index()
     {
-        $galleries = Galeri::orderBy('created_at', 'asc')->get();
+        $galleries = Galeri::orderBy('urutan', 'asc')->orderBy('created_at', 'asc')->get();
         return view('admin.galeri.daftar', compact('galleries'));
     }
 
@@ -38,7 +38,7 @@ class GaleriController extends Controller
 
         $data = $request->only(['nama_gambar', 'kategori', 'urutan']);
         $data['status_galeri'] = $request->boolean('status_galeri');
-        $data['urutan'] = $data['urutan'] ?? 0;
+        $data['urutan'] = $data['urutan'] ?? (Galeri::max('urutan') + 1);
 
         if ($request->hasFile('gambar')) {
             $imagePath = $request->file('gambar')->store('galleries', 'public');
@@ -46,6 +46,7 @@ class GaleriController extends Controller
         }
 
         Galeri::create($data);
+        \Illuminate\Support\Facades\Cache::forget('public.galleries');
 
         return redirect()->route('admin.galleries.index')->with('success', 'Galeri berhasil ditambahkan!');
     }
@@ -107,17 +108,22 @@ class GaleriController extends Controller
         foreach ($orders as $index => $id) {
             Galeri::where('galeri_id', $id)->update(['urutan' => $index + 1]);
         }
+        \Illuminate\Support\Facades\Cache::forget('public.galleries');
         return response()->json(['success' => true]);
     }
 
     public function toggleStatus(Request $request, string $id)
     {
         $gallery = Galeri::findOrFail($id);
-        $field = $request->input('field', 'status_galeri');
+        $field = $request->input('field');
+        if (!$field || $field === 'is_active') {
+            $field = 'status_galeri';
+        }
 
         if ($field === 'status_galeri') {
             $gallery->status_galeri = !$gallery->status_galeri;
             $gallery->save();
+            \Illuminate\Support\Facades\Cache::forget('public.galleries');
 
             return response()->json([
                 'success' => true,

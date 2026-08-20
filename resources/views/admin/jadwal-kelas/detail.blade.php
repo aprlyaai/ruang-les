@@ -111,10 +111,10 @@
         <div class="lg:col-span-2 space-y-4">
 
             <div class="bg-white rounded-2xl shadow-sm border border-primary-100/50 overflow-hidden">
-                <div class="p-5 border-b border-gray-100 bg-gray-50/50 flex justify-between items-center">
-                    <div class="flex items-center space-x-3">
-                        <h3 class="text-lg font-bold text-primary-800">Daftar Murid </h3>
-                        <x-antarmuka.lencana color="primary">{{ $schedule->students->count() }} Murid</x-antarmuka.lencana>
+                <div class="p-4 sm:p-5 border-b border-gray-100 bg-gray-50/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div class="flex items-center flex-wrap gap-2 sm:gap-3">
+                        <h3 class="text-base sm:text-lg font-bold text-primary-800">Daftar Murid</h3>
+                        <x-antarmuka.lencana color="primary" class="whitespace-nowrap">{{ $schedule->students->count() }} Murid</x-antarmuka.lencana>
                     </div>
 
                     @php
@@ -123,8 +123,8 @@
                     @endphp
 
                     @if(!$isFull)
-                        <button type="button" @click="$dispatch('open-modal', 'addStudentModal')" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white transition-all duration-100 bg-primary-600 border border-transparent rounded-xl hover:bg-primary-700 shadow-sm hover:-translate-y-0.5">
-                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                        <button type="button" @click="$dispatch('open-modal', 'addStudentModal')" class="w-full sm:w-auto inline-flex items-center justify-center px-4 sm:px-5 py-2.5 text-sm font-bold text-white transition-all duration-100 bg-primary-600 border border-transparent rounded-xl hover:bg-primary-700 shadow-sm hover:-translate-y-0.5">
+                            <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
                             Tambah Murid
                         </button>
                     @endif
@@ -266,7 +266,7 @@
 </div>
 
 <!-- Add Murid Modal -->
-<div x-data="{ open: false }"
+<div x-cloak x-data="{ open: false }"
      x-show="open"
      @open-modal.window="if ($event.detail === 'addStudentModal') open = true"
      @keydown.escape.window="open = false"
@@ -274,7 +274,7 @@
      style="display: none;">
 
     <!-- Backdrop -->
-    <div x-show="open" x-transition.opacity class="fixed inset-0 bg-gray-900/50 backdrop-blur-sm" @click="open = false"></div>
+    <div x-show="open" x-transition.opacity class="fixed inset-0 bg-gray-900/50 backdrop-blur-sm" @click="open = false" style="display: none;"></div>
 
     <!-- Modal Panel -->
     <div x-show="open"

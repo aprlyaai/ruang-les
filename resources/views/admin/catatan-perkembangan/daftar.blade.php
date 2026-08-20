@@ -166,9 +166,9 @@ class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
 
     <!-- Modal Edit (Alpine Style) -->
     <template x-teleport="body">
-        <div x-show="showEditModal" class="fixed inset-0 z-[9999] overflow-y-auto text-left" style="display: none;">
+        <div x-cloak x-show="showEditModal" class="fixed inset-0 z-[9999] overflow-y-auto text-left" style="display: none;">
             <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                <div x-show="showEditModal" x-transition.opacity class="fixed inset-0 transition-opacity" aria-hidden="true">
+                <div x-show="showEditModal" x-transition.opacity class="fixed inset-0 transition-opacity" aria-hidden="true" style="display: none;">
                     <div class="absolute inset-0 bg-gray-900/60 backdrop-blur-sm z-0"></div>
                 </div>
                 <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>

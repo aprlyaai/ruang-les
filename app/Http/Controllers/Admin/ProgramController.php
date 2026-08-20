@@ -10,7 +10,7 @@ class ProgramController extends Controller
     public function index()
     {
         // Urutkan berdasarkan tipe (Privat -> Semi Privat -> Reguler), lalu yang terlama di atas, terbaru di bawah dalam kategori yang sama
-        $packages = \App\Models\Program::orderByRaw("FIELD(tipe_program, 'Privat', 'Semi Privat', 'Reguler')")->orderBy('created_at', 'asc')->paginate(50);
+        $packages = \App\Models\Program::orderBy('urutan', 'asc')->orderBy('created_at', 'asc')->paginate(50);
         return view('admin.program.daftar', compact('packages'));
     }
 
@@ -111,16 +111,21 @@ class ProgramController extends Controller
         foreach ($orders as $index => $id) {
             \App\Models\Program::where('program_id', $id)->update(['urutan' => $index + 1]);
         }
+        \Illuminate\Support\Facades\Cache::forget('public.packages');
         return response()->json(['success' => true]);
     }
 
     public function toggleStatus(Request $request, $id)
     {
         $package = \App\Models\Program::findOrFail($id);
-        $field = $request->input('field'); // 'status_program' or 'direkomendasikan'
+        $field = $request->input('field');
+        if (!$field || $field === 'is_active') {
+            $field = 'status_program';
+        }
 
         if (in_array($field, ['status_program', 'direkomendasikan'])) {
             $package->update([$field => !$package->$field]);
+            \Illuminate\Support\Facades\Cache::forget('public.packages');
             return response()->json(['success' => true, 'newValue' => $package->$field]);
         }
         return response()->json(['success' => false], 400);
