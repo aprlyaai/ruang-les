@@ -91,7 +91,7 @@ class KelasOrangTuaController extends Controller
             ->get();
 
         // Fetch Progress Notes (Catatan)
-        $notes = CatatanPerkembangan::with(['schedule.package', 'mentor.user'])
+        $notes = CatatanPerkembangan::with(['schedule.package', 'schedule.mentor.user'])
             ->where('murid_id', $studentId)
             ->orderBy('tanggal_catatan', 'desc')
             ->get();

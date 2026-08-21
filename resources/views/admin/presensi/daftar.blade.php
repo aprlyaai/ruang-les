@@ -102,7 +102,7 @@ class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                         </x-antarmuka.lencana>
                     @endif
                     </td>
-                    <td class="text-sm font-semibold text-gray-900">{{ $log->creator->name ?? 'Sistem' }}</td>
+                    <td class="text-sm font-semibold text-gray-900">{{ $log->schedule->mentor->name ?? 'Sistem' }}</td>
                     <td class="px-4 py-3 align-middle text-center">
                         <div class="flex items-center justify-center gap-2">
                             <button @click.prevent="$dispatch('open-edit-modal', {

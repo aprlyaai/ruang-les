@@ -65,7 +65,6 @@ class GenerateAttendances extends Command
                         'jadwal_id'     => $schedule->jadwal_id,
                         'tanggal_presensi' => $date->format('Y-m-d'),
                         'status_presensi' => 'pending',
-                        'dibuat_oleh'      => $schedule->mentor?->user_id,
                         // material_taught, score, etc remain null initially
                     ]);
                     $countGenerated++;

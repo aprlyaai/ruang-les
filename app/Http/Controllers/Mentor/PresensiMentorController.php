@@ -80,7 +80,6 @@ class PresensiMentorController extends Controller
                 'tanggal_presensi' => $tanggal,
                 'status_presensi' => $request->status,
                 'notes_presensi' => $request->notes,
-                'dibuat_oleh' => $mentorUserId,
             ]);
 
             // Pengurangan Kuota hanya jika "hadir"

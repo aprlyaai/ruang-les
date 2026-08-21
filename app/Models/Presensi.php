@@ -17,8 +17,7 @@ class Presensi extends Model
         'jadwal_id',
         'tanggal_presensi',
         'status_presensi',
-        'notes_presensi',
-        'dibuat_oleh'
+        'notes_presensi'
     ];
 
     public function student()
@@ -29,10 +28,5 @@ class Presensi extends Model
     public function schedule()
     {
         return $this->belongsTo(JadwalKelas::class, 'jadwal_id', 'jadwal_id');
-    }
-
-    public function creator()
-    {
-        return $this->belongsTo(Pengguna::class, 'dibuat_oleh', 'user_id');
     }
 }

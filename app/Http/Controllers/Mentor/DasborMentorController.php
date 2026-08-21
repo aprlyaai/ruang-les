@@ -75,7 +75,9 @@ class DasborMentorController extends Controller
             })->count();
 
         // Total sesi diajar dalam sebulan ini (dari tabel presensi, dihitung per sesi kelas unik)
-        $totalSesiBulanIni = Presensi::where('dibuat_oleh', $mentor->user_id)
+        $totalSesiBulanIni = Presensi::whereHas('schedule', function ($query) use ($mentor) {
+                $query->where('mentor_id', $mentor->mentor_id);
+            })
             ->whereMonth('tanggal_presensi', Carbon::now()->month)
             ->whereYear('tanggal_presensi', Carbon::now()->year)
             ->groupBy('jadwal_id', 'tanggal_presensi')

@@ -87,7 +87,7 @@
                                             <p class="text-sm font-extrabold text-gray-900 mt-0.5">{{ \Carbon\Carbon::parse($att->tanggal_presensi)->translatedFormat('l, d F Y') }}</p>
                                         </td>
                                         <td class="px-6 py-4 align-middle">
-                                            <span class="text-sm font-bold text-gray-800">{{ $att->schedule->mentor->nama_murid ?? 'Tidak diketahui' }}</span>
+                                            <span class="text-sm font-bold text-gray-800">{{ $att->schedule->mentor->name ?? 'Tidak diketahui' }}</span>
                                         </td>
                                         <td class="px-4 py-3 align-middle">
                                             @if($att->status_presensi === 'hadir')

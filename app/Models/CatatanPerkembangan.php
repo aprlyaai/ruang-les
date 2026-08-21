@@ -15,7 +15,6 @@ class CatatanPerkembangan extends Model
     protected $fillable = [
         'murid_id',
         'jadwal_id',
-        'mentor_id',
         'tanggal_catatan',
         'materi',
         'skor_pemahaman',
@@ -31,10 +30,5 @@ class CatatanPerkembangan extends Model
     public function schedule()
     {
         return $this->belongsTo(JadwalKelas::class, 'jadwal_id', 'jadwal_id');
-    }
-
-    public function mentor()
-    {
-        return $this->belongsTo(Mentor::class, 'mentor_id', 'mentor_id');
     }
 }

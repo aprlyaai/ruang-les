@@ -35,7 +35,9 @@ class PresensiController extends Controller
             $query->where('murid_id', $studentId);
         }
         if ($mentorId) {
-            $query->where('dibuat_oleh', $mentorId);
+            $query->whereHas('schedule.mentor', function($q) use ($mentorId) {
+                $q->where('user_id', $mentorId);
+            });
         }
         if ($packageId) {
             $query->whereHas('schedule', function($q) use ($packageId) {

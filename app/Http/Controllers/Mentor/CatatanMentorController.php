@@ -66,7 +66,6 @@ class CatatanMentorController extends Controller
         }
 
         $tanggal = Carbon::today()->toDateString();
-        $mentor_id = Auth::user()->mentor_id;
 
         $exists = CatatanPerkembangan::where('murid_id', $request->murid_id)
             ->where('jadwal_id', $request->jadwal_id)
@@ -80,7 +79,6 @@ class CatatanMentorController extends Controller
         CatatanPerkembangan::create([
             'murid_id' => $request->murid_id,
             'jadwal_id' => $request->jadwal_id,
-            'mentor_id' => $mentor_id,
             'tanggal_catatan' => $tanggal,
             'materi' => $request->materi,
             'skor_pemahaman' => $request->skor_pemahaman,

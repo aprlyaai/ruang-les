@@ -104,7 +104,9 @@ class AppServiceProvider extends ServiceProvider
             }
 
             // Peringatan Tritunggal (Presensi, Catatan, Nilai Bolong)
-            $badgeTeguranTritunggal = Presensi::where('dibuat_oleh', $mentorUserId)
+            $badgeTeguranTritunggal = Presensi::whereHas('schedule', function ($query) use ($mentorId) {
+                    $query->where('mentor_id', $mentorId);
+                })
                 ->where(function ($query) {
                     $query->where('status_presensi', 'pending') // Presensi kosong
                           ->orWhere(function ($q) {

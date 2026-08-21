@@ -22,7 +22,7 @@ class CatatanPerkembanganController extends Controller
         $mentorId = $request->input('mentor_id');
         $packageId = $request->input('program_id');
 
-        $query = CatatanPerkembangan::with(['student', 'schedule.package', 'mentor'])
+        $query = CatatanPerkembangan::with(['student', 'schedule.package', 'schedule.mentor'])
             ->whereDate('tanggal_catatan', '>=', $startDate)
             ->whereDate('tanggal_catatan', '<=', $endDate);
 
@@ -33,7 +33,9 @@ class CatatanPerkembanganController extends Controller
             $query->where('murid_id', $studentId);
         }
         if ($mentorId) {
-            $query->where('mentor_id', Pengguna::find($mentorId)?->mentor_id);
+            $query->whereHas('schedule', function($q) use ($mentorId) {
+                $q->where('mentor_id', Pengguna::find($mentorId)?->mentor_id);
+            });
         }
         if ($packageId) {
             $query->whereHas('schedule', function($q) use ($packageId) {
@@ -87,7 +89,6 @@ class CatatanPerkembanganController extends Controller
 
         $validated['tanggal_catatan'] = $validated['date'];
         unset($validated['date']);
-        $validated['mentor_id'] = JadwalKelas::findOrFail($validated['jadwal_id'])->mentor_id;
 
         CatatanPerkembangan::create($validated);
 
