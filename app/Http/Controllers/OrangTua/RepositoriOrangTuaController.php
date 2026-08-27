@@ -39,7 +39,8 @@ class RepositoriOrangTuaController extends Controller
         }
 
         $query = MateriBelajar::with('uploader')
-            ->where('status_materi', 1);
+            ->where('status_materi', 1)
+            ->whereIn('hak_akses', ['Publik', 'Murid']);
 
         // Strict Filter by active student's grade level
         if ($student) {

@@ -34,8 +34,9 @@ class MateriMentorController extends Controller
                           ->orderBy('nama_mapel')
                           ->pluck('nama_mapel');
 
-        // Ambil semua materi yang aktif (Mentor memiliki akses ke semua jenjang dan hak akses)
-        $query = MateriBelajar::where('status_materi', true);
+        // Ambil semua materi yang aktif (Mentor hanya bisa melihat Publik dan Mentor)
+        $query = MateriBelajar::where('status_materi', true)
+            ->whereIn('hak_akses', ['Publik', 'Mentor']);
 
         if ($search) {
             $query->where(function($q) use ($search) {

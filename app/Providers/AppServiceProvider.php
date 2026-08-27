@@ -137,7 +137,7 @@ class AppServiceProvider extends ServiceProvider
 
             // 3. Badge Materi Belajar
             $lastSeenMateri = StatusBacaNotifikasi::where('user_id', $mentorUserId)->where('kunci', 'mentor_materi_last_seen')->value('terakhir_dibaca');
-            $badgeMateriMentor = \App\Models\MateriBelajar::when($lastSeenMateri, fn($q) => $q->where('created_at', '>', $lastSeenMateri))->count();
+            $badgeMateriMentor = \App\Models\MateriBelajar::where('status_materi', 1)->whereIn('hak_akses', ['Publik', 'Mentor'])->when($lastSeenMateri, fn($q) => $q->where('created_at', '>', $lastSeenMateri))->count();
 
             // 4. Badge Layanan (Inbox Mentor)
             $badgeLayananMentor = \App\Models\Layanan::where('user_id', $mentorUserId)
@@ -185,7 +185,7 @@ class AppServiceProvider extends ServiceProvider
                 })->count();
 
             $lastSeenMateri = \App\Models\StatusBacaNotifikasi::where('user_id', $ortuUserId)->where('kunci', 'ortu_materi_last_seen')->value('terakhir_dibaca');
-            $badgeMateriOrtu = \App\Models\MateriBelajar::when($lastSeenMateri, fn($q) => $q->where('created_at', '>', $lastSeenMateri))->count();
+            $badgeMateriOrtu = \App\Models\MateriBelajar::where('status_materi', 1)->whereIn('hak_akses', ['Publik', 'Murid'])->when($lastSeenMateri, fn($q) => $q->where('created_at', '>', $lastSeenMateri))->count();
 
             // Kalkulasi per anak
             foreach ($allStudentIds as $studentId) {
