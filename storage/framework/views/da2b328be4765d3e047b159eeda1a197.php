@@ -8,8 +8,8 @@
     </div>
 
     <!-- Hidden inputs for actual form submission -->
-    <input type="hidden" name="jadwal_1_id" id="jadwal_1_id" value="{{ old('jadwal_1_id', $draft->draft_data['jadwal_1_id'] ?? '') }}" required>
-    <input type="hidden" name="jadwal_2_id" id="jadwal_2_id" value="{{ old('jadwal_2_id', $draft->draft_data['jadwal_2_id'] ?? '') }}" required>
+    <input type="hidden" name="jadwal_1_id" id="jadwal_1_id" value="<?php echo e(old('jadwal_1_id', $draft->draft_data['jadwal_1_id'] ?? '')); ?>" required>
+    <input type="hidden" name="jadwal_2_id" id="jadwal_2_id" value="<?php echo e(old('jadwal_2_id', $draft->draft_data['jadwal_2_id'] ?? '')); ?>" required>
 
 
 
@@ -34,14 +34,14 @@
                         Pilih Hari <span class="text-red-500">*</span>
                     </h4>
                     <div class="grid grid-cols-2 gap-2">
-                        @foreach(['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'] as $hari)
+                        <?php $__currentLoopData = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $hari): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <label class="relative text-center cursor-pointer group">
-                                <input type="radio" name="day_A" value="{{ $hari }}" class="sr-only peer day-radio" data-target="A">
+                                <input type="radio" name="day_A" value="<?php echo e($hari); ?>" class="sr-only peer day-radio" data-target="A">
                                 <div class="flex items-center justify-center h-full px-2 py-2 border-2 rounded-xl transition-colors duration-75 ease-out text-gray-600 border-gray-200 bg-white/50 backdrop-blur-sm shadow-sm peer-checked:bg-primary-50 peer-checked:text-primary-700 peer-checked:border-primary-600 peer-checked:shadow-md hover:border-primary-300 hover:bg-white/80">
-                                    <span class="font-bold text-xs sm:text-sm tracking-wide">{{ $hari }}</span>
+                                    <span class="font-bold text-xs sm:text-sm tracking-wide"><?php echo e($hari); ?></span>
                                 </div>
                             </label>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
 
@@ -52,14 +52,14 @@
                         Pilih Waktu (Sesi) <span class="text-red-500">*</span>
                     </h4>
                     <div class="grid grid-cols-2 gap-2">
-                        @foreach($sesiList as $dbTime => $timeData)
+                        <?php $__currentLoopData = $sesiList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dbTime => $timeData): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <label class="relative text-center cursor-pointer group">
-                                <input type="radio" name="time_A" value="{{ $dbTime }}" class="sr-only peer time-radio" data-target="A">
+                                <input type="radio" name="time_A" value="<?php echo e($dbTime); ?>" class="sr-only peer time-radio" data-target="A">
                                 <div class="flex items-center justify-center h-full px-2 py-3 text-[10px] sm:text-xs lg:text-sm font-bold border-2 rounded-xl transition-colors duration-75 ease-out text-gray-600 border-gray-200 bg-white/50 backdrop-blur-sm shadow-sm peer-checked:bg-primary-50 peer-checked:text-primary-700 peer-checked:border-primary-600 peer-checked:shadow-md hover:border-primary-300 hover:bg-white/80">
-                                    <span class="tracking-tight whitespace-nowrap">{{ $timeData['start'] }} - {{ $timeData['end'] }}</span>
+                                    <span class="tracking-tight whitespace-nowrap"><?php echo e($timeData['start']); ?> - <?php echo e($timeData['end']); ?></span>
                                 </div>
                             </label>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
 
@@ -89,14 +89,14 @@
                         Pilih Hari <span class="text-red-500">*</span>
                     </h4>
                     <div class="grid grid-cols-2 gap-2">
-                        @foreach(['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'] as $hari)
+                        <?php $__currentLoopData = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $hari): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <label class="relative text-center cursor-pointer group">
-                                <input type="radio" name="day_B" value="{{ $hari }}" class="sr-only peer day-radio" data-target="B">
+                                <input type="radio" name="day_B" value="<?php echo e($hari); ?>" class="sr-only peer day-radio" data-target="B">
                                 <div class="flex items-center justify-center h-full px-2 py-2 border-2 rounded-xl transition-colors duration-75 ease-out text-gray-600 border-gray-200 bg-white/50 backdrop-blur-sm shadow-sm peer-checked:bg-primary-50 peer-checked:text-primary-700 peer-checked:border-primary-600 peer-checked:shadow-md hover:border-primary-300 hover:bg-white/80">
-                                    <span class="font-bold text-xs sm:text-sm tracking-wide">{{ $hari }}</span>
+                                    <span class="font-bold text-xs sm:text-sm tracking-wide"><?php echo e($hari); ?></span>
                                 </div>
                             </label>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
 
@@ -107,14 +107,14 @@
                         Pilih Waktu (Sesi) <span class="text-red-500">*</span>
                     </h4>
                     <div class="grid grid-cols-2 gap-2">
-                        @foreach($sesiList as $dbTime => $timeData)
+                        <?php $__currentLoopData = $sesiList; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dbTime => $timeData): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <label class="relative text-center cursor-pointer group">
-                                <input type="radio" name="time_B" value="{{ $dbTime }}" class="sr-only peer time-radio" data-target="B">
+                                <input type="radio" name="time_B" value="<?php echo e($dbTime); ?>" class="sr-only peer time-radio" data-target="B">
                                 <div class="flex items-center justify-center h-full px-2 py-3 text-[10px] sm:text-xs lg:text-sm font-bold border-2 rounded-xl transition-colors duration-75 ease-out text-gray-600 border-gray-200 bg-white/50 backdrop-blur-sm shadow-sm peer-checked:bg-primary-50 peer-checked:text-primary-700 peer-checked:border-primary-600 peer-checked:shadow-md hover:border-primary-300 hover:bg-white/80">
-                                    <span class="tracking-tight whitespace-nowrap">{{ $timeData['start'] }} - {{ $timeData['end'] }}</span>
+                                    <span class="tracking-tight whitespace-nowrap"><?php echo e($timeData['start']); ?> - <?php echo e($timeData['end']); ?></span>
                                 </div>
                             </label>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
 
@@ -126,8 +126,46 @@
         </div>
 
     </div>
-    <x-antarmuka.galat-sebaris name="jadwal_1_id" />
-    <x-antarmuka.galat-sebaris name="jadwal_2_id" />
+    <?php if (isset($component)) { $__componentOriginale4392c51ccef42726141b9bd03684153 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginale4392c51ccef42726141b9bd03684153 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.antarmuka.galat-sebaris','data' => ['name' => 'jadwal_1_id']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('antarmuka.galat-sebaris'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['name' => 'jadwal_1_id']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginale4392c51ccef42726141b9bd03684153)): ?>
+<?php $attributes = $__attributesOriginale4392c51ccef42726141b9bd03684153; ?>
+<?php unset($__attributesOriginale4392c51ccef42726141b9bd03684153); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginale4392c51ccef42726141b9bd03684153)): ?>
+<?php $component = $__componentOriginale4392c51ccef42726141b9bd03684153; ?>
+<?php unset($__componentOriginale4392c51ccef42726141b9bd03684153); ?>
+<?php endif; ?>
+    <?php if (isset($component)) { $__componentOriginale4392c51ccef42726141b9bd03684153 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginale4392c51ccef42726141b9bd03684153 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.antarmuka.galat-sebaris','data' => ['name' => 'jadwal_2_id']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('antarmuka.galat-sebaris'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['name' => 'jadwal_2_id']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginale4392c51ccef42726141b9bd03684153)): ?>
+<?php $attributes = $__attributesOriginale4392c51ccef42726141b9bd03684153; ?>
+<?php unset($__attributesOriginale4392c51ccef42726141b9bd03684153); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginale4392c51ccef42726141b9bd03684153)): ?>
+<?php $component = $__componentOriginale4392c51ccef42726141b9bd03684153; ?>
+<?php unset($__componentOriginale4392c51ccef42726141b9bd03684153); ?>
+<?php endif; ?>
 </div>
 
 
@@ -135,7 +173,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Inject schedule data from backend
-    const schedules = @json($mappedSchedules);
+    const schedules = <?php echo json_encode($mappedSchedules, 15, 512) ?>;
 
     function findScheduleId(day, time) {
         if(!day || !time) return null;
@@ -232,3 +270,4 @@ document.addEventListener('DOMContentLoaded', function() {
     restoreUIState('jadwal_2_id', 'B');
 });
 </script>
+<?php /**PATH C:\laragon\www\ruang-les\resources\views/pendaftaran/langkah5-jadwal.blade.php ENDPATH**/ ?>
